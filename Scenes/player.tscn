@@ -106,8 +106,10 @@ libraries = {
 }
 
 [node name="Weapon1" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("4_cc6my")
 offset = Vector2(-7, 2)
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
+
+[node name="WeaponMuzzle" type="Marker2D" parent="."]
+position = Vector2(-14, 0)

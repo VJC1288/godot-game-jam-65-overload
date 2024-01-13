@@ -2,10 +2,13 @@ extends CharacterBody2D
 
 class_name Ghost
 
+
+
 @onready var sprite_2d = $Sprite2D
 @onready var panel = $Panel
 @onready var energy_bar = %EnergyBar
 
+@export var immobile: bool = false
 @export var SPEED = 20.0
 
 var player_to_attack:CharacterBody2D = null
@@ -36,7 +39,8 @@ func _physics_process(_delta):
 		elif direction.x < 0:
 			sprite_2d.flip_h = false	
 		
-		velocity = direction * SPEED
+		if !immobile:
+			velocity = direction * SPEED
 		
 	elif Globals.currentPlayer != null:
 		player_to_attack = Globals.currentPlayer
