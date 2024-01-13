@@ -1,5 +1,5 @@
 extends Node
 
-var current_player: CharacterBody2D
+var currentPlayer: CharacterBody2D
 
-var current_targetted_ghost: CharacterBody2D
+var currentTargetedGhost: CharacterBody2D
