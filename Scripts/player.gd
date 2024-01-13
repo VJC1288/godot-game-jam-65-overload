@@ -6,6 +6,8 @@ enum PlayerAttackStates{FIRING, NOT_FIRING}
 @onready var sprite_2d = $Sprite2D
 @onready var dps_timer = $DPSTimer
 @onready var animation_player = $AnimationPlayer
+@onready var weapon_1 = $Weapon1
+
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
@@ -19,10 +21,11 @@ var currentAttackState: PlayerAttackStates
 func _ready():
 	currentMoveState = PlayerMoveStates.IDLE
 
-
-func _physics_process(delta):
+func _physics_process(_delta):
+	
 
 	match currentMoveState:
+
 		
 		PlayerMoveStates.IDLE:
 			
@@ -52,8 +55,12 @@ func _physics_process(delta):
 				direction = direction.normalized()
 				if direction.x > 0:
 					sprite_2d.flip_h = true
+			    $Weapon1.flip_h = true
+		  	  $Weapon1.offset = Vector2(7,2)
 				elif direction.x < 0:
 					sprite_2d.flip_h = false
+          $Weapon1.flip_h = false
+			    $Weapon1.offset = Vector2(-7,2)
 				velocity.x = direction.x * SPEED
 				velocity.y = direction.y * SPEED
 				animation_player.play("walking")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxha03nksdagd"]
+[gd_scene load_steps=10 format=3 uid="uid://bxha03nksdagd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_48hap"]
 [ext_resource type="Texture2D" uid="uid://c0efrqnf3dsuq" path="res://Assets/bungusspritesheet.svg" id="2_wko6j"]
 [ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="3_f3wxu"]
+[ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/weapon_tileset.png" id="4_cc6my"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yn8kr"]
 size = Vector2(8, 4)
@@ -62,7 +63,7 @@ _data = {
 "walking": SubResource("Animation_vdn3x")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 4
 script = ExtResource("1_48hap")
 
@@ -88,3 +89,10 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_k3ylf")
 }
+
+[node name="Weapon1" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_cc6my")
+offset = Vector2(-7, 2)
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)

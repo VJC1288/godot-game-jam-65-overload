@@ -15,7 +15,7 @@ func _ready():
 	player_to_attack = Globals.currentPlayer
 	energy_bar.value = 0
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	if energy_bar.value <= 0:
 		energy_bar.visible = false
