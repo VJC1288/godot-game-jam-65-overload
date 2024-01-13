@@ -8,7 +8,9 @@ enum PlayerAttackStates{FIRING, NOT_FIRING}
 @onready var animation_player = $AnimationPlayer
 @onready var weapon_1 = $Weapon1
 @onready var weapon_muzzle = $WeaponMuzzle
+@onready var hitbox_component = $HitboxComponent
 
+@export var team: Globals.Teams
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
@@ -24,13 +26,11 @@ var tractorBeam: Line2D
 
 func _ready():
 	currentMoveState = PlayerMoveStates.IDLE
-	
+	hitbox_component.initialize_team(team)
 
 func _physics_process(_delta):
 	
-
 	match currentMoveState:
-
 		
 		PlayerMoveStates.IDLE:
 			
@@ -94,6 +94,7 @@ func select_target():
 		tractorBeam.add_point(end_point)
 		tractorBeam.default_color = Color.AQUAMARINE
 		tractorBeam.width = 5
+		tractorBeam.begin_cap_mode = Line2D.LINE_CAP_ROUND
 		tractorBeam.end_cap_mode = Line2D.LINE_CAP_ROUND
 		add_child(tractorBeam)
 		
@@ -118,7 +119,8 @@ func move_tractor_beam():
 		var start_point = weapon_muzzle.position
 		var end_point = damagingGhost.global_position - global_position
 		var points_size = tractorBeam.points.size()
-		tractorBeam.points[0] = start_point
+		tractorBeam.points[points_size - 3] = start_point
+		tractorBeam.points[points_size - 2] = Vector2((end_point.x + randi_range(-5, 5)) / 2, (end_point.y + randi_range(-5,5)) / 2)
 		tractorBeam.points[points_size - 1] = end_point
-		tractorBeam.points[points_size - 2] = Vector2((end_point.x + randi_range(-10, 10)) / 2, (end_point.y + randi_range(-10,10)) / 2)
+
 		

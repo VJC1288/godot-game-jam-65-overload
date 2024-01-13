@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://sp3qua7ynsbo"
-path="res://.godot/imported/BigelowRules-Regular.ttf-dd7ad8c84ab2fec64819645cefaf0bcc.fontdata"
+path="res://.godot/imported/BigelowRules-Regular.ttf-d0cb72783a470a3c0eb56a2789149b04.fontdata"
 
 [deps]
 
-source_file="res://Assets/BigelowRules-Regular.ttf"
-dest_files=["res://.godot/imported/BigelowRules-Regular.ttf-dd7ad8c84ab2fec64819645cefaf0bcc.fontdata"]
+source_file="res://Assets/Fonts/BigelowRules-Regular.ttf"
+dest_files=["res://.godot/imported/BigelowRules-Regular.ttf-d0cb72783a470a3c0eb56a2789149b04.fontdata"]
 
 [params]
 

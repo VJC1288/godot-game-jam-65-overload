@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://ulu7kgqxb12r"
-path="res://.godot/imported/LoSumires-2X8l.ttf-f2b71617cbdc8e563c4cde9e811dc559.fontdata"
+path="res://.godot/imported/LoSumires-2X8l.ttf-6b27d5b19f842194feca41bd01d1cf7c.fontdata"
 
 [deps]
 
-source_file="res://Assets/LoSumires-2X8l.ttf"
-dest_files=["res://.godot/imported/LoSumires-2X8l.ttf-f2b71617cbdc8e563c4cde9e811dc559.fontdata"]
+source_file="res://Assets/Fonts/LoSumires-2X8l.ttf"
+dest_files=["res://.godot/imported/LoSumires-2X8l.ttf-6b27d5b19f842194feca41bd01d1cf7c.fontdata"]
 
 [params]
 

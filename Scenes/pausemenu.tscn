@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ch6s5khf0mwvm"]
 
 [ext_resource type="Script" path="res://PauseLayer.gd" id="1_ygq85"]
-[ext_resource type="FontFile" uid="uid://ulu7kgqxb12r" path="res://Assets/LoSumires-2X8l.ttf" id="2_qi3kb"]
+[ext_resource type="FontFile" uid="uid://ulu7kgqxb12r" path="res://Assets/Fonts/LoSumires-2X8l.ttf" id="2_qi3kb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i26d4"]
 bg_color = Color(0.0509804, 0.0509804, 0.0509804, 1)

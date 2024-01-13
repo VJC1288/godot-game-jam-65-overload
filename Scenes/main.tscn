@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://cegkilxcjyun2"]
+[gd_scene load_steps=15 format=3 uid="uid://cegkilxcjyun2"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_7koke"]
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="1_nxg65"]
 [ext_resource type="PackedScene" uid="uid://cdwte7f6l3kjt" path="res://Scenes/ghost.tscn" id="3_arox1"]
-[ext_resource type="PackedScene" uid="uid://f4mxym418dxf" path="res://Scenes/weapon_1.tscn" id="4_bbjw5"]
 [ext_resource type="Shader" path="res://Shaders/main.gdshader" id="5_e6mp8"]
 [ext_resource type="Texture2D" uid="uid://c2jqu0pt55du8" path="res://icon.svg" id="5_r6hi2"]
 
@@ -126,6 +125,28 @@ texture_region_size = Vector2i(32, 32)
 7:6/0 = 0
 7:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:6/0/physics_layer_0/angular_velocity = 0.0
+3:8/0 = 0
+3:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:8/0/physics_layer_0/angular_velocity = 0.0
+3:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:8/0 = 0
+5:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:8/0/physics_layer_0/angular_velocity = 0.0
+5:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:10/0 = 0
+4:10/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:10/0/physics_layer_0/angular_velocity = 0.0
+4:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 8, -16, 8)
+3:11/0 = 0
+3:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:11/0/physics_layer_0/angular_velocity = 0.0
+5:11/0 = 0
+5:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:11/0/physics_layer_0/angular_velocity = 0.0
+4:12/0 = 0
+4:12/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:12/0/physics_layer_0/angular_velocity = 0.0
+4:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, 16, 16, -8, -16, -8)
 
 [sub_resource type="TileSet" id="TileSet_ny8g5"]
 tile_size = Vector2i(32, 32)
@@ -173,10 +194,7 @@ layer_0/tile_data = PackedInt32Array(0, 131072, 1, 327680, 131072, 6, 327689, 45
 
 [node name="Ghost" parent="." instance=ExtResource("3_arox1")]
 position = Vector2(221, 99)
-immobile = false
-
-[node name="Weapon1" parent="." instance=ExtResource("4_bbjw5")]
-position = Vector2(153, 35)
+immobile = true
 
 [node name="Fog" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_u464f")

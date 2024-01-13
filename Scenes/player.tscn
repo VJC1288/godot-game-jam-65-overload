@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxha03nksdagd"]
+[gd_scene load_steps=14 format=3 uid="uid://bxha03nksdagd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_48hap"]
 [ext_resource type="Texture2D" uid="uid://c0efrqnf3dsuq" path="res://Assets/bungusspritesheet.svg" id="2_wko6j"]
 [ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="3_f3wxu"]
+[ext_resource type="PackedScene" uid="uid://lmbd8ry58sbd" path="res://Scenes/hitbox_component.tscn" id="3_kyq8h"]
 [ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/weapon_tileset.png" id="4_cc6my"]
 
 [sub_resource type="Gradient" id="Gradient_sjtlc"]
@@ -14,6 +15,9 @@ gradient = SubResource("Gradient_sjtlc")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.174312, 0.431193)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqdcp"]
+size = Vector2(14, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yn8kr"]
 size = Vector2(8, 4)
@@ -87,10 +91,15 @@ texture = ExtResource("2_wko6j")
 hframes = 3
 region_rect = Rect2(288, 64, 32, 32)
 
-[node name="HitboxComponent" type="Node2D" parent="."]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_kyq8h")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" parent="HitboxComponent" index="0"]
+shape = SubResource("RectangleShape2D_xqdcp")
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("3_f3wxu")
+max_health = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 9)
@@ -113,3 +122,5 @@ region_rect = Rect2(0, 0, 32, 32)
 
 [node name="WeaponMuzzle" type="Marker2D" parent="."]
 position = Vector2(-14, 0)
+
+[editable path="HitboxComponent"]

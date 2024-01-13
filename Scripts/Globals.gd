@@ -1,5 +1,6 @@
 extends Node
 
+enum Teams {PLAYER = 1, ENEMIES = 2}
 
 var currentPlayer: CharacterBody2D
 

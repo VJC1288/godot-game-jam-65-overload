@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdwte7f6l3kjt"]
+[gd_scene load_steps=16 format=3 uid="uid://cdwte7f6l3kjt"]
 
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="1_1rgs4"]
+[ext_resource type="Shader" path="res://Shaders/ghost.gdshader" id="1_1xtwg"]
 [ext_resource type="Script" path="res://Scripts/ghost.gd" id="1_lwago"]
+[ext_resource type="PackedScene" uid="uid://bmtkidpm0bjfa" path="res://Scenes/hurt_box.tscn" id="4_tvy1s"]
 
 [sub_resource type="Gradient" id="Gradient_kktku"]
 offsets = PackedFloat32Array(0.0909091, 1)
@@ -13,7 +15,14 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.174312, 0.431193)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_764i6"]
+shader = ExtResource("1_1xtwg")
+shader_parameter/intensity = 0.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_fs0cf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ea3pe"]
+size = Vector2(26, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5h6n"]
 size = Vector2(28, 30)
@@ -50,7 +59,7 @@ border_color = Color(0.8, 0.8, 0.8, 0)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_lwago")
-immobile = true
+team = 2
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(5.96046e-08, 16)
@@ -58,12 +67,18 @@ scale = Vector2(0.46875, 0.21875)
 texture = SubResource("GradientTexture2D_jeq60")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_764i6")
 texture = ExtResource("1_1rgs4")
 region_enabled = true
 region_rect = Rect2(288, 32, 32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fs0cf")
+
+[node name="HurtBox" parent="." instance=ExtResource("4_tvy1s")]
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_ea3pe")
 
 [node name="SelectArea" type="Area2D" parent="."]
 
@@ -114,3 +129,5 @@ show_percentage = false
 
 [connection signal="mouse_entered" from="SelectArea" to="." method="targetted"]
 [connection signal="mouse_exited" from="SelectArea" to="." method="untargetted"]
+
+[editable path="HurtBox"]
