@@ -1,9 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxha03nksdagd"]
+[gd_scene load_steps=12 format=3 uid="uid://bxha03nksdagd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_48hap"]
 [ext_resource type="Texture2D" uid="uid://c0efrqnf3dsuq" path="res://Assets/bungusspritesheet.svg" id="2_wko6j"]
 [ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="3_f3wxu"]
 [ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/weapon_tileset.png" id="4_cc6my"]
+
+[sub_resource type="Gradient" id="Gradient_sjtlc"]
+offsets = PackedFloat32Array(0.0909091, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3fi4r"]
+gradient = SubResource("Gradient_sjtlc")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.174312, 0.431193)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yn8kr"]
 size = Vector2(8, 4)
@@ -66,6 +76,11 @@ _data = {
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 4
 script = ExtResource("1_48hap")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(1, 11)
+scale = Vector2(0.5625, 0.1875)
+texture = SubResource("GradientTexture2D_3fi4r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_wko6j")

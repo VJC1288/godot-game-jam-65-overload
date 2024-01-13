@@ -1,7 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdwte7f6l3kjt"]
+[gd_scene load_steps=12 format=3 uid="uid://cdwte7f6l3kjt"]
 
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="1_1rgs4"]
 [ext_resource type="Script" path="res://Scripts/ghost.gd" id="1_lwago"]
+
+[sub_resource type="Gradient" id="Gradient_kktku"]
+offsets = PackedFloat32Array(0.0909091, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jeq60"]
+gradient = SubResource("Gradient_kktku")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.174312, 0.431193)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fs0cf"]
 
@@ -40,7 +50,11 @@ border_color = Color(0.8, 0.8, 0.8, 0)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_lwago")
-metadata/_edit_group_ = true
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(5.96046e-08, 16)
+scale = Vector2(0.46875, 0.21875)
+texture = SubResource("GradientTexture2D_jeq60")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_1rgs4")

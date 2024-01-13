@@ -17,4 +17,4 @@ func spawn_player():
 	weapon_1.wpn1Pickup_sig.connect(equip_wpn1)
 	
 func equip_wpn1():
-	Globals.current_player.weapon_1.show()
+	Globals.currentPlayer.weapon_1.show()

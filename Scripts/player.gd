@@ -55,12 +55,12 @@ func _physics_process(_delta):
 				direction = direction.normalized()
 				if direction.x > 0:
 					sprite_2d.flip_h = true
-			    $Weapon1.flip_h = true
-		  	  $Weapon1.offset = Vector2(7,2)
+					$Weapon1.flip_h = true
+					$Weapon1.offset = Vector2(7,2)
 				elif direction.x < 0:
 					sprite_2d.flip_h = false
-          $Weapon1.flip_h = false
-			    $Weapon1.offset = Vector2(-7,2)
+					$Weapon1.flip_h = false
+					$Weapon1.offset = Vector2(-7,2)
 				velocity.x = direction.x * SPEED
 				velocity.y = direction.y * SPEED
 				animation_player.play("walking")
