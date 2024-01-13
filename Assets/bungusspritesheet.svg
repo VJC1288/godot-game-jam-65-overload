@@ -1,0 +1,13 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 32" width="96" height="32">
+	<title>New Project</title>
+	<defs>
+		<image  width="13" height="24" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAYCAMAAAAWLodmAAAAAXNSR0IB2cksfwAAAFpQTFRFAAAAGBgYGBgYAAAAv6CKhzsIpVIa+MiAwHhg+PjYCH2HMDAw5sZH7cJA7cJB9N1i6MND8d9kcXFx68JB8d5k6ctN58NC8ddb9Nha8N9h799l799k68xOWRUAJTzepwAAAB50Uk5TAAD/////////////////////////////////////Y3kEHwAAAKNJREFUeJxVkNsawiAMgyFa1lnmgTkPqO//mqYIF+aKvwmhHyFEYAdXoCL2kiSlJGgkIomTgZM6yqCGw5tVPZ1+pABNMlryMP+Rqj/IixHGFuSclwUBR2MKJ7OzkZhgnV2KOa1uwa6lFL+38YyMTjcwA9ucgDvWIyYzZgI3eTBJYonTk6S+gK+CSoJXta0rCvCyTq43anXCh8L4p+a1SeiK3foCWj4Hlbg5G68AAAAASUVORK5CYII="/>
+		<image  width="15" height="25" id="img2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAZCAMAAADZh4T+AAAAAXNSR0IB2cksfwAAAFRQTFRFAAAAGBgYAAAAv6CKhzsIpVIaGBgY+MiAwHhg+PjYCH2HMDAw5sZH7cJB9N1i7cJA8d9k6MND68JB8d5kcXFx6ctN58NC8ddb9Nha8N9h799lWRUAP4DwRQAAABx0Uk5TAP//////AP///////////////////////////9EmD5sAAAC5SURBVHicXZDrFoIwDIOJ7lIsCMKmU97/PU03wHPML74s7TK6jgIuMHVNuDrvvPeuGQHOOU9vN0JAFDPcGYjV+A30IjbjDxaAATrY87f+j0WsQF0AKPdhMJExqjJ7V8U0GVvOe51nPNR4ITroisSIHWduwEBOiRzlCR6sOPmFZRwtl8mBHwVagKiaUZ/3PlhrP3wqi3WsnDmKdlHrw8WmUvtsG5pySe09dEKwYGrzIAa69PdfHswwfQGEdghb8Hpt1gAAAABJRU5ErkJggg=="/>
+		<image  width="14" height="25" id="img3" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAZCAMAAAA2Re/AAAAAAXNSR0IB2cksfwAAAE5QTFRFAAAAGBgYAAAAv6CKhzsIpVIaGBgY+MiAwHhg+PjYCH2HMDAw5sZH7cJA9N1i6MND8d9kcXFx8d5k6ctN58NC8ddb9Nha8N9h799lWRUAcWXdcQAAABp0Uk5TAP//////AP/////////////////////////f/pYVAAAAq0lEQVR4nFWQ2RbCIAxEGQ2UmlZFlML//6hZiueYJ26WyZAQQgAu0AgWuFKkGCM5g4iipE5OWLIyEZKVF+M4cc1ZB+KJGZCyJODNt/Ufc9bFLs0ihW3b9l0RLI24Mz/YECrKz8KOWgS/SimGVVS4lolvYGFjw48ht2p/TGjIsrgdZjLhUA/cHYEOVuwT+YfaJ5IaVWxgDHt31KaLgKEz1uWedWZI+DX8npb9ArTJB41RKI+LAAAAAElFTkSuQmCC"/>
+	</defs>
+	<style>
+	</style>
+	<use id="Idle" href="#img1" x="10" y="4"/>
+	<use id="Walking1" href="#img2" x="40" y="3"/>
+	<use id="Layer 1" href="#img3" x="73" y="3"/>
+</svg>
