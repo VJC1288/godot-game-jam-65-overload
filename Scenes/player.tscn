@@ -82,7 +82,7 @@ position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_yn8kr")
 
 [node name="DPSTimer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.1
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

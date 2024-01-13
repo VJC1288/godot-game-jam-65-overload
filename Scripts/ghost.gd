@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Ghost
+
 @onready var sprite_2d = $Sprite2D
 @onready var panel = $Panel
 @onready var energy_bar = %EnergyBar
@@ -10,7 +12,7 @@ var player_to_attack:CharacterBody2D = null
 var taking_damage:bool = false
 
 func _ready():
-	player_to_attack = Globals.current_player
+	player_to_attack = Globals.currentPlayer
 	energy_bar.value = 0
 
 func _physics_process(_delta):
@@ -36,8 +38,8 @@ func _physics_process(_delta):
 		
 		velocity = direction * SPEED
 		
-	elif Globals.current_player != null:
-		player_to_attack = Globals.current_player
+	elif Globals.currentPlayer != null:
+		player_to_attack = Globals.currentPlayer
 
 	move_and_slide()
 
@@ -53,10 +55,10 @@ func stop_damaging():
 
 func targetted():
 	panel.visible = true
-	Globals.current_targetted_ghost = self
+	Globals.currentTargetedGhost = self
 	
 	
 func untargetted():
 	panel.visible = false
-	Globals.current_targetted_ghost = null
+	Globals.currentTargetedGhost = null
 	taking_damage = false
