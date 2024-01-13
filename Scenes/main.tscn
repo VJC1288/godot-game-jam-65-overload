@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cegkilxcjyun2"]
+[gd_scene load_steps=16 format=3 uid="uid://cegkilxcjyun2"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_7koke"]
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="1_nxg65"]
 [ext_resource type="PackedScene" uid="uid://cdwte7f6l3kjt" path="res://Scenes/ghost.tscn" id="3_arox1"]
 [ext_resource type="PackedScene" uid="uid://f4mxym418dxf" path="res://Scenes/weapon_1.tscn" id="4_bbjw5"]
+[ext_resource type="Shader" path="res://Shaders/main.gdshader" id="5_e6mp8"]
+[ext_resource type="Texture2D" uid="uid://c2jqu0pt55du8" path="res://icon.svg" id="5_r6hi2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7bdog"]
 texture = ExtResource("1_nxg65")
@@ -131,6 +133,33 @@ physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_7bdog")
 
+[sub_resource type="Gradient" id="Gradient_wadup"]
+offsets = PackedFloat32Array(0.057377, 0.893443)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_law42"]
+gradient = SubResource("Gradient_wadup")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4nos4"]
+seed = 54621
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d4o0g"]
+seamless = true
+noise = SubResource("FastNoiseLite_4nos4")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b1mde"]
+seed = 5679821
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4x4df"]
+seamless = true
+noise = SubResource("FastNoiseLite_b1mde")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u464f"]
+shader = ExtResource("5_e6mp8")
+shader_parameter/offset_scroll = Vector2(0.5, 0.5)
+shader_parameter/noise1 = SubResource("NoiseTexture2D_d4o0g")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_4x4df")
+shader_parameter/gradient = SubResource("GradientTexture1D_law42")
+
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_7koke")
@@ -147,3 +176,10 @@ position = Vector2(221, 99)
 
 [node name="Weapon1" parent="." instance=ExtResource("4_bbjw5")]
 position = Vector2(153, 35)
+
+[node name="Fog" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_u464f")
+position = Vector2(160, 194)
+scale = Vector2(2.49219, 1.52344)
+texture = ExtResource("5_r6hi2")
+offset = Vector2(0, -65)

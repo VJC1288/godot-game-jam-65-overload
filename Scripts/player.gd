@@ -77,6 +77,7 @@ func _physics_process(_delta):
 func select_target():
 	if Input.is_action_just_pressed("fire_beam") and Globals.currentTargetedGhost != null:
 		damagingGhost = Globals.currentTargetedGhost
+		
 	
 func check_damaging_ghost():
 	
