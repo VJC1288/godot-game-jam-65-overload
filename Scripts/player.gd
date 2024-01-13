@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var sprite_2d = $Sprite2D
 @onready var dps_timer = $DPSTimer
 @onready var animation_player = $AnimationPlayer
+@onready var weapon_1 = $Weapon1
+
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
@@ -14,7 +16,7 @@ var max_fire_distance = 100.0
 var damage_power = 5.0
 var targetted_ghost: CharacterBody2D
 
-func _physics_process(delta):
+func _physics_process(_delta):
 
 
 	var direction:Vector2 = Input.get_vector("left", "right", "up", "down")
@@ -22,8 +24,12 @@ func _physics_process(delta):
 	if direction:
 		if direction.x > 0:
 			sprite_2d.flip_h = true
+			$Weapon1.flip_h = true
+			$Weapon1.offset = Vector2(7,2)
 		elif direction.x < 0:
 			sprite_2d.flip_h = false
+			$Weapon1.flip_h = false
+			$Weapon1.offset = Vector2(-7,2)
 		velocity.x = direction.x * SPEED
 		velocity.y = direction.y * SPEED
 		animation_player.play("walking")

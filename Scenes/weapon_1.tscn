@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://f4mxym418dxf"]
+
+[ext_resource type="Script" path="res://Scenes/weapon_1.gd" id="1_cfxwl"]
+[ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/weapon_tileset.png" id="1_fuswl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74heu"]
+size = Vector2(12, 9)
+
+[node name="Weapon1" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_cfxwl")
+
+[node name="Weapon1Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_fuswl")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_74heu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

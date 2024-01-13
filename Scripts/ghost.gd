@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @onready var sprite_2d = $Sprite2D
 @onready var panel = $Panel
-@onready var area_2d = $Area2D
 @onready var energy_bar = %EnergyBar
 
 @export var SPEED = 20.0
@@ -14,7 +13,7 @@ func _ready():
 	player_to_attack = Globals.current_player
 	energy_bar.value = 0
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	if energy_bar.value <= 0:
 		energy_bar.visible = false
