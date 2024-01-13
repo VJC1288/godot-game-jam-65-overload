@@ -1,13 +1,22 @@
 extends Node2D
 
 const PLAYER = preload("res://Scenes/player.tscn")
-@onready var weapon_1 = $Weapon1
+const PAUSEMENU = preload("res://Scenes/pausemenu.tscn")
 
+@onready var weapon_1 = $Weapon1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	spawn_player()
-
+	
+func _process(_delta):
+	if Input.is_action_just_pressed("pause") and Globals.paused == false:
+		pause_game()
+		
+func pause_game():
+	add_child(PAUSEMENU.instantiate())
+	get_tree().paused = true
+	
 func spawn_player():
 	var player = PLAYER.instantiate()
 	var viewport = get_viewport_rect()
