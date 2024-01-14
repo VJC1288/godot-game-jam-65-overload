@@ -5,6 +5,7 @@ const PAUSEMENU = preload("res://Scenes/pausemenu.tscn")
 
 @onready var coin_spawner:CoinSpawner = $CoinSpawner
 @onready var enemy_spawner = $EnemySpawner
+@onready var hud = $HUD
 
 func _ready():
 	randomize()
@@ -14,9 +15,11 @@ func _ready():
 	spawn_player(centerOfScreen)
 	
 	enemy_spawner.connect("enemy_killed", enemy_killed)
+	coin_spawner.connect("spawner_coin_collected", update_coin_count)
 		
 	coin_spawner.spawn_coins(centerOfScreen + Vector2(50, 50), randi_range(1,5))
-	
+	hud.update_coin_count()
+
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("pause") and Globals.paused == false:
@@ -29,6 +32,7 @@ func pause_game():
 func spawn_player(locationToSpawn:Vector2):
 	var player = PLAYER.instantiate()
 	player.global_position = locationToSpawn
+	player.connect("player_health_changed", update_health_bar)
 	Globals.currentPlayer = player
 	add_child(player)
 
@@ -40,9 +44,15 @@ func enemy_killed(type: String, location: Vector2):
 		
 		_:
 			amount = 1
-			
-			
+
 	coin_spawner.spawn_coins(location, amount)
+
+func update_health_bar(new_value):
+	hud.update_health(new_value)
+
+func update_coin_count(amount):
+	Globals.currentCoinCount += amount
+	hud.update_coin_count()
 
 func equip_wpn1():
 	Globals.currentPlayer.weapon_1.show()

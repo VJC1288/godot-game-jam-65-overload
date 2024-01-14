@@ -127,4 +127,6 @@ region_rect = Rect2(0, 0, 32, 32)
 [node name="WeaponMuzzle" type="Marker2D" parent="."]
 position = Vector2(-14, 0)
 
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
+
 [editable path="HitboxComponent"]
