@@ -2,6 +2,8 @@ extends Node2D
 
 class_name CoinSpawner
 
+signal spawner_coin_collected(amount)
+
 @export var coin1: Texture2D
 @export var coin2: Texture2D
 @export var coin3: Texture2D
@@ -31,6 +33,10 @@ func spawn_coins(location: Vector2, amount:int):
 		
 	coinToSpawn.set_texture(coin_text)
 	coinToSpawn.coin_value = amount
+	coinToSpawn.connect("coin_collected", coin_collected)
+	
+func coin_collected(amount):
+	emit_signal("spawner_coin_collected", amount)
 	
 	
 

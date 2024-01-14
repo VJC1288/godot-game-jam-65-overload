@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+class_name Player
+
+signal player_health_changed(new_health)
+
 enum PlayerMoveStates{IDLE, WALKING, DODGE_ROLLING, STUNNED}
 enum PlayerAttackStates{FIRING, NOT_FIRING}
 
@@ -9,6 +13,7 @@ enum PlayerAttackStates{FIRING, NOT_FIRING}
 @onready var weapon_1 = $Weapon1
 @onready var weapon_muzzle = $WeaponMuzzle
 @onready var hitbox_component = $HitboxComponent
+@onready var health_component:HealthComponent = $HealthComponent
 
 @export var team: Globals.Teams
 @export var weapon_inv: WpnInv
@@ -30,6 +35,7 @@ var tractorBeam: Line2D
 func _ready():
 	currentMoveState = PlayerMoveStates.IDLE
 	hitbox_component.initialize_team(team)
+	emit_signal("player_health_changed",health_component.get_health())
 
 func _physics_process(_delta):
 	
@@ -127,3 +133,7 @@ func move_tractor_beam():
 		tractorBeam.points[points_size - 1] = end_point
 
 		
+
+
+func _on_health_component_health_changed(new_health):
+	emit_signal("player_health_changed", new_health)
