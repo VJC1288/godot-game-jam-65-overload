@@ -6,7 +6,9 @@ extends CanvasLayer
 @onready var playerItems: ItemInv = preload("res://Assets/Inventory/player_items.tres")
 @onready var wpn_slots: Array = weapon_grid.get_children()
 @onready var item_slots: Array = item_grid.get_children()
+@onready var menu = $"."
 
+var menu_open: bool = false
 
 func _ready():
 	playerItems.updateSlot_sig.connect(update_item_slots)
@@ -14,13 +16,22 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
-		unpause_game()
-	if Input.is_action_just_pressed("quit"):
+		if menu_open:
+			get_tree().paused = false
+			close_menu()
+		else:
+			open_menu()
+			get_tree().paused = true
+	if Input.is_action_just_pressed("quit") and menu_open:
 		quit()
 
-func unpause_game():
-		get_tree().paused = false
-		queue_free()
+func open_menu():
+	menu.visible = true
+	menu_open = true
+
+func close_menu():
+	menu.visible = false
+	menu_open = false
 
 func quit():
 	get_tree().quit()
@@ -31,5 +42,5 @@ func update_wpn_slots():
 		
 func update_item_slots():
 	print("updateslot")
-	for i in range(min(playerItems.item_slots.size(), item_slots.size())):
-		item_slots[i].update(playerItems.item_slots[i])
+	for i in range(min(playerItems.slots.size(), item_slots.size())):
+		item_slots[i].update(playerItems.slots[i])

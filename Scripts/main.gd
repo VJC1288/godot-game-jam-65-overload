@@ -20,15 +20,6 @@ func _ready():
 	coin_spawner.spawn_coins(centerOfScreen + Vector2(50, 50), randi_range(1,5))
 	hud.update_coin_count()
 
-	
-func _process(_delta):
-	if Input.is_action_just_pressed("pause") and Globals.paused == false:
-		pause_game()
-		
-func pause_game():
-	add_child(PAUSEMENU.instantiate())
-	get_tree().paused = true
-	
 func spawn_player(locationToSpawn:Vector2):
 	var player = PLAYER.instantiate()
 	player.global_position = locationToSpawn

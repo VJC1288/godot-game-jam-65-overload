@@ -134,8 +134,8 @@ func move_tractor_beam():
 		tractorBeam.points[points_size - 1] = end_point
 
 
-func collect_item(item):
-	item_inv.insert(item)
+func collect_item(item, amount):
+	item_inv.insert(item, amount)
 
 func _on_health_component_health_changed(new_health):
 	emit_signal("player_health_changed", new_health)

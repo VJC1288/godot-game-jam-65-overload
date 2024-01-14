@@ -23,8 +23,8 @@ outline_color = Color(0.603922, 0.305882, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_q5p75"]
 font_color = Color(0.603922, 0.305882, 0, 1)
 
-[node name="PauseLayer" type="CanvasLayer"]
-process_mode = 2
+[node name="Menu" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_54hxn")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

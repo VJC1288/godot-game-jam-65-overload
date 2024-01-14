@@ -82,6 +82,7 @@ _data = {
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 4
 script = ExtResource("1_48hap")
+team = null
 weapon_inv = ExtResource("2_v42ke")
 item_inv = ExtResource("3_acr8i")
 
