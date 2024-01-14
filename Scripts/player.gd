@@ -13,6 +13,7 @@ enum PlayerAttackStates{FIRING, NOT_FIRING}
 @onready var weapon_1 = $Weapon1
 @onready var weapon_muzzle = $WeaponMuzzle
 @onready var hitbox_component = $HitboxComponent
+
 @onready var health_component:HealthComponent = $HealthComponent
 
 @export var team: Globals.Teams
@@ -132,8 +133,10 @@ func move_tractor_beam():
 		tractorBeam.points[points_size - 2] = Vector2((end_point.x + randi_range(-5, 5)) / 2, (end_point.y + randi_range(-5,5)) / 2)
 		tractorBeam.points[points_size - 1] = end_point
 
-		
 
+func collect_item(item):
+	item_inv.insert(item)
 
 func _on_health_component_health_changed(new_health):
 	emit_signal("player_health_changed", new_health)
+

@@ -3,12 +3,13 @@ extends CanvasLayer
 @onready var weapon_grid = $MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/WeaponGrid
 @onready var item_grid = $MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer/ItemGrid
 @onready var playerWeapons: WpnInv = preload("res://Assets/Inventory/player_weapons.tres")
-@onready var playerItems: ItemInv = preload("res://Assets/Inventory/player_ items.tres")
+@onready var playerItems: ItemInv = preload("res://Assets/Inventory/player_items.tres")
 @onready var wpn_slots: Array = weapon_grid.get_children()
 @onready var item_slots: Array = item_grid.get_children()
 
 
 func _ready():
+	playerItems.updateSlot_sig.connect(update_item_slots)
 	update_wpn_slots()
 
 func _process(_delta):
@@ -29,5 +30,6 @@ func update_wpn_slots():
 		wpn_slots[i].update(playerWeapons.weapons[i])
 		
 func update_item_slots():
-	for i in range(min(playerItems.items.size(), item_slots.size())):
-		item_slots[i].update(playerItems.items[i])
+	print("updateslot")
+	for i in range(min(playerItems.item_slots.size(), item_slots.size())):
+		item_slots[i].update(playerItems.item_slots[i])
