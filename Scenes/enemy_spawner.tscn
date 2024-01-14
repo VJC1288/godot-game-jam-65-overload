@@ -18,10 +18,6 @@ curve = SubResource("Curve2D_rrgua")
 [node name="SpawnPoint" type="PathFollow2D" parent="SpawnPath"]
 position = Vector2(0, 240)
 
-[node name="_Timer_60703" type="Timer" parent="SpawnPath/SpawnPoint"]
-wait_time = 0.2
-one_shot = true
-
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true

@@ -3,7 +3,7 @@ extends Node2D
 const PLAYER = preload("res://Scenes/player.tscn")
 const PAUSEMENU = preload("res://Scenes/pausemenu.tscn")
 
-@onready var coin_spawner = $CoinSpawner
+@onready var coin_spawner:CoinSpawner = $CoinSpawner
 @onready var enemy_spawner = $EnemySpawner
 
 func _ready():
@@ -12,6 +12,9 @@ func _ready():
 	var centerOfScreen = Vector2(viewport.size.x / 2, viewport.size.y / 2)
 	
 	spawn_player(centerOfScreen)
+	
+	enemy_spawner.connect("enemy_killed", enemy_killed)
+		
 	coin_spawner.spawn_coins(centerOfScreen + Vector2(50, 50), randi_range(1,5))
 	
 	
@@ -28,7 +31,18 @@ func spawn_player(locationToSpawn:Vector2):
 	player.global_position = locationToSpawn
 	Globals.currentPlayer = player
 	add_child(player)
-	
+
+func enemy_killed(type: String, location: Vector2):
+	var amount
+	match type:
+		"regular_ghost":
+			amount = randi_range(1,2)
+		
+		_:
+			amount = 1
+			
+			
+	coin_spawner.spawn_coins(location, amount)
 
 func equip_wpn1():
 	Globals.currentPlayer.weapon_1.show()

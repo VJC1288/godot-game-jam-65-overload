@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name Ghost
 
+signal ghost_died(location)
+
 
 @onready var sprite_2d = $Sprite2D
 @onready var panel = $Panel
@@ -57,6 +59,7 @@ func take_damage(damage_power):
 	panel.visible = false
 	adjust_energy(damage_power)
 	if energy_bar.value >= 100:
+		emit_signal("ghost_died", global_position)
 		queue_free()
 
 func stop_damaging():
@@ -80,3 +83,7 @@ func adjust_energy(adjustment):
 	else:
 		sprite_2d.region_rect.position.x = 288
 
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
