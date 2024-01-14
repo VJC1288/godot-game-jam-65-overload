@@ -1,6 +1,6 @@
 extends Node2D
 
-signal enemy_killed(type)
+signal enemy_killed(type, location)
 
 const GHOST = preload("res://Scenes/ghost.tscn")
 @onready var spawn_point = $SpawnPath/SpawnPoint
@@ -19,9 +19,11 @@ func _physics_process(_delta):
 
 
 func spawn_ghost():
-	var enemy = GHOST.instantiate()
+	var enemy: Ghost = GHOST.instantiate()
 	spawn_point.progress_ratio = randf_range(0,100)
 	enemy.global_position = spawn_point.global_position
+	enemy.connect("ghost_died", ghost_died)
 	add_child(enemy)
 	
-	
+func ghost_died(location):
+	emit_signal("enemy_killed", "regular_ghost", location)

@@ -1,5 +1,6 @@
 extends Node2D
 
+class_name CoinSpawner
 
 @export var coin1: Texture2D
 @export var coin2: Texture2D
