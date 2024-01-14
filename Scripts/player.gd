@@ -125,4 +125,5 @@ func move_tractor_beam():
 		tractorBeam.points[points_size - 2] = Vector2((end_point.x + randi_range(-5, 5)) / 2, (end_point.y + randi_range(-5,5)) / 2)
 		tractorBeam.points[points_size - 1] = end_point
 
-		
+func collect_item(item):
+	item_inv.insert(item)

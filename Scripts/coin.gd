@@ -4,15 +4,21 @@ class_name Coin
 
 signal coin_collected(value)
 
+var player = null
+
+@export var item: InvItem
+
 @onready var sprite_2d = $Sprite2D
 
 
 var coin_value:int
 
-func _on_area_body_entered(_body):
+func _on_area_body_entered(body):
+	player = body
 	emit_signal("coin_collected", coin_value)
 	Globals.currentCoinCount += coin_value
 	print(Globals.currentCoinCount)
+	player.collect_item(item)
 	queue_free()
 
 func set_texture(passed_texture: Texture2D):
