@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WpnInv" load_steps=3 format=3 uid="uid://0bkd3m0eno00"]
+
+[ext_resource type="Resource" uid="uid://cteoo6tumwon3" path="res://Assets/Inventory/weapon1_icon.tres" id="1_jjx64"]
+[ext_resource type="Script" path="res://Scripts/weapon_inventory.gd" id="2_ej8so"]
+
+[resource]
+script = ExtResource("2_ej8so")
+weapons = Array[Resource("res://Scripts/inventory_item.gd")]([ExtResource("1_jjx64"), null, null, null, null, null, null, null, null, null])

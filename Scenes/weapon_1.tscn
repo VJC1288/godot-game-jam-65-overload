@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://f4mxym418dxf"]
 
-[ext_resource type="Script" path="res://Scenes/weapon_1.gd" id="1_cfxwl"]
+[ext_resource type="Script" path="res://Scripts/weapon_1.gd" id="1_cfxwl"]
 [ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/weapon_tileset.png" id="1_fuswl"]
 
 [sub_resource type="Gradient" id="Gradient_unygj"]
