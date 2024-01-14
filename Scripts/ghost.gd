@@ -75,4 +75,8 @@ func adjust_energy(adjustment):
 	energy_bar.value += adjustment
 	sprite_2d.scale = Vector2(1,1) * (1 + energy_bar.value / 400.0)
 	sprite2d_shader.set_shader_parameter("intensity", energy_bar.value / 250.0)
+	if energy_bar.value >=80:
+		sprite_2d.region_rect.position.x = 320
+	else:
+		sprite_2d.region_rect.position.x = 288
 
