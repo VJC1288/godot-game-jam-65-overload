@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck7j8extwg0ox"]
+
+[ext_resource type="Script" path="res://Scripts/weapon_slot.gd" id="1_j73qj"]
+
+[node name="ItemSlot" type="ColorRect"]
+custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 16.0
+color = Color(0.294118, 0.294118, 0.294118, 0.392157)
+script = ExtResource("1_j73qj")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="ItemDisplay" type="Sprite2D" parent="CenterContainer/Panel"]

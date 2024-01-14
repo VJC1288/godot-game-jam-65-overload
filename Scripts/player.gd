@@ -11,6 +11,9 @@ enum PlayerAttackStates{FIRING, NOT_FIRING}
 @onready var hitbox_component = $HitboxComponent
 
 @export var team: Globals.Teams
+@export var weapon_inv: WpnInv
+@export var item_inv: ItemInv
+
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
