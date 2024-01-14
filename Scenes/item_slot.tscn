@@ -1,13 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://ck7j8extwg0ox"]
+[gd_scene load_steps=3 format=3 uid="uid://ck7j8extwg0ox"]
 
-[ext_resource type="Script" path="res://Scripts/weapon_slot.gd" id="1_j73qj"]
+[ext_resource type="Script" path="res://Scripts/item_slot.gd" id="1_sgxo8"]
+[ext_resource type="FontFile" uid="uid://cwet7b4q87ua4" path="res://Assets/Fonts/joystix monospace.otf" id="2_crlrg"]
 
 [node name="ItemSlot" type="ColorRect"]
 custom_minimum_size = Vector2(16, 16)
 offset_right = 16.0
 offset_bottom = 16.0
 color = Color(0.294118, 0.294118, 0.294118, 0.392157)
-script = ExtResource("1_j73qj")
+script = ExtResource("1_sgxo8")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 custom_minimum_size = Vector2(16, 16)
@@ -22,3 +23,14 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="ItemDisplay" type="Sprite2D" parent="CenterContainer/Panel"]
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+custom_minimum_size = Vector2(18, 9)
+layout_mode = 0
+offset_left = -8.0
+offset_top = 1.0
+offset_right = 10.0
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("2_crlrg")
+theme_override_font_sizes/font_size = 7
+horizontal_alignment = 2

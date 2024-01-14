@@ -9,7 +9,6 @@ enum PlayerAttackStates{FIRING, NOT_FIRING}
 @onready var weapon_1 = $Weapon1
 @onready var weapon_muzzle = $WeaponMuzzle
 @onready var hitbox_component = $HitboxComponent
-
 @export var team: Globals.Teams
 @export var weapon_inv: WpnInv
 @export var item_inv: ItemInv

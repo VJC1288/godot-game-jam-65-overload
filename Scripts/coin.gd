@@ -9,7 +9,7 @@ signal coin_collected(value)
 
 var coin_value:int
 
-func _on_area_body_entered(body):
+func _on_area_body_entered(_body):
 	emit_signal("coin_collected", coin_value)
 	queue_free()
 

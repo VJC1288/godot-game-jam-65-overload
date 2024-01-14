@@ -10,6 +10,7 @@ extends CanvasLayer
 
 func _ready():
 	update_wpn_slots()
+	update_item_slots()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
