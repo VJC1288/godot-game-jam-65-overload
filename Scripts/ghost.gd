@@ -84,6 +84,5 @@ func adjust_energy(adjustment):
 		sprite_2d.region_rect.position.x = 288
 
 
-
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
