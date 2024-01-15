@@ -11,4 +11,5 @@ region = Rect2(0, 0, 32, 32)
 script = ExtResource("1_4o8vd")
 name = "weapon1"
 texture = SubResource("AtlasTexture_bydju")
-hover_text = ""
+hover_text = "Ghost Overloader 3000"
+

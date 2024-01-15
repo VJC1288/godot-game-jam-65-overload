@@ -1,8 +1,46 @@
-[gd_resource type="Resource" script_class="WpnInv" load_steps=3 format=3 uid="uid://0bkd3m0eno00"]
+[gd_resource type="Resource" script_class="WpnInv" load_steps=16 format=3 uid="uid://0bkd3m0eno00"]
 
 [ext_resource type="Resource" uid="uid://cteoo6tumwon3" path="res://Assets/Inventory/weapon1_icon.tres" id="1_jjx64"]
+[ext_resource type="Script" path="res://Scripts/wpninv_slot.gd" id="2_ce702"]
 [ext_resource type="Script" path="res://Scripts/weapon_inventory.gd" id="2_ej8so"]
+
+[sub_resource type="Resource" id="Resource_aijt6"]
+script = ExtResource("2_ce702")
+item = ExtResource("1_jjx64")
+
+[sub_resource type="Resource" id="Resource_lg64w"]
+script = ExtResource("2_ce702")
+
+[sub_resource type="Resource" id="Resource_ibdxc"]
+script = ExtResource("2_ce702")
+
+[sub_resource type="Resource" id="Resource_a7f8c"]
+script = ExtResource("2_ce702")
+
+[sub_resource type="Resource" id="Resource_v44cx"]
+script = ExtResource("2_ce702")
+
+[sub_resource type="Resource" id="Resource_fmw6h"]
+script = ExtResource("2_ce702")
+
+[sub_resource type="Resource" id="Resource_vd6cv"]
+script = ExtResource("2_ce702")
+
+[sub_resource type="Resource" id="Resource_1bl22"]
+script = ExtResource("2_ce702")
+
+[sub_resource type="Resource" id="Resource_uj66m"]
+script = ExtResource("2_ce702")
+
+[sub_resource type="Resource" id="Resource_tlotr"]
+script = ExtResource("2_ce702")
+
+[sub_resource type="Resource" id="Resource_1p3md"]
+script = ExtResource("2_ce702")
+
+[sub_resource type="Resource" id="Resource_5x40u"]
+script = ExtResource("2_ce702")
 
 [resource]
 script = ExtResource("2_ej8so")
-weapons = Array[Resource("res://Scripts/inventory_item.gd")]([ExtResource("1_jjx64"), null, null, null, null, null, null, null, null, null])
+slots = Array[ExtResource("2_ce702")]([SubResource("Resource_aijt6"), SubResource("Resource_lg64w"), SubResource("Resource_ibdxc"), SubResource("Resource_a7f8c"), SubResource("Resource_v44cx"), SubResource("Resource_fmw6h"), SubResource("Resource_vd6cv"), SubResource("Resource_1bl22"), SubResource("Resource_uj66m"), SubResource("Resource_tlotr"), SubResource("Resource_1p3md"), SubResource("Resource_5x40u")])

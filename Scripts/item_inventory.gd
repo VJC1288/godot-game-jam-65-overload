@@ -2,7 +2,7 @@ extends Resource
 
 class_name ItemInv
 
-signal updateSlot_sig
+signal updateItemSlot_sig
 
 @export var slots: Array[InvSlot]
 
@@ -15,4 +15,4 @@ func insert(item: InvItem, amount):
 		if !emptyslots.is_empty():
 			emptyslots[0].item = item
 			emptyslots[0].amount = amount
-	updateSlot_sig.emit()
+	updateItemSlot_sig.emit()
