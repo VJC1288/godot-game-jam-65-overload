@@ -11,7 +11,7 @@ var hoverTextLabel = null
 func _ready():
 		item_visual.visible = false
 
-func update(slot: InvSlot):
+func update(slot: WpnInvSlot):
 	if !slot.item:
 		item_visual.visible = false
 	else:

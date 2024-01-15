@@ -3,6 +3,8 @@ extends CharacterBody2D
 class_name Player
 
 signal player_health_changed(new_health)
+signal player_death
+
 
 enum PlayerMoveStates{IDLE, WALKING, DODGE_ROLLING, STUNNED, PAUSED}
 enum PlayerAttackStates{FIRING, NOT_FIRING}
@@ -92,6 +94,9 @@ func _physics_process(_delta):
 
 		PlayerMoveStates.PAUSED:
 			animation_player.play("idle")
+		
+	if health_component.current_health <= 0:
+		player_death.emit()
 		
 func select_target():
 	if Input.is_action_just_pressed("fire_beam") and Globals.currentTargetedGhost != null:

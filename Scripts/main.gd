@@ -2,7 +2,9 @@ extends Node2D
 
 const PLAYER = preload("res://Scenes/player.tscn")
 const PAUSEMENU = preload("res://Scenes/pausemenu.tscn")
+const GAMEOVER = preload("res://Scenes/gameover.tscn")
 
+@onready var key_spawner = $KeySpawner
 @onready var coin_spawner:CoinSpawner = $CoinSpawner
 @onready var enemy_spawner = $EnemySpawner
 @onready var hud = $HUD
@@ -20,12 +22,15 @@ func _ready():
 	level_manager.initialize(hud)
 	
 	coin_spawner.spawn_coins(centerOfScreen + Vector2(50, 50), randi_range(1,5))
+	key_spawner.spawn_key(centerOfScreen + Vector2(-50, -50))
+	
 	hud.update_coin_count()
 
 func spawn_player(locationToSpawn:Vector2):
 	var player = PLAYER.instantiate()
 	player.global_position = locationToSpawn
 	player.connect("player_health_changed", update_health_bar)
+	player.player_death.connect(game_over)
 	Globals.currentPlayer = player
 	add_child(player)
 
@@ -49,3 +54,7 @@ func update_coin_count(amount):
 
 func equip_wpn1():
 	Globals.currentPlayer.weapon_1.show()
+	
+func game_over():
+	add_child(GAMEOVER.instantiate())
+	get_tree().paused = true
