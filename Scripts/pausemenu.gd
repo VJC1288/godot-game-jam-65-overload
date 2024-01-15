@@ -11,8 +11,8 @@ extends CanvasLayer
 var menu_open: bool = false
 
 func _ready():
-	playerItems.updateSlot_sig.connect(update_item_slots)
-	update_wpn_slots()
+	playerItems.updateItemSlot_sig.connect(update_item_slots)
+	playerWeapons.updateWpnSlot_sig.connect(update_wpn_slots)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
@@ -37,10 +37,9 @@ func quit():
 	get_tree().quit()
 
 func update_wpn_slots():
-	for i in range(min(playerWeapons.weapons.size(), wpn_slots.size())):
-		wpn_slots[i].update(playerWeapons.weapons[i])
+	for i in range(min(playerWeapons.slots.size(), wpn_slots.size())):
+		wpn_slots[i].update(playerWeapons.slots[i])
 		
 func update_item_slots():
-	print("updateslot")
 	for i in range(min(playerItems.slots.size(), item_slots.size())):
 		item_slots[i].update(playerItems.slots[i])
