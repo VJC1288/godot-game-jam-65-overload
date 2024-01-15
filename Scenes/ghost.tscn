@@ -130,7 +130,6 @@ value = 50.0
 show_percentage = false
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-visible = false
 scale = Vector2(7.6, 6.6)
 
 [connection signal="mouse_entered" from="SelectArea" to="." method="targetted"]

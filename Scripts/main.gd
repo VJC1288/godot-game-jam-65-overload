@@ -6,6 +6,7 @@ const PAUSEMENU = preload("res://Scenes/pausemenu.tscn")
 @onready var coin_spawner:CoinSpawner = $CoinSpawner
 @onready var enemy_spawner = $EnemySpawner
 @onready var hud = $HUD
+@onready var level_manager = $LevelManager
 
 func _ready():
 	randomize()
@@ -16,7 +17,8 @@ func _ready():
 	
 	enemy_spawner.connect("enemy_killed", enemy_killed)
 	coin_spawner.connect("spawner_coin_collected", update_coin_count)
-		
+	level_manager.initialize(hud)
+	
 	coin_spawner.spawn_coins(centerOfScreen + Vector2(50, 50), randi_range(1,5))
 	hud.update_coin_count()
 

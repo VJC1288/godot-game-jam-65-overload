@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://2mypy1um0ki7"]
+
+[ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_032v6"]
+[ext_resource type="PackedScene" uid="uid://bh6u2srhk2rhw" path="res://Scenes/Levels/level(0,0).tscn" id="2_1qb63"]
+
+[node name="LevelManager" type="Node2D"]
+script = ExtResource("1_032v6")
+
+[node name="Level(0,0)" parent="." instance=ExtResource("2_1qb63")]

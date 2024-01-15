@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://cegkilxcjyun2"]
+[gd_scene load_steps=23 format=3 uid="uid://cegkilxcjyun2"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_7koke"]
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="1_nxg65"]
-[ext_resource type="PackedScene" uid="uid://2mypy1um0ki7" path="res://Scenes/level_manager.tscn" id="2_rrv55"]
+[ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="2_uq7da"]
 [ext_resource type="Script" path="res://Scripts/CoinSpawner.gd" id="3_3rfku"]
+[ext_resource type="PackedScene" uid="uid://bh6u2srhk2rhw" path="res://Scenes/Levels/level(0,0).tscn" id="3_mfahk"]
 [ext_resource type="PackedScene" uid="uid://cym3hn10fvug2" path="res://Scenes/enemy_spawner.tscn" id="4_g27an"]
 [ext_resource type="Shader" path="res://Shaders/main.gdshader" id="5_e6mp8"]
 [ext_resource type="Texture2D" uid="uid://c2jqu0pt55du8" path="res://icon.svg" id="5_r6hi2"]
@@ -61,7 +62,10 @@ shader_parameter/gradient = SubResource("GradientTexture1D_law42")
 y_sort_enabled = true
 script = ExtResource("1_7koke")
 
-[node name="LevelManager" parent="." instance=ExtResource("2_rrv55")]
+[node name="LevelManager" type="Node2D" parent="."]
+script = ExtResource("2_uq7da")
+
+[node name="Level(0,0)" parent="LevelManager" instance=ExtResource("3_mfahk")]
 
 [node name="CoinSpawner" type="Node2D" parent="."]
 script = ExtResource("3_3rfku")

@@ -4,7 +4,7 @@ class_name Player
 
 signal player_health_changed(new_health)
 
-enum PlayerMoveStates{IDLE, WALKING, DODGE_ROLLING, STUNNED}
+enum PlayerMoveStates{IDLE, WALKING, DODGE_ROLLING, STUNNED, PAUSED}
 enum PlayerAttackStates{FIRING, NOT_FIRING}
 
 @onready var sprite_2d = $Sprite2D
@@ -31,7 +31,7 @@ var currentMoveState: PlayerMoveStates
 var currentAttackState: PlayerAttackStates
 var tractorBeam: Line2D
 
-
+var paused: bool = false
 
 func _ready():
 	currentMoveState = PlayerMoveStates.IDLE
@@ -90,7 +90,9 @@ func _physics_process(_delta):
 		PlayerMoveStates.DODGE_ROLLING:
 			pass
 
-
+		PlayerMoveStates.PAUSED:
+			animation_player.play("idle")
+		
 func select_target():
 	if Input.is_action_just_pressed("fire_beam") and Globals.currentTargetedGhost != null:
 		damagingGhost = Globals.currentTargetedGhost
@@ -140,3 +142,8 @@ func collect_item(item, amount):
 func _on_health_component_health_changed(new_health):
 	emit_signal("player_health_changed", new_health)
 
+func pause():
+	currentMoveState = PlayerMoveStates.PAUSED
+
+func unpause():
+	currentMoveState = PlayerMoveStates.IDLE
