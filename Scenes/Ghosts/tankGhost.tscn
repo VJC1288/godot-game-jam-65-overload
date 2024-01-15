@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3jd7ui06j61y"]
+
+[ext_resource type="PackedScene" uid="uid://cdwte7f6l3kjt" path="res://Scenes/Ghosts/baseGhost.tscn" id="1_bc83c"]
+[ext_resource type="Shader" path="res://Shaders/ghost.gdshader" id="2_wqwep"]
+[ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="3_ph0qa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e4x68"]
+resource_local_to_scene = true
+shader = ExtResource("2_wqwep")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_obvqx"]
+radius = 22.0
+height = 48.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u217t"]
+size = Vector2(58, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xn3mp"]
+size = Vector2(60, 58)
+
+[node name="TankGhost" instance=ExtResource("1_bc83c")]
+SPEED = 10.0
+ghost_damage = 30
+energy_to_kill = 200
+
+[node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_e4x68")
+texture = ExtResource("3_ph0qa")
+region_rect = Rect2(384, 224, 64, 64)
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CapsuleShape2D_obvqx")
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_u217t")
+
+[node name="CollisionShape2D" parent="SelectArea" index="0"]
+shape = SubResource("RectangleShape2D_xn3mp")
+
+[node name="Panel" parent="." index="5"]
+offset_left = -31.0
+offset_top = -31.0
+offset_right = 31.0
+offset_bottom = 31.0
+
+[node name="BoxContainer" parent="." index="6"]
+offset_left = -28.0
+offset_top = -35.0
+offset_right = 28.0
+offset_bottom = 35.0
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="7"]
+visible = false
+
+[editable path="HurtBox"]

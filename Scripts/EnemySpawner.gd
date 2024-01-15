@@ -2,7 +2,9 @@ extends Node2D
 
 signal enemy_killed(type, location)
 
-const GHOST = preload("res://Scenes/ghost.tscn")
+const REGULAR_GHOST = preload("res://Scenes/Ghosts/regularGhost.tscn")
+const TANK_GHOST = preload("res://Scenes/Ghosts/tankGhost.tscn")
+
 @onready var spawn_point = $SpawnPath/SpawnPoint
 @onready var spawn_timer = $SpawnTimer
 
@@ -22,7 +24,13 @@ func _physics_process(_delta):
 
 
 func spawn_ghost():
-	var enemy: Ghost = GHOST.instantiate()
+	var fat_chance = randi_range(1,100)
+	var enemy: Ghost
+	if fat_chance >= 90:
+		enemy = TANK_GHOST.instantiate()
+	else:
+		enemy = REGULAR_GHOST.instantiate()
+	
 	spawn_point.progress_ratio = randf_range(0,100)
 	enemy.global_position = spawn_point.global_position
 	enemy.connect("ghost_died", ghost_died)
