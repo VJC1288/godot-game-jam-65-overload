@@ -2,4 +2,4 @@ extends Resource
 
 class_name WpnInvSlot
 
-@export var item: InvItem
+@export var item: InvWpn

@@ -35,14 +35,14 @@ func _ready():
 		west_exit_area.monitoring = false
 
 
-func _on_north_exit_body_entered(body):
+func _on_north_exit_body_entered(_body):
 	emit_signal("change_room", Vector2i.UP)
 
-func _on_south_exit_body_entered(body):
+func _on_south_exit_body_entered(_body):
 	emit_signal("change_room", Vector2i.DOWN)
 
-func _on_east_exit_body_entered(body):
+func _on_east_exit_body_entered(_body):
 	emit_signal("change_room", Vector2i.RIGHT)
 
-func _on_west_exit_body_entered(body):
+func _on_west_exit_body_entered(_body):
 	emit_signal("change_room", Vector2i.LEFT)

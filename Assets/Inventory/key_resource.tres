@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=4 format=3 uid="uid://dpoy7skplbtbb"]
+
+[ext_resource type="Script" path="res://Scripts/inventory_item.gd" id="1_sfr28"]
+[ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="2_4tv5p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksg1h"]
+atlas = ExtResource("2_4tv5p")
+region = Rect2(384, 64, 32, 32)
+
+[resource]
+script = ExtResource("1_sfr28")
+name = "Key"
+texture = SubResource("AtlasTexture_ksg1h")
+hover_text = "Key"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cegkilxcjyun2"]
+[gd_scene load_steps=23 format=3 uid="uid://cegkilxcjyun2"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_7koke"]
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="1_nxg65"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/CoinSpawner.gd" id="3_3rfku"]
 [ext_resource type="PackedScene" uid="uid://cym3hn10fvug2" path="res://Scenes/enemy_spawner.tscn" id="4_g27an"]
 [ext_resource type="Shader" path="res://Shaders/main.gdshader" id="5_e6mp8"]
+[ext_resource type="Script" path="res://Scripts/KeySpawner.gd" id="5_gi4td"]
 [ext_resource type="Texture2D" uid="uid://c2jqu0pt55du8" path="res://icon.svg" id="5_r6hi2"]
 [ext_resource type="PackedScene" uid="uid://docnyp7cxuxsc" path="res://Scenes/hud.tscn" id="7_lh8nu"]
 [ext_resource type="PackedScene" uid="uid://ch6s5khf0mwvm" path="res://Scenes/pausemenu.tscn" id="8_6lgi0"]
@@ -70,6 +71,9 @@ coin2 = SubResource("AtlasTexture_dnf76")
 coin3 = SubResource("AtlasTexture_h4stj")
 coin4 = SubResource("AtlasTexture_1h7i6")
 coin5 = SubResource("AtlasTexture_dsj5d")
+
+[node name="KeySpawner" type="Node2D" parent="."]
+script = ExtResource("5_gi4td")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("4_g27an")]
 
