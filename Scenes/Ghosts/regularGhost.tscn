@@ -10,7 +10,8 @@ shader = ExtResource("2_t6lba")
 shader_parameter/intensity = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e6b76"]
-height = 28.0
+radius = 7.0
+height = 14.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8utq2"]
 size = Vector2(24, 26)
@@ -19,12 +20,15 @@ size = Vector2(24, 26)
 size = Vector2(30, 32)
 
 [node name="RegularGhost" instance=ExtResource("1_q0y3r")]
+energy_to_kill = 60
+ghost_type = "regular_ghost"
 
 [node name="Sprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_ewhuu")
 texture = ExtResource("3_wcx45")
 
 [node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, 9)
 shape = SubResource("CapsuleShape2D_e6b76")
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]

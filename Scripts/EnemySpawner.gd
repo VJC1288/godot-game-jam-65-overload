@@ -4,9 +4,11 @@ signal enemy_killed(type, location)
 
 const REGULAR_GHOST = preload("res://Scenes/Ghosts/regularGhost.tscn")
 const TANK_GHOST = preload("res://Scenes/Ghosts/tankGhost.tscn")
+const TALL_GHOST = preload("res://Scenes/Ghosts/tallGhost.tscn")
 
 @onready var spawn_point = $SpawnPath/SpawnPoint
 @onready var spawn_timer = $SpawnTimer
+@onready var enemies = $Enemies
 
 @export var active: bool = true
 
@@ -24,17 +26,22 @@ func _physics_process(_delta):
 
 
 func spawn_ghost():
-	var fat_chance = randi_range(1,100)
+	var ghost_type = randi_range(1,100)
 	var enemy: Ghost
-	if fat_chance >= 90:
+	if ghost_type >= 90:
 		enemy = TANK_GHOST.instantiate()
+	elif ghost_type >= 70:
+		enemy = TALL_GHOST.instantiate()
 	else:
 		enemy = REGULAR_GHOST.instantiate()
 	
 	spawn_point.progress_ratio = randf_range(0,100)
 	enemy.global_position = spawn_point.global_position
 	enemy.connect("ghost_died", ghost_died)
-	add_child(enemy)
+	enemies.add_child(enemy)
 	
-func ghost_died(location):
-	emit_signal("enemy_killed", "regular_ghost", location)
+func ghost_died(location, passed_ghost_type):
+	emit_signal("enemy_killed", location, passed_ghost_type)
+
+func get_enemies() -> Array[Node]:
+	return enemies.get_children()

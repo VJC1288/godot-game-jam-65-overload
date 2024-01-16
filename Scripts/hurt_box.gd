@@ -14,6 +14,5 @@ func set_damage(passed_damage:int):
 
 
 func _on_area_entered(area):
-
 	if area.team != team and area.has_method("take_damage"):
 		area.take_damage(damage)

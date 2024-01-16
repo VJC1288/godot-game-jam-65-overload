@@ -51,6 +51,7 @@ border_color = Color(0.8, 0.8, 0.8, 0)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_ly0sh")
+ghost_damage = -20
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(5.96046e-08, 16)

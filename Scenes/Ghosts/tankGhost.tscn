@@ -10,8 +10,7 @@ shader = ExtResource("2_wqwep")
 shader_parameter/intensity = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_obvqx"]
-radius = 22.0
-height = 48.0
+radius = 13.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u217t"]
 size = Vector2(58, 58)
@@ -21,8 +20,9 @@ size = Vector2(60, 58)
 
 [node name="TankGhost" instance=ExtResource("1_bc83c")]
 SPEED = 10.0
-ghost_damage = 30
+ghost_damage = -30
 energy_to_kill = 200
+ghost_type = "tank_ghost"
 
 [node name="Sprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_e4x68")
@@ -30,6 +30,7 @@ texture = ExtResource("3_ph0qa")
 region_rect = Rect2(384, 224, 64, 64)
 
 [node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, 16)
 shape = SubResource("CapsuleShape2D_obvqx")
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
