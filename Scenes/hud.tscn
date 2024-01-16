@@ -117,6 +117,19 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PickupMessage" type="Label" parent="MarginContainer/HBoxContainer2"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_tmh54")
+text = "Test"
+vertical_alignment = 2
+
 [node name="ScreenTransition" type="ColorRect" parent="."]
 visible = false
 anchors_preset = 15
