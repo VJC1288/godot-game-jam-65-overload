@@ -9,6 +9,6 @@ region = Rect2(64, 0, 32, 32)
 
 [resource]
 script = ExtResource("1_v8rdr")
-name = "Beam Battery+"
+name = ""
 texture = SubResource("AtlasTexture_j06v1")
 hover_text = "Beam Battery+"

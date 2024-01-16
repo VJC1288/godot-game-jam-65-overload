@@ -4,7 +4,7 @@ class_name KeySpawner
 
 signal spawner_key_collected()
 
-const KEY = preload("res://Scenes/key.tscn")
+const KEY = preload("res://Scenes/Pickups/key.tscn")
 
 
 func spawn_key(location: Vector2):
@@ -12,7 +12,7 @@ func spawn_key(location: Vector2):
 	spawnedKey.global_position = location
 	add_child(spawnedKey)
 		
-	spawnedKey.key_collected.connect(key_collected)
+	#spawnedKey.item_collected.connect(key_collected)
 	
 func key_collected():
 	emit_signal("spawner_key_collected")

@@ -1,30 +1,32 @@
-[gd_resource type="Resource" script_class="UpgInv" load_steps=11 format=3 uid="uid://bpvl82vhommsx"]
+[gd_resource type="Resource" script_class="UpgInv" load_steps=9 format=3 uid="uid://bpvl82vhommsx"]
 
 [ext_resource type="Script" path="res://Scripts/upgrade_inventory.gd" id="1_y04ln"]
 [ext_resource type="Script" path="res://Scripts/upginv_slot.gd" id="2_bfrcu"]
-[ext_resource type="Resource" uid="uid://ck4jd1qed1s1d" path="res://Assets/Inventory/beam_battery.tres" id="2_pte3x"]
-[ext_resource type="Resource" uid="uid://c6pfo07umby7a" path="res://Assets/Inventory/arc_extender.tres" id="4_isgab"]
-
-[sub_resource type="Resource" id="Resource_0kvy8"]
-script = ExtResource("2_bfrcu")
-item = ExtResource("2_pte3x")
 
 [sub_resource type="Resource" id="Resource_a6p1u"]
 script = ExtResource("2_bfrcu")
-item = ExtResource("4_isgab")
+amount = 0
 
 [sub_resource type="Resource" id="Resource_txbub"]
 script = ExtResource("2_bfrcu")
+amount = 0
 
 [sub_resource type="Resource" id="Resource_exvan"]
 script = ExtResource("2_bfrcu")
+amount = 0
 
 [sub_resource type="Resource" id="Resource_ukird"]
 script = ExtResource("2_bfrcu")
+amount = 0
 
 [sub_resource type="Resource" id="Resource_833yn"]
 script = ExtResource("2_bfrcu")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_2d7gk"]
+script = ExtResource("2_bfrcu")
+amount = 0
 
 [resource]
 script = ExtResource("1_y04ln")
-slots = Array[ExtResource("2_bfrcu")]([SubResource("Resource_0kvy8"), SubResource("Resource_a6p1u"), SubResource("Resource_txbub"), SubResource("Resource_exvan"), SubResource("Resource_ukird"), SubResource("Resource_833yn")])
+slots = Array[ExtResource("2_bfrcu")]([SubResource("Resource_a6p1u"), SubResource("Resource_txbub"), SubResource("Resource_exvan"), SubResource("Resource_ukird"), SubResource("Resource_833yn"), SubResource("Resource_2d7gk")])

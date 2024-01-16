@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://crov1n2blvv2o"]
+
+[ext_resource type="PackedScene" uid="uid://b454kg3worpwc" path="res://Scenes/Pickups/basePickup.tscn" id="1_8xu0p"]
+[ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="2_0vvys"]
+[ext_resource type="Resource" uid="uid://dpoy7skplbtbb" path="res://Assets/Inventory/key_resource.tres" id="2_sbw4i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88lgn"]
+size = Vector2(14, 8)
+
+[node name="Key" instance=ExtResource("1_8xu0p")]
+item = ExtResource("2_sbw4i")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_0vvys")
+region_enabled = true
+region_rect = Rect2(384, 64, 32, 32)
+
+[node name="CollisionShape2D" parent="Area" index="0"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_88lgn")

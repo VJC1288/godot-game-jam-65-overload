@@ -9,3 +9,5 @@ var currentTargetedGhost: CharacterBody2D
 var paused: bool = false
 
 var currentCoinCount = 0
+
+var lastPickup: String = ""
