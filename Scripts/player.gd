@@ -5,7 +5,6 @@ class_name Player
 signal player_health_changed(new_health)
 signal player_death
 
-
 enum PlayerMoveStates{IDLE, WALKING, DODGE_ROLLING, STUNNED, PAUSED}
 enum PlayerAttackStates{FIRING, NOT_FIRING}
 
@@ -21,7 +20,7 @@ enum PlayerAttackStates{FIRING, NOT_FIRING}
 @export var team: Globals.Teams
 @export var weapon_inv: WpnInv
 @export var item_inv: ItemInv
-@export var upgrade_inv: UpgInv
+@export var upg_inv: UpgInv
 
 
 const SPEED = 100.0
@@ -72,11 +71,11 @@ func _physics_process(_delta):
 			
 			else:
 				direction = direction.normalized()
-				if direction.x > 0:
+				if direction.x > 0 and damagingGhost == null:
 					sprite_2d.flip_h = true
 					weapon_1.scale.x = -1
 					weapon_muzzle.position.x = 14
-				elif direction.x < 0:
+				elif direction.x < 0 and damagingGhost == null:
 					sprite_2d.flip_h = false
 					weapon_1.scale.x = 1
 					weapon_muzzle.position.x = -14
@@ -144,6 +143,9 @@ func move_tractor_beam():
 
 func collect_item(item, amount):
 	item_inv.insert(item, amount)
+
+func collect_upgrade(upgrade, amount):
+	upg_inv.insert(upgrade, amount)
 
 func _on_health_component_health_changed(new_health):
 	emit_signal("player_health_changed", new_health)

@@ -6,7 +6,7 @@ signal updateWpnSlot_sig
 
 @export var slots: Array[WpnInvSlot]
 
-func insert(item: InvItem, amount):
+func insert(item: InvWpn, amount):
 	var emptyslots = slots.filter(func(slot): return slot.item == null)
 	if !emptyslots.is_empty():
 		emptyslots[0].item = item

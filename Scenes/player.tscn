@@ -83,10 +83,9 @@ _data = {
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 4
 script = ExtResource("1_48hap")
-team = null
 weapon_inv = ExtResource("2_v42ke")
 item_inv = ExtResource("3_acr8i")
-upgrade_inv = ExtResource("4_xqpgn")
+upg_inv = ExtResource("4_xqpgn")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(1, 11)
