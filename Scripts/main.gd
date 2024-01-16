@@ -40,6 +40,7 @@ func spawn_player(locationToSpawn:Vector2):
 	add_child(player)
 
 func enemy_killed(location:Vector2, type: String):
+	
 	var amount
 	match type:
 		"regular_ghost":
@@ -47,7 +48,7 @@ func enemy_killed(location:Vector2, type: String):
 		"tank_ghost":
 			amount = randi_range(3,5)
 		"tall_ghost":
-			amount = randi_range(2,4)
+			amount = randi_range(2,3)
 		_:
 			amount = 1
 
