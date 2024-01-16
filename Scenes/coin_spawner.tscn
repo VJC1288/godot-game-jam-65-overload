@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://dv15kfvce1ln"]
+
+[ext_resource type="Script" path="res://Scripts/CoinSpawner.gd" id="1_jnigq"]
+[ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="2_1ebc2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onhh5"]
+atlas = ExtResource("2_1ebc2")
+region = Rect2(384, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnf76"]
+atlas = ExtResource("2_1ebc2")
+region = Rect2(416, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4stj"]
+atlas = ExtResource("2_1ebc2")
+region = Rect2(451, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h7i6"]
+atlas = ExtResource("2_1ebc2")
+region = Rect2(480, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsj5d"]
+atlas = ExtResource("2_1ebc2")
+region = Rect2(512, 32, 32, 32)
+
+[node name="CoinSpawner" type="Node2D"]
+script = ExtResource("1_jnigq")
+coin1 = SubResource("AtlasTexture_onhh5")
+coin2 = SubResource("AtlasTexture_dnf76")
+coin3 = SubResource("AtlasTexture_h4stj")
+coin4 = SubResource("AtlasTexture_1h7i6")
+coin5 = SubResource("AtlasTexture_dsj5d")

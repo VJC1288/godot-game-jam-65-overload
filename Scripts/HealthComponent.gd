@@ -21,5 +21,6 @@ func adjust_health(adjustment: int):
 	current_health += adjustment
 	emit_signal("health_changed", current_health)
 	if current_health <= 0:
+
 		actor.queue_free()
 	

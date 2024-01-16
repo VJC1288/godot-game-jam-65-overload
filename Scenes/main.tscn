@@ -1,35 +1,14 @@
-[gd_scene load_steps=23 format=3 uid="uid://cegkilxcjyun2"]
+[gd_scene load_steps=17 format=3 uid="uid://cegkilxcjyun2"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_7koke"]
-[ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="1_nxg65"]
 [ext_resource type="PackedScene" uid="uid://2mypy1um0ki7" path="res://Scenes/level_manager.tscn" id="2_rrv55"]
-[ext_resource type="Script" path="res://Scripts/CoinSpawner.gd" id="3_3rfku"]
+[ext_resource type="PackedScene" uid="uid://dv15kfvce1ln" path="res://Scenes/coin_spawner.tscn" id="3_2bmkk"]
 [ext_resource type="PackedScene" uid="uid://cym3hn10fvug2" path="res://Scenes/enemy_spawner.tscn" id="4_g27an"]
 [ext_resource type="Shader" path="res://Shaders/main.gdshader" id="5_e6mp8"]
 [ext_resource type="Script" path="res://Scripts/KeySpawner.gd" id="5_gi4td"]
 [ext_resource type="Texture2D" uid="uid://c2jqu0pt55du8" path="res://icon.svg" id="5_r6hi2"]
 [ext_resource type="PackedScene" uid="uid://docnyp7cxuxsc" path="res://Scenes/hud.tscn" id="7_lh8nu"]
 [ext_resource type="PackedScene" uid="uid://ch6s5khf0mwvm" path="res://Scenes/pausemenu.tscn" id="8_6lgi0"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_onhh5"]
-atlas = ExtResource("1_nxg65")
-region = Rect2(384, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dnf76"]
-atlas = ExtResource("1_nxg65")
-region = Rect2(416, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h4stj"]
-atlas = ExtResource("1_nxg65")
-region = Rect2(451, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1h7i6"]
-atlas = ExtResource("1_nxg65")
-region = Rect2(480, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dsj5d"]
-atlas = ExtResource("1_nxg65")
-region = Rect2(512, 32, 32, 32)
 
 [sub_resource type="Gradient" id="Gradient_wadup"]
 offsets = PackedFloat32Array(0.057377, 0.893443)
@@ -64,18 +43,13 @@ script = ExtResource("1_7koke")
 
 [node name="LevelManager" parent="." instance=ExtResource("2_rrv55")]
 
-[node name="CoinSpawner" type="Node2D" parent="."]
-script = ExtResource("3_3rfku")
-coin1 = SubResource("AtlasTexture_onhh5")
-coin2 = SubResource("AtlasTexture_dnf76")
-coin3 = SubResource("AtlasTexture_h4stj")
-coin4 = SubResource("AtlasTexture_1h7i6")
-coin5 = SubResource("AtlasTexture_dsj5d")
+[node name="CoinSpawner" parent="." instance=ExtResource("3_2bmkk")]
 
 [node name="KeySpawner" type="Node2D" parent="."]
 script = ExtResource("5_gi4td")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("4_g27an")]
+y_sort_enabled = true
 
 [node name="FogShader" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_u464f")
