@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://docnyp7cxuxsc"]
+[gd_scene load_steps=8 format=3 uid="uid://docnyp7cxuxsc"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_s1jp4"]
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="2_5j454"]
 [ext_resource type="FontFile" uid="uid://ulu7kgqxb12r" path="res://Assets/Fonts/LoSumires-2X8l.ttf" id="2_tmh54"]
+[ext_resource type="LabelSettings" uid="uid://bh27ntp1vr8nk" path="res://LabelSettings/pickuptextlabelsetting.tres" id="4_smcwm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdvef"]
 shadow_color = Color(0, 0, 0, 0.501961)
@@ -58,16 +59,6 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PickupMessage" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("2_tmh54")
-text = "Test"
-vertical_alignment = 2
-
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -122,12 +113,11 @@ layout_mode = 2
 
 [node name="PickupMessage" type="Label" parent="MarginContainer/HBoxContainer2"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("2_tmh54")
 text = "Test"
+label_settings = ExtResource("4_smcwm")
 vertical_alignment = 2
 
 [node name="ScreenTransition" type="ColorRect" parent="."]
@@ -139,6 +129,3 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 color = Color(0, 0, 0, 0)
-
-[node name="ToastTimer" type="Timer" parent="."]
-wait_time = 3.5
