@@ -21,7 +21,9 @@ func _on_area_body_entered(_body):
 		print("item picked up")
 	if upgrade != null:
 		player.collect_upgrade(upgrade, amount)
+
 		Globals.lastPickup = upgrade.name
 		upgrade_collected.emit()
+
 		print("upgrade picked up")
 	queue_free()

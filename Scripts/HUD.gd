@@ -1,17 +1,22 @@
 extends CanvasLayer
 
+
 @onready var arc_extender = $"../ArcExtender"
 @onready var beam_battery = $"../BeamBattery+"
+
 
 @onready var health_bar = %HealthBar
 @onready var coin_count = %CoinCount
 @onready var screen_transition = $ScreenTransition
+@onready var pickup_message = %PickupMessage
+
 
 @onready var pickup_message = %PickupMessage
 
 func _ready():
 	arc_extender.upgrade_collected.connect(display_last_pickup)
 	beam_battery.upgrade_collected.connect(display_last_pickup)
+
 
 func update_health(new_value):
 	health_bar.value = new_value
@@ -27,6 +32,7 @@ func display_last_pickup():
 	pickup_tween.tween_property(pickup_message.label_settings, "font_color", Color(1, 1, 1, 0), 1).set_ease(Tween.EASE_OUT).set_delay(3.0)
 	pickup_tween_shadow.tween_property(pickup_message.label_settings, "shadow_color", Color(0, 0, 0, 0), .65).set_ease(Tween.EASE_OUT).set_delay(3.0)
 	pickup_message.text = str("Aquired: " + Globals.lastPickup)
+
 
 func fade_to_black():
 	screen_transition.visible = true
