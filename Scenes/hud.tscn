@@ -107,6 +107,24 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="PickupMessage" type="Label" parent="MarginContainer/HBoxContainer2/HBoxContainer3"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_tmh54")
+text = "Test"
+vertical_alignment = 2
+
 [node name="ScreenTransition" type="ColorRect" parent="."]
 visible = false
 anchors_preset = 15
@@ -116,3 +134,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 color = Color(0, 0, 0, 0)
+<<<<<<< Updated upstream
+=======
+
+[node name="ToastTimer" type="Timer" parent="."]
+wait_time = 3.5
+
+[connection signal="timeout" from="ToastTimer" to="." method="_on_toast_timer_timeout"]
+>>>>>>> Stashed changes
