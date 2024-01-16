@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6siloq15bwk6"]
+
+[ext_resource type="Script" path="res://Scripts/upgrade_slot.gd" id="1_6s5fm"]
+[ext_resource type="FontFile" uid="uid://cwet7b4q87ua4" path="res://Assets/Fonts/joystix monospace.otf" id="2_u2tph"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjgsb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.603922, 0.305882, 0, 1)
+
+[node name="UpgradeSlot" type="ColorRect"]
+process_mode = 3
+custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 1
+color = Color(0.294118, 0.294118, 0.294118, 0.392157)
+script = ExtResource("1_6s5fm")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="ItemDisplay" type="Sprite2D" parent="CenterContainer/Panel"]
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+custom_minimum_size = Vector2(18, 9)
+layout_mode = 0
+offset_left = -8.0
+offset_top = 1.0
+offset_right = 10.0
+offset_bottom = 10.0
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_u2tph")
+theme_override_font_sizes/font_size = 7
+horizontal_alignment = 2
+
+[node name="HoverPanel" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_mjgsb")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_exited" from="HoverPanel" to="." method="_on_hover_panel_mouse_exited"]

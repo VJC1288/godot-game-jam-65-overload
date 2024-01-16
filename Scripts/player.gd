@@ -21,6 +21,7 @@ enum PlayerAttackStates{FIRING, NOT_FIRING}
 @export var team: Globals.Teams
 @export var weapon_inv: WpnInv
 @export var item_inv: ItemInv
+@export var upgrade_inv: UpgInv
 
 
 const SPEED = 100.0

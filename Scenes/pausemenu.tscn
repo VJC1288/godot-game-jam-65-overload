@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ch6s5khf0mwvm"]
+[gd_scene load_steps=9 format=3 uid="uid://ch6s5khf0mwvm"]
 
 [ext_resource type="Script" path="res://Scripts/pausemenu.gd" id="1_54hxn"]
 [ext_resource type="FontFile" uid="uid://ulu7kgqxb12r" path="res://Assets/Fonts/LoSumires-2X8l.ttf" id="2_qi3kb"]
-[ext_resource type="PackedScene" uid="uid://va3onvo625x4" path="res://Scenes/weapon_slot.tscn" id="3_1egyp"]
-[ext_resource type="PackedScene" uid="uid://ck7j8extwg0ox" path="res://Scenes/item_slot.tscn" id="4_uagic"]
+[ext_resource type="PackedScene" uid="uid://va3onvo625x4" path="res://Scenes/Inventory/weapon_slot.tscn" id="3_nmqb3"]
+[ext_resource type="PackedScene" uid="uid://ck7j8extwg0ox" path="res://Scenes/Inventory/item_slot.tscn" id="4_ghe1j"]
+[ext_resource type="PackedScene" uid="uid://b6siloq15bwk6" path="res://Scenes/Inventory/upgrade_slot.tscn" id="4_r635c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i26d4"]
 bg_color = Color(0.0509804, 0.0509804, 0.0509804, 1)
@@ -71,137 +72,214 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Weapons" type="VBoxContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="WeaponsLabel" type="Label" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="WeaponsLabel" type="Label" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Weapons"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_fonts/font = ExtResource("2_qi3kb")
 text = "Weapons
 "
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Weapons"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Weapons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Weapons/MarginContainer"]
 layout_mode = 2
 color = Color(1, 0.568627, 0, 0.0392157)
 
-[node name="WeaponGrid" type="GridContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+[node name="WeaponGrid" type="GridContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Weapons/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-columns = 6
+columns = 3
 
-[node name="WeaponSlot" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/WeaponGrid" instance=ExtResource("3_1egyp")]
+[node name="WeaponSlot" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Weapons/MarginContainer/WeaponGrid" instance=ExtResource("3_nmqb3")]
 layout_mode = 2
 
-[node name="WeaponSlot2" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/WeaponGrid" instance=ExtResource("3_1egyp")]
+[node name="WeaponSlot2" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Weapons/MarginContainer/WeaponGrid" instance=ExtResource("3_nmqb3")]
 layout_mode = 2
 
-[node name="WeaponSlot3" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/WeaponGrid" instance=ExtResource("3_1egyp")]
+[node name="WeaponSlot3" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Weapons/MarginContainer/WeaponGrid" instance=ExtResource("3_nmqb3")]
 layout_mode = 2
 
-[node name="WeaponSlot4" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/WeaponGrid" instance=ExtResource("3_1egyp")]
+[node name="WeaponSlot4" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Weapons/MarginContainer/WeaponGrid" instance=ExtResource("3_nmqb3")]
 layout_mode = 2
 
-[node name="WeaponSlot5" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/WeaponGrid" instance=ExtResource("3_1egyp")]
+[node name="WeaponSlot5" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Weapons/MarginContainer/WeaponGrid" instance=ExtResource("3_nmqb3")]
 layout_mode = 2
 
-[node name="WeaponSlot6" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/WeaponGrid" instance=ExtResource("3_1egyp")]
+[node name="WeaponSlot6" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Weapons/MarginContainer/WeaponGrid" instance=ExtResource("3_nmqb3")]
 layout_mode = 2
 
-[node name="WeaponSlot7" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/WeaponGrid" instance=ExtResource("3_1egyp")]
-layout_mode = 2
-
-[node name="WeaponSlot8" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/WeaponGrid" instance=ExtResource("3_1egyp")]
-layout_mode = 2
-
-[node name="WeaponSlot9" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/WeaponGrid" instance=ExtResource("3_1egyp")]
-layout_mode = 2
-
-[node name="WeaponSlot10" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/WeaponGrid" instance=ExtResource("3_1egyp")]
-layout_mode = 2
-
-[node name="WeaponSlot11" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/WeaponGrid" instance=ExtResource("3_1egyp")]
-layout_mode = 2
-
-[node name="WeaponSlot12" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/WeaponGrid" instance=ExtResource("3_1egyp")]
-layout_mode = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Upgrades" type="VBoxContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ItemsLabel" type="Label" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="WeaponsLabel" type="Label" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Upgrades"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_qi3kb")
+text = "Upgrades"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Upgrades"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Upgrades"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Upgrades/MarginContainer"]
+layout_mode = 2
+color = Color(1, 0.568627, 0, 0.0392157)
+
+[node name="UpgradeGrid" type="GridContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Upgrades/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 3
+
+[node name="UpgradeSlot" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Upgrades/MarginContainer/UpgradeGrid" instance=ExtResource("4_r635c")]
+layout_mode = 2
+
+[node name="UpgradeSlot2" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Upgrades/MarginContainer/UpgradeGrid" instance=ExtResource("4_r635c")]
+layout_mode = 2
+
+[node name="UpgradeSlot3" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Upgrades/MarginContainer/UpgradeGrid" instance=ExtResource("4_r635c")]
+layout_mode = 2
+
+[node name="UpgradeSlot4" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Upgrades/MarginContainer/UpgradeGrid" instance=ExtResource("4_r635c")]
+layout_mode = 2
+
+[node name="UpgradeSlot5" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Upgrades/MarginContainer/UpgradeGrid" instance=ExtResource("4_r635c")]
+layout_mode = 2
+
+[node name="UpgradeSlot6" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Upgrades/MarginContainer/UpgradeGrid" instance=ExtResource("4_r635c")]
+layout_mode = 2
+
+[node name="Items" type="VBoxContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemsLabel" type="Label" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Items"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_fonts/font = ExtResource("2_qi3kb")
 text = "Items
 "
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Items"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Items"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Items/MarginContainer"]
 layout_mode = 2
 color = Color(1, 0.568627, 0, 0.0392157)
 
-[node name="ItemGrid" type="GridContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer"]
+[node name="ItemGrid" type="GridContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Items/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-columns = 6
+columns = 3
 
-[node name="ItemSlot" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer/ItemGrid" instance=ExtResource("4_uagic")]
+[node name="ItemSlot" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Items/MarginContainer/ItemGrid" instance=ExtResource("4_ghe1j")]
 layout_mode = 2
 
-[node name="ItemSlot2" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer/ItemGrid" instance=ExtResource("4_uagic")]
+[node name="ItemSlot2" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Items/MarginContainer/ItemGrid" instance=ExtResource("4_ghe1j")]
 layout_mode = 2
 
-[node name="ItemSlot3" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer/ItemGrid" instance=ExtResource("4_uagic")]
+[node name="ItemSlot3" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Items/MarginContainer/ItemGrid" instance=ExtResource("4_ghe1j")]
 layout_mode = 2
 
-[node name="ItemSlot4" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer/ItemGrid" instance=ExtResource("4_uagic")]
+[node name="ItemSlot4" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Items/MarginContainer/ItemGrid" instance=ExtResource("4_ghe1j")]
 layout_mode = 2
 
-[node name="ItemSlot5" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer/ItemGrid" instance=ExtResource("4_uagic")]
+[node name="ItemSlot5" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Items/MarginContainer/ItemGrid" instance=ExtResource("4_ghe1j")]
 layout_mode = 2
 
-[node name="ItemSlot6" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer/ItemGrid" instance=ExtResource("4_uagic")]
+[node name="ItemSlot6" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/Items/MarginContainer/ItemGrid" instance=ExtResource("4_ghe1j")]
 layout_mode = 2
 
-[node name="ItemSlot7" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer/ItemGrid" instance=ExtResource("4_uagic")]
+[node name="StatsContainer" type="VBoxContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
 
-[node name="ItemSlot8" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer/ItemGrid" instance=ExtResource("4_uagic")]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/StatsContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
 
-[node name="ItemSlot9" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer/ItemGrid" instance=ExtResource("4_uagic")]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/StatsContainer/MarginContainer"]
 layout_mode = 2
+color = Color(1, 0.568627, 0, 0.0392157)
 
-[node name="ItemSlot10" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer/ItemGrid" instance=ExtResource("4_uagic")]
-layout_mode = 2
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 2
 
-[node name="ItemSlot11" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer/ItemGrid" instance=ExtResource("4_uagic")]
+[node name="MaxHealth" type="Label" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/ColorRect/GridContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_qi3kb")
+text = "Max Health
+"
 
-[node name="ItemSlot12" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MarginContainer/ItemGrid" instance=ExtResource("4_uagic")]
+[node name="MaxHealthValue" type="Label" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/ColorRect/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_qi3kb")
+text = "
+"
+
+[node name="BeamLLabel" type="Label" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/ColorRect/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_qi3kb")
+text = "Beam Length"
+
+[node name="BeamLValue" type="Label" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/ColorRect/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_qi3kb")
+
+[node name="BeamPowerLabel" type="Label" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/ColorRect/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_qi3kb")
+text = "Beam Power
+"
+
+[node name="BeamPowerValue" type="Label" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/ColorRect/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_qi3kb")
+text = "
+"
 
 [node name="Commands" type="Label" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer"]
 layout_mode = 2

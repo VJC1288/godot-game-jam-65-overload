@@ -1,6 +1,6 @@
 extends ColorRect
 
-const UI_HOVER_TEXT = preload("res://Scenes/ui_hover_text.tscn")
+const UI_HOVER_TEXT = preload("res://Scenes/Inventory/ui_hover_text.tscn")
 
 @onready var item_visual: Sprite2D = $CenterContainer/Panel/ItemDisplay
 @onready var amount_text: Label = $CenterContainer/Panel/Label
@@ -35,3 +35,5 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	hover_panel.visible = false
+	if hoverTextScene != null:
+		hoverTextScene.queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bxha03nksdagd"]
+[gd_scene load_steps=17 format=3 uid="uid://bxha03nksdagd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_48hap"]
 [ext_resource type="Resource" uid="uid://0bkd3m0eno00" path="res://Assets/Inventory/player_weapons.tres" id="2_v42ke"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="3_f3wxu"]
 [ext_resource type="PackedScene" uid="uid://lmbd8ry58sbd" path="res://Scenes/hitbox_component.tscn" id="3_kyq8h"]
 [ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/weapon_tileset.png" id="4_cc6my"]
+[ext_resource type="Resource" uid="uid://bpvl82vhommsx" path="res://Assets/Inventory/player_upgrades.tres" id="4_xqpgn"]
 
 [sub_resource type="Gradient" id="Gradient_sjtlc"]
 offsets = PackedFloat32Array(0.0909091, 1)
@@ -82,8 +83,10 @@ _data = {
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 4
 script = ExtResource("1_48hap")
+team = null
 weapon_inv = ExtResource("2_v42ke")
 item_inv = ExtResource("3_acr8i")
+upgrade_inv = ExtResource("4_xqpgn")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(1, 11)
