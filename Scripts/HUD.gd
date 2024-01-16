@@ -10,9 +10,6 @@ extends CanvasLayer
 @onready var screen_transition = $ScreenTransition
 @onready var pickup_message = %PickupMessage
 
-
-@onready var pickup_message = %PickupMessage
-
 func _ready():
 	arc_extender.upgrade_collected.connect(display_last_pickup)
 	beam_battery.upgrade_collected.connect(display_last_pickup)
