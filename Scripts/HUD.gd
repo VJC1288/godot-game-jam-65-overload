@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+<<<<<<< HEAD
 @onready var health_bar = %HealthBar
 @onready var coin_count = %CoinCount
 @onready var screen_transition = $ScreenTransition
@@ -7,15 +8,47 @@ extends CanvasLayer
 
 #func _ready():
 	#ARC_EXTENDER.upgrade_collected.connect(display_last_pickup)
+=======
+<<<<<<< Updated upstream
+=======
+@onready var arc_extender = $"../ArcExtender"
+@onready var beam_battery = $"../BeamBattery+"
+>>>>>>> Stashed changes
+
+@onready var health_bar = %HealthBar
+@onready var coin_count = %CoinCount
+@onready var screen_transition = $ScreenTransition
+<<<<<<< Updated upstream
+
+=======
+@onready var pickup_message = %PickupMessage
+@onready var toast_timer = $ToastTimer
+
+func _ready():
+	arc_extender.upgrade_collected.connect(display_last_pickup)
+	beam_battery.upgrade_collected.connect(display_last_pickup)
+>>>>>>> Stashed changes
+>>>>>>> ui_aquire_test
 
 func update_health(new_value):
 	health_bar.value = new_value
 
 func update_coin_count():
 	coin_count.text = str(Globals.currentCoinCount)
+<<<<<<< HEAD
 	
 func display_last_pickup():
 	pickup_message.text = str(Globals.lastPickup)
+=======
+<<<<<<< Updated upstream
+=======
+	
+func display_last_pickup():
+	pickup_message.visible = true
+	toast_timer.start(3.5)
+	pickup_message.text = str("Aquired: " + Globals.lastPickup)
+>>>>>>> Stashed changes
+>>>>>>> ui_aquire_test
 
 func fade_to_black():
 	screen_transition.visible = true
@@ -32,3 +65,15 @@ func unfade_from_black():
 	screen_transition.visible = false
 
 
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+	
+=======
+
+
+func _on_toast_timer_timeout():
+	pickup_message.visible = false
+	toast_timer.stop()
+>>>>>>> Stashed changes
+>>>>>>> ui_aquire_test
