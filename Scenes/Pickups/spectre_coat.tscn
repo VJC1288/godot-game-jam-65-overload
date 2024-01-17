@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cumkrv0k0silw"]
+
+[ext_resource type="PackedScene" uid="uid://b454kg3worpwc" path="res://Scenes/Pickups/basePickup.tscn" id="1_afa1h"]
+[ext_resource type="Resource" uid="uid://cewtd0pnpj2h5" path="res://Assets/Inventory/spectre_coat.tres" id="2_6xrd8"]
+[ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/pickup_tileset.png" id="2_govsh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nc4d6"]
+size = Vector2(17, 20)
+
+[node name="SpectreCoat" instance=ExtResource("1_afa1h")]
+upgrade = ExtResource("2_6xrd8")
+itemName = "spectre_coat"
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_govsh")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="CollisionShape2D" parent="Area" index="0"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_nc4d6")

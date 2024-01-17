@@ -3,6 +3,7 @@ extends CharacterBody2D
 class_name Player
 
 signal player_health_changed(new_health)
+signal player_max_health_changed(new_max_health)
 signal player_death
 
 enum PlayerMoveStates{IDLE, WALKING, DODGE_ROLLING, STUNNED, PAUSED}
@@ -29,6 +30,8 @@ const JUMP_VELOCITY = -400.0
 
 var maxFireDistance = 100.0
 var damagePower = 5.0
+var speedIncrease = 1
+var healthIncrease: int
 var damagingGhost: Ghost = null
 var currentMoveState: PlayerMoveStates
 var currentAttackState: PlayerAttackStates
@@ -52,8 +55,8 @@ func _physics_process(_delta):
 				currentMoveState = PlayerMoveStates.WALKING
 				return
 			
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.y = move_toward(velocity.y, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, SPEED * speedIncrease)
+			velocity.y = move_toward(velocity.y, 0, SPEED * speedIncrease)
 			
 			animation_player.play("idle")
 			
@@ -80,8 +83,8 @@ func _physics_process(_delta):
 					sprite_2d.flip_h = false
 					weapon_1.scale.x = 1
 					weapon_muzzle.position.x = -16
-				velocity.x = direction.x * SPEED
-				velocity.y = direction.y * SPEED
+				velocity.x = direction.x * SPEED * speedIncrease
+				velocity.y = direction.y * SPEED * speedIncrease
 				animation_player.play("walking")
 			
 			select_target()
@@ -149,12 +152,30 @@ func collect_item(item, amount):
 
 func collect_upgrade(upgrade, amount):
 	upg_inv.insert(upgrade, amount)
-
+	if upgrade.name == "Arc Extender":
+		maxFireDistance += 5
+	if upgrade.name == "Beam Battery+":
+		damagePower += 1
+	if upgrade.name == "Wraith Boots":
+		speedIncrease += .1
+	if upgrade.name == "Spectre Coat":
+		healthIncrease = 25
+		health_component.adjust_max_health(healthIncrease)
+		health_component.adjust_health(healthIncrease)
+		
+		sprite_2d.texture = preload("res://Assets/bungus-spectrecoat.png")
+		
 func _on_health_component_health_changed(new_health):
 	emit_signal("player_health_changed", new_health)
-
+	
+func _on_health_component_max_health_changed(new_max_health):
+	player_max_health_changed.emit(new_max_health)
+	
 func pause():
 	currentMoveState = PlayerMoveStates.PAUSED
 
 func unpause():
 	currentMoveState = PlayerMoveStates.IDLE
+
+
+

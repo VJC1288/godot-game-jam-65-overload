@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="InvWpn" load_steps=4 format=3 uid="uid://lgrjoenuxt50"]
 
 [ext_resource type="Script" path="res://Scripts/inventory_weapon.gd" id="1_jlxbu"]
-[ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/weapon_tileset.png" id="2_bachq"]
+[ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/pickup_tileset.png" id="2_bachq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ptah"]
 atlas = ExtResource("2_bachq")
@@ -11,4 +11,4 @@ region = Rect2(0, 0, 32, 32)
 script = ExtResource("1_jlxbu")
 name = "Ghost Overloader 3000"
 texture = SubResource("AtlasTexture_2ptah")
-hover_text = "Ghost Overloader 3000"
+item_details = "Primary Weapon"

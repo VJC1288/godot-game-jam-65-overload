@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cngtrm6oienqv"]
+
+[ext_resource type="PackedScene" uid="uid://b72up8ghkqk1c" path="res://Scenes/Ghosts/DeathEffects/baseDeathEffect.tscn" id="1_d0q8a"]
+[ext_resource type="Material" uid="uid://bqfgcbs4ift80" path="res://Scenes/Ghosts/DeathEffects/tallGhostDeath.tres" id="2_lug8t"]
+
+[node name="TallDeathEffect" instance=ExtResource("1_d0q8a")]
+emitting = false
+amount = 120
+process_material = ExtResource("2_lug8t")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0

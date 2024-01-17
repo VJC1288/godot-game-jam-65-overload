@@ -9,6 +9,9 @@ extends CanvasLayer
 
 func update_health(new_value):
 	health_bar.value = new_value
+	
+func update_max_health(new_value):
+	health_bar.max_value = new_value
 
 func update_coin_count():
 	coin_count.text = str(Globals.currentCoinCount)

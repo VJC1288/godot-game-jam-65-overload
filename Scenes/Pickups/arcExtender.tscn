@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b454kg3worpwc" path="res://Scenes/Pickups/basePickup.tscn" id="1_1t76o"]
 [ext_resource type="Resource" uid="uid://c6pfo07umby7a" path="res://Assets/Inventory/arc_extender.tres" id="2_86qya"]
-[ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/weapon_tileset.png" id="2_amra0"]
+[ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/pickup_tileset.png" id="3_t48nd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kd0hj"]
 radius = 4.0
@@ -13,7 +13,7 @@ upgrade = ExtResource("2_86qya")
 itemName = "arc_extender"
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_amra0")
+texture = ExtResource("3_t48nd")
 region_enabled = true
 region_rect = Rect2(32, 0, 32, 32)
 

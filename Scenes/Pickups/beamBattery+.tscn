@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b454kg3worpwc" path="res://Scenes/Pickups/basePickup.tscn" id="1_cm340"]
 [ext_resource type="Resource" uid="uid://ck4jd1qed1s1d" path="res://Assets/Inventory/beam_battery.tres" id="2_bgsj3"]
-[ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/weapon_tileset.png" id="3_xj6si"]
+[ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/pickup_tileset.png" id="3_kr44j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e48y3"]
 size = Vector2(16, 8)
@@ -12,7 +12,7 @@ upgrade = ExtResource("2_bgsj3")
 itemName = "beam_battery"
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("3_xj6si")
+texture = ExtResource("3_kr44j")
 region_enabled = true
 region_rect = Rect2(64, 0, 32, 32)
 

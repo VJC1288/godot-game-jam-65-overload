@@ -1,14 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://ga366q2oso7o"]
+[gd_scene load_steps=3 format=3 uid="uid://ga366q2oso7o"]
 
 [ext_resource type="FontFile" uid="uid://ulu7kgqxb12r" path="res://Assets/Fonts/LoSumires-2X8l.ttf" id="1_n7vdd"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_mvx8a"]
+font = ExtResource("1_n7vdd")
+font_size = 12
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
 [node name="UIHoverText" type="Label"]
 process_mode = 3
-offset_right = 1.0
-offset_bottom = 12.0
+z_index = 2
+z_as_relative = false
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 106.0
+offset_bottom = 13.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 1
 theme_override_fonts/font = ExtResource("1_n7vdd")
 theme_override_font_sizes/font_size = 12
+label_settings = SubResource("LabelSettings_mvx8a")
+autowrap_mode = 2
 
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

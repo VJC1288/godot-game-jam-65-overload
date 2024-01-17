@@ -1,5 +1,7 @@
 extends ColorRect
 
+class_name UpgradeSlot
+
 const UI_HOVER_TEXT = preload("res://Scenes/Inventory/ui_hover_text.tscn")
 
 @onready var item_visual: Sprite2D = $CenterContainer/Panel/ItemDisplay
@@ -8,6 +10,7 @@ const UI_HOVER_TEXT = preload("res://Scenes/Inventory/ui_hover_text.tscn")
 
 var hoverTextScene = null
 var hoverTextLabel = null
+var itemName = null
 
 func _ready():
 		item_visual.visible = false
@@ -19,7 +22,8 @@ func update(slot: UpgInvSlot):
 	else:
 		item_visual.visible = true
 		item_visual.texture = slot.item.texture
-		hoverTextLabel = slot.item.hover_text
+		hoverTextLabel = slot.item.item_details
+		itemName = slot.item.name
 		amount_text.visible = true
 		amount_text.text = str(slot.amount) 
 
@@ -27,10 +31,10 @@ func _on_mouse_entered():
 	hover_panel.visible = true
 	if item_visual.visible == true:
 		hoverTextScene = UI_HOVER_TEXT.instantiate()
-		hoverTextScene.position.x = $CenterContainer.position.x
+		hoverTextScene.position.x = $CenterContainer.position.x + 18
 		hoverTextScene.position.y = $CenterContainer.position.y - 12
 		add_child(hoverTextScene)
-		hoverTextScene.text = hoverTextLabel
+		hoverTextScene.text = str(itemName,": ",hoverTextLabel)
 
 func _on_mouse_exited():
 	hover_panel.visible = false

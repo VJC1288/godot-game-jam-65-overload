@@ -35,6 +35,13 @@ func _ready():
 	coin_spawner.spawn_coins(centerOfScreen + Vector2(50, 50), randi_range(1,5))
 	item_spawner.spawn_item(centerOfScreen + Vector2(-50, -50), "key")
 	item_spawner.spawn_item(centerOfScreen + Vector2(50, -50), "beam_battery")
+	item_spawner.spawn_item(centerOfScreen + Vector2(70, -50), "beam_battery")
+	item_spawner.spawn_item(centerOfScreen + Vector2(-50, 50), "arc_extender")
+	item_spawner.spawn_item(centerOfScreen + Vector2(-70, 50), "arc_extender")
+	item_spawner.spawn_item(centerOfScreen + Vector2(-100, 50), "wraith_boots")
+	item_spawner.spawn_item(centerOfScreen + Vector2(-100, 30), "wraith_boots")
+	item_spawner.spawn_item(centerOfScreen + Vector2(-100, -50), "spectre_coat")
+	item_spawner.spawn_item(centerOfScreen + Vector2(-100, -30), "spectre_coat")
 	##################### Remove on Release #########################
 	
 
@@ -42,7 +49,8 @@ func _ready():
 func spawn_player(locationToSpawn:Vector2):
 	var player = PLAYER.instantiate()
 	player.global_position = locationToSpawn
-	player.connect("player_health_changed", update_health_bar)
+	player.player_health_changed.connect(update_health_bar)
+	player.player_max_health_changed.connect(update_max_health)
 	player.player_death.connect(game_over)
 
 	Globals.currentPlayer = player
@@ -65,6 +73,9 @@ func enemy_killed(location:Vector2, type: String):
 
 func update_health_bar(new_value):
 	hud.update_health(new_value)
+	
+func update_max_health(new_value):
+	hud.update_max_health(new_value)
 
 func update_coin_count(amount):
 	Globals.currentCoinCount += amount

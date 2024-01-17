@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvUpg" load_steps=4 format=3 uid="uid://cewtd0pnpj2h5"]
+
+[ext_resource type="Script" path="res://Scripts/inventory_upgrade.gd" id="1_eahnd"]
+[ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/pickup_tileset.png" id="2_xh0id"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pg3ni"]
+atlas = ExtResource("2_xh0id")
+region = Rect2(32, 32, 32, 32)
+
+[resource]
+script = ExtResource("1_eahnd")
+name = "Spectre Coat"
+texture = SubResource("AtlasTexture_pg3ni")
+item_details = "+25 Health"

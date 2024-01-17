@@ -237,6 +237,7 @@ color = Color(1, 0.568627, 0, 0.0392157)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/v_separation = 1
 columns = 2
 
 [node name="MaxHealth" type="Label" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/ColorRect/GridContainer"]
@@ -274,6 +275,21 @@ text = "Beam Power
 "
 
 [node name="BeamPowerValue" type="Label" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/ColorRect/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_qi3kb")
+text = "
+"
+
+[node name="MoveSpeed" type="Label" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/ColorRect/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_qi3kb")
+text = "Move Speed
+"
+
+[node name="MoveSpeedValue" type="Label" parent="MarginContainer/PausePanel/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/ColorRect/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0

@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cm865ji1ho2id"]
+[gd_scene load_steps=9 format=3 uid="uid://cm865ji1ho2id"]
 
 [ext_resource type="PackedScene" uid="uid://cdwte7f6l3kjt" path="res://Scenes/Ghosts/baseGhost.tscn" id="1_wqaot"]
+[ext_resource type="PackedScene" uid="uid://cngtrm6oienqv" path="res://Scenes/Ghosts/DeathEffects/tall_death_effect.tscn" id="2_8buds"]
 [ext_resource type="Shader" path="res://Shaders/ghost.gdshader" id="2_tl415"]
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="3_npxwf"]
 
@@ -20,6 +21,7 @@ size = Vector2(34, 36)
 size = Vector2(32, 58)
 
 [node name="TallGhost" instance=ExtResource("1_wqaot")]
+death_scene = ExtResource("2_8buds")
 ghost_type = "tall_ghost"
 
 [node name="Sprite2D" parent="." index="1"]

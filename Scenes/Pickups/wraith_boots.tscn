@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://depoh40qvgfy4"]
+
+[ext_resource type="PackedScene" uid="uid://b454kg3worpwc" path="res://Scenes/Pickups/basePickup.tscn" id="1_3x4ft"]
+[ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/pickup_tileset.png" id="2_gjak1"]
+[ext_resource type="Resource" uid="uid://dbm8gkbkq7flh" path="res://Assets/Inventory/wraith_boots.tres" id="2_qcp50"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eauku"]
+size = Vector2(12, 12)
+
+[node name="WraithBoots" instance=ExtResource("1_3x4ft")]
+upgrade = ExtResource("2_qcp50")
+itemName = "wraith_boots"
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_gjak1")
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
+
+[node name="CollisionShape2D" parent="Area" index="0"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_eauku")

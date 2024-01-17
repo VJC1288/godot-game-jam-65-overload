@@ -11,4 +11,4 @@ region = Rect2(384, 32, 32, 32)
 script = ExtResource("1_xehw6")
 name = "Coins"
 texture = SubResource("AtlasTexture_rocrt")
-hover_text = "Coins"
+item_details = "Might be useful to someone"

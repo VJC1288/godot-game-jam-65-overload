@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b72up8ghkqk1c"]
+
+[ext_resource type="Script" path="res://baseDeathEffect.gd" id="1_ly4mu"]
+
+[node name="BaseDeathEffect" type="GPUParticles2D"]
+script = ExtResource("1_ly4mu")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

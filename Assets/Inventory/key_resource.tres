@@ -11,4 +11,4 @@ region = Rect2(384, 64, 32, 32)
 script = ExtResource("1_sfr28")
 name = "Key"
 texture = SubResource("AtlasTexture_ksg1h")
-hover_text = "Key"
+item_details = "Opens things"

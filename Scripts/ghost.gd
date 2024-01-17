@@ -14,6 +14,7 @@ signal ghost_died(location)
 @export var team: Globals.Teams = Globals.Teams.ENEMIES
 @export var ghost_damage: int = 20
 @export var energy_to_kill: int = 100
+@export var death_scene: PackedScene
 @export var ghost_type: String
 
 var player_to_attack:CharacterBody2D = null
@@ -66,6 +67,7 @@ func take_damage(damage_power):
 	adjust_energy(damage_power)
 	if energy_bar.value >= energy_to_kill:
 		emit_signal("ghost_died", global_position, ghost_type)
+		death_effect()
 		queue_free()
 
 func stop_damaging():
@@ -90,6 +92,11 @@ func adjust_energy(adjustment):
 	else:
 		sprite_2d.region_rect.position.x = startingRectX
 
-
+func death_effect():
+		var death_animation = death_scene.instantiate()
+		death_animation.position = global_position
+		death_animation.emitting = true
+		get_tree().current_scene.add_child(death_animation)
+		
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()

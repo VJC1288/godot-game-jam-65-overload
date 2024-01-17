@@ -3,6 +3,7 @@ extends Node2D
 class_name HealthComponent
 
 signal health_changed(new_health)
+signal max_health_changed(new_max_health)
 
 @export var max_health: int
 var current_health
@@ -23,4 +24,7 @@ func adjust_health(adjustment: int):
 	if current_health <= 0:
 
 		actor.queue_free()
-	
+
+func adjust_max_health(adjustment: int):
+	max_health += adjustment
+	max_health_changed.emit(max_health)
