@@ -9,6 +9,7 @@ size = Vector2(14, 8)
 
 [node name="Key" instance=ExtResource("1_8xu0p")]
 item = ExtResource("2_sbw4i")
+itemName = "key"
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_0vvys")

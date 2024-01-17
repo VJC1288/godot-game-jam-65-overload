@@ -1,18 +1,10 @@
 extends CanvasLayer
 
 
-@onready var arc_extender = $"../ArcExtender"
-@onready var beam_battery = $"../BeamBattery+"
-
-
 @onready var health_bar = %HealthBar
 @onready var coin_count = %CoinCount
 @onready var screen_transition = $ScreenTransition
 @onready var pickup_message = %PickupMessage
-
-func _ready():
-	arc_extender.upgrade_collected.connect(display_last_pickup)
-	beam_battery.upgrade_collected.connect(display_last_pickup)
 
 
 func update_health(new_value):

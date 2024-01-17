@@ -9,6 +9,7 @@ signal upgrade_collected
 
 @export var item: InvItem
 @export var upgrade: InvUpg
+@export var itemName: String
 
 var player = null
 

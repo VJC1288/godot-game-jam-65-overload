@@ -10,6 +10,7 @@ height = 16.0
 
 [node name="ArcExtender" instance=ExtResource("1_1t76o")]
 upgrade = ExtResource("2_86qya")
+itemName = "arc_extender"
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_amra0")

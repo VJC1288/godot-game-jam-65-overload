@@ -25,24 +25,35 @@ signal change_room(direction)
 var houseFloor: int = 1
 
 func _ready():
-	if !northExit:
-		north_exit_area.monitoring = false
-	if !southExit:
-		south_exit_area.monitoring = false
-	if !eastExit:
-		east_exit_area.monitoring = false
-	if !westExit:
-		west_exit_area.monitoring = false
+	pass
 
 
 func _on_north_exit_body_entered(_body):
 	emit_signal("change_room", Vector2i.UP)
-
+	print("entered north")
+	#north_exit_area.queue_free()
+		
 func _on_south_exit_body_entered(_body):
 	emit_signal("change_room", Vector2i.DOWN)
-
+	print("entered south")
+	#south_exit_area.queue_free()
+	
 func _on_east_exit_body_entered(_body):
 	emit_signal("change_room", Vector2i.RIGHT)
+	print("entered east")
+	#east_exit_area.queue_free()
 
 func _on_west_exit_body_entered(_body):
 	emit_signal("change_room", Vector2i.LEFT)
+	print("entered west")
+	#west_exit_area.queue_free()
+
+func enable_exits():
+	if northExit:
+		north_exit_area.monitoring = true
+	if southExit:
+		south_exit_area.monitoring = true
+	if eastExit:
+		east_exit_area.monitoring = true
+	if westExit:
+		west_exit_area.monitoring = true

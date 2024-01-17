@@ -14,6 +14,7 @@ enum PlayerAttackStates{FIRING, NOT_FIRING}
 @onready var weapon_1 = $Weapon1
 @onready var weapon_muzzle = $WeaponMuzzle
 @onready var hitbox_component = $HitboxComponent
+@onready var beam_container = $BeamContainer
 
 @onready var health_component:HealthComponent = $HealthComponent
 
@@ -74,11 +75,11 @@ func _physics_process(_delta):
 				if direction.x > 0 and damagingGhost == null:
 					sprite_2d.flip_h = true
 					weapon_1.scale.x = -1
-					weapon_muzzle.position.x = 14
+					weapon_muzzle.position.x = 16
 				elif direction.x < 0 and damagingGhost == null:
 					sprite_2d.flip_h = false
 					weapon_1.scale.x = 1
-					weapon_muzzle.position.x = -14
+					weapon_muzzle.position.x = -16
 				velocity.x = direction.x * SPEED
 				velocity.y = direction.y * SPEED
 				animation_player.play("walking")
@@ -113,7 +114,7 @@ func select_target():
 		tractorBeam.width = 5
 		tractorBeam.begin_cap_mode = Line2D.LINE_CAP_ROUND
 		tractorBeam.end_cap_mode = Line2D.LINE_CAP_ROUND
-		add_child(tractorBeam)
+		beam_container.add_child(tractorBeam)
 		
 	
 func check_damaging_ghost():
@@ -122,7 +123,9 @@ func check_damaging_ghost():
 		if Input.is_action_just_released("fire_beam") or global_position.distance_to(damagingGhost.global_position) > maxFireDistance:
 			damagingGhost.stop_damaging()
 			damagingGhost = null
-			tractorBeam.queue_free()
+			#tractorBeam.queue_free()
+			for i in beam_container.get_children():
+				i.queue_free()
 			
 		elif dps_timer.is_stopped():
 			damagingGhost.take_damage(damagePower)

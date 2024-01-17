@@ -81,43 +81,49 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_mask = 4
+collision_mask = 36
 script = ExtResource("1_48hap")
 weapon_inv = ExtResource("2_v42ke")
 item_inv = ExtResource("3_acr8i")
 upg_inv = ExtResource("4_xqpgn")
 
 [node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(1, 11)
+position = Vector2(1, 2)
 scale = Vector2(0.5625, 0.1875)
 texture = SubResource("GradientTexture2D_3fi4r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -9)
 texture = ExtResource("2_wko6j")
 hframes = 3
 region_rect = Rect2(288, 64, 32, 32)
 
 [node name="Weapon1" type="Sprite2D" parent="."]
+position = Vector2(0, -9)
 texture = ExtResource("4_cc6my")
 offset = Vector2(-7, 2)
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="WeaponMuzzle" type="Marker2D" parent="."]
-position = Vector2(-14, 0)
+position = Vector2(-16, 0)
+
+[node name="BeamContainer" type="Node2D" parent="."]
+position = Vector2(0, -9)
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_kyq8h")]
+position = Vector2(0, -9)
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" parent="HitboxComponent" index="0"]
 shape = SubResource("RectangleShape2D_xqdcp")
 
 [node name="HealthComponent" type="Node2D" parent="."]
+position = Vector2(0, -9)
 script = ExtResource("3_f3wxu")
 max_health = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_yn8kr")
 
 [node name="DPSTimer" type="Timer" parent="."]

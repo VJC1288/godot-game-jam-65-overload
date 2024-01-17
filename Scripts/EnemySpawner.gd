@@ -10,11 +10,11 @@ const TALL_GHOST = preload("res://Scenes/Ghosts/tallGhost.tscn")
 @onready var spawn_timer = $SpawnTimer
 @onready var enemies = $Enemies
 
-@export var active: bool = true
+@export var active: bool = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
+
+
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

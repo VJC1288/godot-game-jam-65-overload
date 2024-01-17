@@ -4,13 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://2mypy1um0ki7" path="res://Scenes/level_manager.tscn" id="2_rrv55"]
 [ext_resource type="PackedScene" uid="uid://dv15kfvce1ln" path="res://Scenes/coin_spawner.tscn" id="3_2bmkk"]
 [ext_resource type="PackedScene" uid="uid://cym3hn10fvug2" path="res://Scenes/enemy_spawner.tscn" id="4_g27an"]
+[ext_resource type="PackedScene" uid="uid://dsvtlf2rkqu5h" path="res://Scenes/item_spawner.tscn" id="4_witci"]
 [ext_resource type="Shader" path="res://Shaders/main.gdshader" id="5_e6mp8"]
-[ext_resource type="Script" path="res://Scripts/KeySpawner.gd" id="5_gi4td"]
 [ext_resource type="Texture2D" uid="uid://c2jqu0pt55du8" path="res://icon.svg" id="5_r6hi2"]
+[ext_resource type="PackedScene" uid="uid://c1khxut5jw3yr" path="res://Scenes/character_manager.tscn" id="6_fcwcu"]
 [ext_resource type="PackedScene" uid="uid://docnyp7cxuxsc" path="res://Scenes/hud.tscn" id="7_lh8nu"]
+[ext_resource type="Script" path="res://Scripts/character_manager.gd" id="7_o6kmc"]
 [ext_resource type="PackedScene" uid="uid://ch6s5khf0mwvm" path="res://Scenes/pausemenu.tscn" id="8_6lgi0"]
-[ext_resource type="PackedScene" uid="uid://dv5n26niiw02" path="res://Scenes/Pickups/arcExtender.tscn" id="10_nakwq"]
-[ext_resource type="PackedScene" uid="uid://b1hbucy8il5i4" path="res://Scenes/Pickups/beamBattery+.tscn" id="11_pskn1"]
 
 [sub_resource type="Gradient" id="Gradient_wadup"]
 offsets = PackedFloat32Array(0.057377, 0.893443)
@@ -47,11 +47,14 @@ script = ExtResource("1_7koke")
 
 [node name="CoinSpawner" parent="." instance=ExtResource("3_2bmkk")]
 
-[node name="KeySpawner" type="Node2D" parent="."]
-script = ExtResource("5_gi4td")
+[node name="ItemSpawner" parent="." instance=ExtResource("4_witci")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("4_g27an")]
 y_sort_enabled = true
+
+[node name="CharacterManager" parent="." instance=ExtResource("6_fcwcu")]
+y_sort_enabled = true
+script = ExtResource("7_o6kmc")
 
 [node name="FogShader" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_u464f")
@@ -64,9 +67,3 @@ offset = Vector2(0, -65)
 
 [node name="Menu" parent="." instance=ExtResource("8_6lgi0")]
 visible = false
-
-[node name="ArcExtender" parent="." instance=ExtResource("10_nakwq")]
-position = Vector2(238, 43)
-
-[node name="BeamBattery+" parent="." instance=ExtResource("11_pskn1")]
-position = Vector2(79, 145)

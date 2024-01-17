@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3s8k3tpmo0fy"]
+
+[ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="1_syxea"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61a0f"]
+size = Vector2(26, 10)
+
+[node name="Shopkeeper" type="CharacterBody2D"]
+collision_layer = 32
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_syxea")
+region_enabled = true
+region_rect = Rect2(320, 192, 32, 32)
+
+[node name="Shop" type="Node2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_61a0f")
