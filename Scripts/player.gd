@@ -111,7 +111,8 @@ func select_target():
 		
 		tractorBeam = Line2D.new()
 		tractorBeam.add_point(start_point)
-		tractorBeam.add_point(end_point/2)
+		tractorBeam.add_point(end_point *.5)
+		tractorBeam.add_point(end_point*.75)
 		tractorBeam.add_point(end_point)
 		tractorBeam.default_color = Color.AQUAMARINE
 		tractorBeam.width = 5
@@ -142,8 +143,9 @@ func move_tractor_beam():
 		var start_point = weapon_muzzle.position
 		var end_point = damagingGhost.global_position - global_position
 		var points_size = tractorBeam.points.size()
-		tractorBeam.points[points_size - 3] = start_point
-		tractorBeam.points[points_size - 2] = Vector2((end_point.x + randi_range(-5, 5)) / 2, (end_point.y + randi_range(-5,5)) / 2)
+		tractorBeam.points[points_size - 4] = start_point
+		tractorBeam.points[points_size - 3] = Vector2((end_point.x + randi_range(-5, 5)) * .5, (end_point.y + randi_range(-5,5)) * .5)
+		tractorBeam.points[points_size - 2] = Vector2((end_point.x + randi_range(-5, 5)) * .75, (end_point.y + randi_range(-5,5)) * .75)
 		tractorBeam.points[points_size - 1] = end_point
 
 

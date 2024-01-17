@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_48hap"]
 [ext_resource type="Resource" uid="uid://0bkd3m0eno00" path="res://Assets/Inventory/player_weapons.tres" id="2_v42ke"]
-[ext_resource type="Texture2D" uid="uid://c0efrqnf3dsuq" path="res://Assets/bungusspritesheet.svg" id="2_wko6j"]
 [ext_resource type="Resource" uid="uid://d3snppl5t1ve5" path="res://Assets/Inventory/player_items.tres" id="3_acr8i"]
 [ext_resource type="Script" path="res://Scripts/HealthComponent.gd" id="3_f3wxu"]
 [ext_resource type="PackedScene" uid="uid://lmbd8ry58sbd" path="res://Scenes/hitbox_component.tscn" id="3_kyq8h"]
 [ext_resource type="Resource" uid="uid://bpvl82vhommsx" path="res://Assets/Inventory/player_upgrades.tres" id="4_xqpgn"]
+[ext_resource type="Texture2D" uid="uid://dnyhpla2r32vn" path="res://Assets/bungusspritesheet.png" id="5_lnxah"]
 [ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/pickup_tileset.png" id="6_g1cmc"]
 
 [sub_resource type="Gradient" id="Gradient_sjtlc"]
@@ -94,7 +94,7 @@ texture = SubResource("GradientTexture2D_3fi4r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -9)
-texture = ExtResource("2_wko6j")
+texture = ExtResource("5_lnxah")
 hframes = 3
 region_rect = Rect2(288, 64, 32, 32)
 
