@@ -72,8 +72,9 @@ func stop_damaging():
 	taking_damage = false
 
 func targetted():
-	panel.visible = true
-	Globals.currentTargetedGhost = self
+	if Globals.currentTargetedGhost == null:
+		panel.visible = true
+		Globals.currentTargetedGhost = self
 	
 func untargetted():
 	panel.visible = false
