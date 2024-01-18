@@ -2,7 +2,7 @@ extends Node2D
 
 class_name Overloader
 
-signal overloaded(location)
+signal overloaded()
 
 @onready var regen_timer = $RegenTimer
 @onready var sprite_2d = $Sprite2D
@@ -15,6 +15,8 @@ signal overloaded(location)
 @export var regen_rate: int
 
 var taking_damage:bool = false
+var disabled:bool = false
+
 
 func _ready():
 	energy_bar.value = 0
@@ -23,28 +25,30 @@ func _ready():
 	
 func _physics_process(_delta):
 	
-	if energy_bar.value <= 0:
+	if energy_bar.value <= 0 or disabled:
 		energy_bar.visible = false
 	else:
 		energy_bar.visible = true
 		
 	if taking_damage:
 		pass
-	elif regen_timer:
+	elif regen_timer.time_left == 0:
 		adjust_energy(regen_rate)
 
 func take_damage(damage_power):
 	taking_damage = true
 	panel.visible = false
 	adjust_energy(damage_power)
-	if energy_bar.value >= energy_to_kill:
-		emit_signal("overloaded", global_position)
+	if energy_bar.value == energy_to_kill:
+		regen_timer.start(4)
+		emit_signal("overloaded")
+		
 
 func stop_damaging():
 	taking_damage = false
 
 func targetted():
-	if Globals.currentTargetedGhost == null:
+	if Globals.currentTargetedGhost == null and !disabled:
 		panel.visible = true
 		Globals.currentTargetedGhost = self
 	
@@ -55,6 +59,3 @@ func untargetted():
 
 func adjust_energy(adjustment):
 	energy_bar.value += adjustment
-
-func _on_regen_timer_timeout():
-	pass

@@ -109,7 +109,7 @@ func select_target():
 		damagingGhost = Globals.currentTargetedGhost
 		
 		var start_point = weapon_muzzle.position
-		var end_point = damagingGhost.global_position - global_position
+		var end_point = damagingGhost.global_position - global_position + Vector2(0, 10)
 		
 		tractorBeam = Line2D.new()
 		tractorBeam.add_point(start_point)
@@ -143,12 +143,12 @@ func check_damaging_ghost():
 func move_tractor_beam():
 	if tractorBeam != null and damagingGhost != null:
 		var start_point = weapon_muzzle.position
-		var end_point = damagingGhost.global_position - global_position
+		var end_point = damagingGhost.global_position - global_position + Vector2(0, 10)
 		var points_size = tractorBeam.points.size()
 		tractorBeam.points[points_size - 4] = start_point
 		tractorBeam.points[points_size - 3] = Vector2((end_point.x + randi_range(-5, 5)) * .5, (end_point.y + randi_range(-5,5)) * .5)
 		tractorBeam.points[points_size - 2] = Vector2((end_point.x + randi_range(-5, 5)) * .75, (end_point.y + randi_range(-5,5)) * .75)
-		tractorBeam.points[points_size - 1] = end_point
+		tractorBeam.points[points_size - 1] = end_point 
 
 
 func collect_item(item, amount):

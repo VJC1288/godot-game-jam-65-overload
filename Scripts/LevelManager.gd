@@ -14,6 +14,7 @@ const LEVEL_3_1_ = preload("res://Scenes/Levels/level(3,1).tscn")
 const LEVEL__1_1_ = preload("res://Scenes/Levels/level(_1,1).tscn")
 const LEVEL__2_1_ = preload("res://Scenes/Levels/level(_2,1).tscn")
 const LEVEL__2_2_ = preload("res://Scenes/Levels/level(_2,2).tscn")
+const LEVEL_4_1_ = preload("res://Scenes/Levels/level(4,1).tscn")
 
 ##Use this to start the game in a different room
 @export var debug_spawn_room = Vector2i(0,0)
@@ -40,7 +41,7 @@ var levelsDictionary = {
 	Vector2i(-2,2): LEVEL__2_2_,
 	Vector2i(3,0): LEVEL_3_0_,
 	Vector2i(3,1): LEVEL_3_1_,
-	Vector2i(-1,1): LEVEL__1_1_
+	Vector2i(4,1): LEVEL_4_1_
 
 }
 
@@ -56,6 +57,7 @@ func _ready():
 	
 	if debug_spawn_room != Vector2i(0,0):
 		new_level = levelsDictionary[debug_spawn_room].instantiate()
+		current_coords = debug_spawn_room
 	else:
 		new_level = levelsDictionary[current_coords].instantiate()
 		

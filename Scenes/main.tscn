@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cegkilxcjyun2"]
+[gd_scene load_steps=19 format=3 uid="uid://cegkilxcjyun2"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_7koke"]
 [ext_resource type="PackedScene" uid="uid://2mypy1um0ki7" path="res://Scenes/level_manager.tscn" id="2_rrv55"]
@@ -11,34 +11,33 @@
 [ext_resource type="PackedScene" uid="uid://docnyp7cxuxsc" path="res://Scenes/hud.tscn" id="7_lh8nu"]
 [ext_resource type="Script" path="res://Scripts/character_manager.gd" id="7_o6kmc"]
 [ext_resource type="PackedScene" uid="uid://ch6s5khf0mwvm" path="res://Scenes/pausemenu.tscn" id="8_6lgi0"]
-[ext_resource type="PackedScene" uid="uid://drqkt0an4mhuc" path="res://Scenes/Ghosts/overloader.tscn" id="12_sn5us"]
 
 [sub_resource type="Gradient" id="Gradient_wadup"]
 offsets = PackedFloat32Array(0.057377, 0.893443)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_law42"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ohr1n"]
 gradient = SubResource("Gradient_wadup")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4nos4"]
 seed = 54621
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d4o0g"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jcu2f"]
 seamless = true
 noise = SubResource("FastNoiseLite_4nos4")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_b1mde"]
 seed = 5679821
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4x4df"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cp21m"]
 seamless = true
 noise = SubResource("FastNoiseLite_b1mde")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u464f"]
 shader = ExtResource("5_e6mp8")
 shader_parameter/offset_scroll = Vector2(0.5, 0.5)
-shader_parameter/noise1 = SubResource("NoiseTexture2D_d4o0g")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_4x4df")
-shader_parameter/gradient = SubResource("GradientTexture1D_law42")
+shader_parameter/noise1 = SubResource("NoiseTexture2D_jcu2f")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_cp21m")
+shader_parameter/gradient = SubResource("GradientTexture1D_ohr1n")
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -68,8 +67,3 @@ offset = Vector2(0, -65)
 
 [node name="Menu" parent="." instance=ExtResource("8_6lgi0")]
 visible = false
-
-[node name="Overloader" parent="." instance=ExtResource("12_sn5us")]
-position = Vector2(24, 59)
-energy_to_kill = null
-regen_rate = null

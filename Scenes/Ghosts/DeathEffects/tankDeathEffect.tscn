@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://83i05i10s181"]
+[gd_scene load_steps=3 format=3 uid="uid://83i05i10s181"]
 
 [ext_resource type="Material" uid="uid://cf0h644k7r806" path="res://Scenes/Ghosts/DeathEffects/tankGhostDeath.tres" id="1_by0ji"]
+[ext_resource type="Script" path="res://Scenes/Ghosts/DeathEffects/baseDeathEffect.gd" id="2_0tqww"]
 
 [node name="TankDeathEffect" type="GPUParticles2D"]
 emitting = false
@@ -9,3 +10,6 @@ process_material = ExtResource("1_by0ji")
 one_shot = true
 explosiveness = 1.0
 randomness = 1.0
+script = ExtResource("2_0tqww")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

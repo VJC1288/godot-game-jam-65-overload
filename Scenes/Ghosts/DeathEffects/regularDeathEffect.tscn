@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://x0tch1mo43u8"]
+[gd_scene load_steps=3 format=3 uid="uid://x0tch1mo43u8"]
 
 [ext_resource type="Material" uid="uid://ce7ii721g7o4a" path="res://Scenes/Ghosts/DeathEffects/regularGhostDeath.tres" id="1_cfff3"]
+[ext_resource type="Script" path="res://Scenes/Ghosts/DeathEffects/baseDeathEffect.gd" id="2_rbmvi"]
 
 [node name="RegularDeathEffect" type="GPUParticles2D"]
 emitting = false
@@ -10,3 +11,6 @@ lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 randomness = 1.0
+script = ExtResource("2_rbmvi")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

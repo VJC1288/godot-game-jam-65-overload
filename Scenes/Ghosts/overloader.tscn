@@ -42,11 +42,13 @@ border_color = Color(0.8, 0.8, 0.8, 0)
 
 [node name="Overloader" type="Node2D"]
 script = ExtResource("1_8s6su")
+energy_to_kill = 350
 regen_rate = -1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_764i6")
 texture = ExtResource("3_bcgxp")
+flip_h = true
 region_enabled = true
 region_rect = Rect2(416, 320, 64, 32)
 
@@ -58,6 +60,7 @@ shape = SubResource("RectangleShape2D_303ma")
 debug_color = Color(0.235294, 0.611765, 0.513726, 0.419608)
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 custom_minimum_size = Vector2(20, 20)
 anchors_preset = 8
 anchor_left = 0.5
@@ -99,6 +102,7 @@ show_percentage = false
 
 [node name="RegenTimer" type="Timer" parent="."]
 wait_time = 4.0
+one_shot = true
 
 [connection signal="mouse_entered" from="SelectArea" to="." method="targetted"]
 [connection signal="mouse_exited" from="SelectArea" to="." method="untargetted"]
