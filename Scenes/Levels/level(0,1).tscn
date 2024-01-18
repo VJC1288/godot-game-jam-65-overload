@@ -6,6 +6,7 @@
 northExit = true
 westExit = true
 levelCoordinates = Vector2i(0, 1)
+numberOfEnemySpawns = 4
 difficulty = 1
 
 [node name="Ground" parent="." index="0"]

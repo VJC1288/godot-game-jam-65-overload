@@ -10,6 +10,8 @@ const LEVEL_0_1_ = preload("res://Scenes/Levels/level(0,1).tscn")
 const LEVEL_2_0_ = preload("res://Scenes/Levels/level(2,0).tscn")
 const LEVEL_2_1_ = preload("res://Scenes/Levels/level(2,1).tscn")
 const LEVEL__1_1_ = preload("res://Scenes/Levels/level(_1,1).tscn")
+const LEVEL__2_1_ = preload("res://Scenes/Levels/level(_2,1).tscn")
+const LEVEL__2_2_ = preload("res://Scenes/Levels/level(_2,2).tscn")
 
 ##Use this to start the game in a different room
 @export var debug_spawn_room = Vector2i(0,0)
@@ -31,7 +33,10 @@ var levelsDictionary = {
 	Vector2i(0,1): LEVEL_0_1_,
 	Vector2i(2,0): LEVEL_2_0_,
 	Vector2i(2,1): LEVEL_2_1_,
-	Vector2i(-1,1): LEVEL__1_1_
+	Vector2i(-1,1): LEVEL__1_1_,
+	Vector2i(-2,1): LEVEL__2_1_,
+	Vector2i(-2,2): LEVEL__2_2_
+	
 }
 
 var storedCoinsDict = {}
