@@ -36,6 +36,7 @@ size = Vector2(60, 58)
 SPEED = 10.0
 ghost_damage = -30
 energy_to_kill = 200
+regen_rate = -1
 death_scene = SubResource("PackedScene_6iv8n")
 ghost_type = "tank_ghost"
 

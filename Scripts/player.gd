@@ -32,7 +32,7 @@ var maxFireDistance = 100.0
 var damagePower = 5.0
 var speedIncrease = 1
 var healthIncrease: int
-var damagingGhost: Ghost = null
+var damagingGhost = null
 var currentMoveState: PlayerMoveStates
 var currentAttackState: PlayerAttackStates
 var tractorBeam: Line2D

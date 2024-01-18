@@ -21,6 +21,7 @@ size = Vector2(34, 36)
 size = Vector2(32, 58)
 
 [node name="TallGhost" instance=ExtResource("1_wqaot")]
+regen_rate = -1
 death_scene = ExtResource("2_8buds")
 ghost_type = "tall_ghost"
 
