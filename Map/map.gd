@@ -4,11 +4,14 @@ extends CanvasLayer
 @onready var level_manager: LevelManager = $"../LevelManager"
 @onready var game_map = %GameMap
 
+var player_indicator: Vector2 = Vector2(2,3)
+
 var map_open: bool = false
 
 var exits: Array
 
-var currentTile = null
+var currentTile = Vector2(0,0)
+var previousTile = Vector2(0,0)
 
 var mapTileDictionary = {
 	["N","S","E","W"]: Vector2i(0,0),
@@ -28,6 +31,8 @@ var mapTileDictionary = {
 	["X","X","E","W"]: Vector2i(3,3)
 }
 
+func _ready():
+	game_map.set_cell(1, currentTile, 1, player_indicator)
 
 func _process(_delta):
 
@@ -52,9 +57,12 @@ func close_map():
 
 func _on_level_manager_level_changed(coords):
 	check_doors()
+	previousTile = currentTile
 	currentTile = coords
 	
-	game_map.set_cell(1, coords, 1, mapTileDictionary[exits])
+	game_map.set_cell(0, currentTile, 1, mapTileDictionary[exits])
+	game_map.erase_cell(1, previousTile)
+	game_map.set_cell(1, currentTile, 1, player_indicator)
 		
 func check_doors():
 	exits = []
