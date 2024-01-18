@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3s8k3tpmo0fy"]
+[gd_scene load_steps=6 format=3 uid="uid://c3s8k3tpmo0fy"]
 
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="1_syxea"]
+[ext_resource type="Script" path="res://Scripts/shopkeeper.gd" id="1_x7mti"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61a0f"]
 size = Vector2(26, 10)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1hp7"]
+size = Vector2(26, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qx2lx"]
+size = Vector2(40, 20)
+
 [node name="Shopkeeper" type="CharacterBody2D"]
 collision_layer = 32
+script = ExtResource("1_x7mti")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
@@ -19,3 +27,27 @@ region_rect = Rect2(320, 192, 32, 32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_61a0f")
+
+[node name="Table" type="Sprite2D" parent="."]
+position = Vector2(0, 7)
+texture = ExtResource("1_syxea")
+region_enabled = true
+region_rect = Rect2(384, 96, 64, 32)
+
+[node name="EmbarrassedArea" type="Area2D" parent="."]
+position = Vector2(0, -14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EmbarrassedArea"]
+shape = SubResource("RectangleShape2D_c1hp7")
+debug_color = Color(0.207843, 0.615686, 0.517647, 0.419608)
+
+[node name="ShopArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShopArea"]
+position = Vector2(0, 29)
+shape = SubResource("RectangleShape2D_qx2lx")
+debug_color = Color(0.313726, 0.619608, 0.262745, 0.419608)
+
+[connection signal="body_entered" from="EmbarrassedArea" to="." method="_on_embarrassed_area_body_entered"]
+[connection signal="body_exited" from="EmbarrassedArea" to="." method="_on_embarrassed_area_body_exited"]
+[connection signal="body_entered" from="ShopArea" to="." method="_on_shop_area_body_entered"]

@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var lock_sprite = $LockSprite
+@onready var lock = $Lock
+
 @export var exploded_texture: Texture2D
 @export var door_area_to_open: Area2D
 
@@ -19,8 +20,7 @@ func _ready():
 
 
 func unlock_door():
-	door_area_to_open.monitoring = true
-	lock_sprite.visible = false
+	lock.queue_free()
 	
 func explode_overloaders():
 	for obj in child_overloaders:

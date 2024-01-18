@@ -5,6 +5,5 @@
 
 [node name="LevelManager" type="Node2D"]
 script = ExtResource("1_032v6")
-debug_spawn_room = Vector2i(3, 1)
 
 [node name="Level(0,0)" parent="." instance=ExtResource("2_1qb63")]
