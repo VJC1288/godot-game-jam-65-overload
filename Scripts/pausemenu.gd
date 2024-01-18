@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+class_name PauseMenu
+
 @onready var weapon_grid = %WeaponGrid
 @onready var upgrade_grid = %UpgradeGrid
 @onready var item_grid = %ItemGrid
@@ -22,16 +24,16 @@ func _ready():
 	playerWeapons.updateWpnSlot_sig.connect(update_wpn_slots)
 	update_item_slots()
 	
-func _process(_delta):
-	if Input.is_action_just_pressed("pause"):
-		if menu_open:
-			get_tree().paused = false
-			close_menu()
-		else:
-			open_menu()
-			get_tree().paused = true
-	if Input.is_action_just_pressed("quit") and menu_open:
-		quit()
+#func _process(_delta):
+	#if Input.is_action_just_pressed("pause"):
+		#if menu_open:
+			#get_tree().paused = false
+			#close_menu()
+		#else:
+			#open_menu()
+			#get_tree().paused = true
+	#if Input.is_action_just_pressed("quit") and menu_open:
+		#quit()
 
 func open_menu():
 	menu.visible = true
@@ -47,9 +49,6 @@ func open_menu():
 func close_menu():
 	menu.visible = false
 	menu_open = false
-
-func quit():
-	get_tree().quit()
 
 func update_wpn_slots():
 	for i in range(min(playerWeapons.slots.size(), wpn_slots.size())):

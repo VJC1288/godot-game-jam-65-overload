@@ -12,8 +12,7 @@ const GAMEOVER = preload("res://Scenes/gameover.tscn")
 @onready var character_manager = $CharacterManager
 
 
-
-@onready var hud = $HUD
+@onready var hud = $UIElements/HUD
 
 
 func _ready():
