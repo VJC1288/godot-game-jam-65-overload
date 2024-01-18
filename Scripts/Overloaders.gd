@@ -12,7 +12,10 @@ var child_overloaders: Array[Overloader]
 func _ready():
 	for obj in get_children():
 		if obj is Overloader:
+			obj.connect("overloaded", child_overloaded)
 			child_overloaders.append(obj)
+			
+			
 
 
 func unlock_door():

@@ -23,7 +23,4 @@ energy_to_kill = 100
 position = Vector2(0, 34)
 energy_to_kill = 100
 
-[connection signal="overloaded" from="OverloaderParent/Overloader" to="OverloaderParent" method="child_overloaded"]
-[connection signal="overloaded" from="OverloaderParent/Overloader2" to="OverloaderParent" method="child_overloaded"]
-
 [editable path="OverloaderParent"]
