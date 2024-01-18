@@ -16,29 +16,29 @@
 [sub_resource type="Gradient" id="Gradient_wadup"]
 offsets = PackedFloat32Array(0.057377, 0.893443)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_law42"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ohr1n"]
 gradient = SubResource("Gradient_wadup")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4nos4"]
 seed = 54621
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d4o0g"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jcu2f"]
 seamless = true
 noise = SubResource("FastNoiseLite_4nos4")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_b1mde"]
 seed = 5679821
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4x4df"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cp21m"]
 seamless = true
 noise = SubResource("FastNoiseLite_b1mde")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u464f"]
 shader = ExtResource("5_e6mp8")
 shader_parameter/offset_scroll = Vector2(0.5, 0.5)
-shader_parameter/noise1 = SubResource("NoiseTexture2D_d4o0g")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_4x4df")
-shader_parameter/gradient = SubResource("GradientTexture1D_law42")
+shader_parameter/noise1 = SubResource("NoiseTexture2D_jcu2f")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_cp21m")
+shader_parameter/gradient = SubResource("GradientTexture1D_ohr1n")
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true

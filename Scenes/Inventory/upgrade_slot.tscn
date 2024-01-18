@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b6siloq15bwk6"]
 
-[ext_resource type="Script" path="res://Scripts/upgrade_slot.gd" id="1_6s5fm"]
+[ext_resource type="Script" path="res://Scripts/Inventory/Upgrades/upgrade_slot.gd" id="1_6s5fm"]
 [ext_resource type="FontFile" uid="uid://cwet7b4q87ua4" path="res://Assets/Fonts/joystix monospace.otf" id="2_u2tph"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjgsb"]

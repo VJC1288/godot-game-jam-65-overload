@@ -4,7 +4,7 @@ enum Teams {PLAYER = 1, ENEMIES = 2}
 
 var currentPlayer: Player
 
-var currentTargetedGhost: CharacterBody2D = null
+var currentTargetedGhost: Node2D = null
 
 var paused: bool = false
 

@@ -19,6 +19,9 @@ enum PlayerAttackStates{FIRING, NOT_FIRING}
 
 @onready var health_component:HealthComponent = $HealthComponent
 
+const BUNGUS_SPECTRECOAT = preload("res://Assets/bungus-spectrecoat.png")
+const BUNGUS_SPECTRECOAT_2 = preload("res://Assets/bungus-spectrecoat2.png")
+
 @export var team: Globals.Teams
 @export var weapon_inv: WpnInv
 @export var item_inv: ItemInv
@@ -31,8 +34,7 @@ const JUMP_VELOCITY = -400.0
 var maxFireDistance = 100.0
 var damagePower = 5.0
 var speedIncrease = 1
-var healthIncrease: int
-var damagingGhost: Ghost = null
+var damagingGhost = null
 var currentMoveState: PlayerMoveStates
 var currentAttackState: PlayerAttackStates
 var tractorBeam: Line2D
@@ -107,7 +109,7 @@ func select_target():
 		damagingGhost = Globals.currentTargetedGhost
 		
 		var start_point = weapon_muzzle.position
-		var end_point = damagingGhost.global_position - global_position
+		var end_point = damagingGhost.global_position - global_position + Vector2(0, 10)
 		
 		tractorBeam = Line2D.new()
 		tractorBeam.add_point(start_point)
@@ -141,12 +143,12 @@ func check_damaging_ghost():
 func move_tractor_beam():
 	if tractorBeam != null and damagingGhost != null:
 		var start_point = weapon_muzzle.position
-		var end_point = damagingGhost.global_position - global_position
+		var end_point = damagingGhost.global_position - global_position + Vector2(0, 10)
 		var points_size = tractorBeam.points.size()
 		tractorBeam.points[points_size - 4] = start_point
 		tractorBeam.points[points_size - 3] = Vector2((end_point.x + randi_range(-5, 5)) * .5, (end_point.y + randi_range(-5,5)) * .5)
 		tractorBeam.points[points_size - 2] = Vector2((end_point.x + randi_range(-5, 5)) * .75, (end_point.y + randi_range(-5,5)) * .75)
-		tractorBeam.points[points_size - 1] = end_point
+		tractorBeam.points[points_size - 1] = end_point 
 
 
 func collect_item(item, amount):
@@ -161,11 +163,13 @@ func collect_upgrade(upgrade, amount):
 	if upgrade.name == "Wraith Boots":
 		speedIncrease += .1
 	if upgrade.name == "Spectre Coat":
-		healthIncrease = 25
+		var healthIncrease = 25
 		health_component.adjust_max_health(healthIncrease)
 		health_component.adjust_health(healthIncrease)
-		
-		sprite_2d.texture = preload("res://Assets/bungus-spectrecoat.png")
+		if sprite_2d.texture == BUNGUS_SPECTRECOAT:
+			sprite_2d.texture = BUNGUS_SPECTRECOAT_2
+		else:
+			sprite_2d.texture = BUNGUS_SPECTRECOAT
 		
 func _on_health_component_health_changed(new_health):
 	emit_signal("player_health_changed", new_health)

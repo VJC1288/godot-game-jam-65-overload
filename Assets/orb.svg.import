@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5oq4i12yynl5"
-path="res://.godot/imported/bungus.svg-46c18b0137dfbf350cec6c497211c94e.ctex"
+uid="uid://ddochkigqv566"
+path="res://.godot/imported/orb.svg-7ea837107a37f087e3d605d26f9786f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/bungus.svg"
-dest_files=["res://.godot/imported/bungus.svg-46c18b0137dfbf350cec6c497211c94e.ctex"]
+source_file="res://Assets/orb.svg"
+dest_files=["res://.godot/imported/orb.svg-7ea837107a37f087e3d605d26f9786f7.ctex"]
 
 [params]
 

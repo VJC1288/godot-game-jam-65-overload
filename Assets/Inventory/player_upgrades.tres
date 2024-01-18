@@ -1,32 +1,32 @@
 [gd_resource type="Resource" script_class="UpgInv" load_steps=9 format=3 uid="uid://bpvl82vhommsx"]
 
-[ext_resource type="Script" path="res://Scripts/upgrade_inventory.gd" id="1_y04ln"]
-[ext_resource type="Script" path="res://Scripts/upginv_slot.gd" id="2_bfrcu"]
+[ext_resource type="Script" path="res://Scripts/Inventory/Upgrades/upgrade_inventory.gd" id="1_xsh7o"]
+[ext_resource type="Script" path="res://Scripts/Inventory/Upgrades/upginv_slot.gd" id="2_ccpur"]
 
 [sub_resource type="Resource" id="Resource_a6p1u"]
-script = ExtResource("2_bfrcu")
+script = ExtResource("2_ccpur")
 amount = 0
 
 [sub_resource type="Resource" id="Resource_txbub"]
-script = ExtResource("2_bfrcu")
+script = ExtResource("2_ccpur")
 amount = 0
 
 [sub_resource type="Resource" id="Resource_exvan"]
-script = ExtResource("2_bfrcu")
+script = ExtResource("2_ccpur")
 amount = 0
 
 [sub_resource type="Resource" id="Resource_ukird"]
-script = ExtResource("2_bfrcu")
+script = ExtResource("2_ccpur")
 amount = 0
 
 [sub_resource type="Resource" id="Resource_833yn"]
-script = ExtResource("2_bfrcu")
+script = ExtResource("2_ccpur")
 amount = 0
 
 [sub_resource type="Resource" id="Resource_2d7gk"]
-script = ExtResource("2_bfrcu")
+script = ExtResource("2_ccpur")
 amount = 0
 
 [resource]
-script = ExtResource("1_y04ln")
-slots = Array[ExtResource("2_bfrcu")]([SubResource("Resource_a6p1u"), SubResource("Resource_txbub"), SubResource("Resource_exvan"), SubResource("Resource_ukird"), SubResource("Resource_833yn"), SubResource("Resource_2d7gk")])
+script = ExtResource("1_xsh7o")
+slots = Array[ExtResource("2_ccpur")]([SubResource("Resource_a6p1u"), SubResource("Resource_txbub"), SubResource("Resource_exvan"), SubResource("Resource_ukird"), SubResource("Resource_833yn"), SubResource("Resource_2d7gk")])

@@ -1,28 +1,28 @@
 [gd_resource type="Resource" script_class="WpnInv" load_steps=10 format=3 uid="uid://0bkd3m0eno00"]
 
+[ext_resource type="Script" path="res://Scripts/Inventory/Weapons/weapon_inventory.gd" id="1_aqfx1"]
 [ext_resource type="Resource" uid="uid://lgrjoenuxt50" path="res://Assets/Inventory/ghost_overloader_3000.tres" id="2_0cowr"]
-[ext_resource type="Script" path="res://Scripts/wpninv_slot.gd" id="2_ce702"]
-[ext_resource type="Script" path="res://Scripts/weapon_inventory.gd" id="2_ej8so"]
+[ext_resource type="Script" path="res://Scripts/Inventory/Weapons/wpninv_slot.gd" id="3_c5pl3"]
 
 [sub_resource type="Resource" id="Resource_64wp0"]
-script = ExtResource("2_ce702")
+script = ExtResource("3_c5pl3")
 item = ExtResource("2_0cowr")
 
 [sub_resource type="Resource" id="Resource_mfbh7"]
-script = ExtResource("2_ce702")
+script = ExtResource("3_c5pl3")
 
 [sub_resource type="Resource" id="Resource_lkoyr"]
-script = ExtResource("2_ce702")
+script = ExtResource("3_c5pl3")
 
 [sub_resource type="Resource" id="Resource_d02kx"]
-script = ExtResource("2_ce702")
+script = ExtResource("3_c5pl3")
 
 [sub_resource type="Resource" id="Resource_ugkbj"]
-script = ExtResource("2_ce702")
+script = ExtResource("3_c5pl3")
 
 [sub_resource type="Resource" id="Resource_4hml5"]
-script = ExtResource("2_ce702")
+script = ExtResource("3_c5pl3")
 
 [resource]
-script = ExtResource("2_ej8so")
-slots = Array[ExtResource("2_ce702")]([SubResource("Resource_64wp0"), SubResource("Resource_mfbh7"), SubResource("Resource_lkoyr"), SubResource("Resource_d02kx"), SubResource("Resource_ugkbj"), SubResource("Resource_4hml5")])
+script = ExtResource("1_aqfx1")
+slots = Array[ExtResource("3_c5pl3")]([SubResource("Resource_64wp0"), SubResource("Resource_mfbh7"), SubResource("Resource_lkoyr"), SubResource("Resource_d02kx"), SubResource("Resource_ugkbj"), SubResource("Resource_4hml5")])
