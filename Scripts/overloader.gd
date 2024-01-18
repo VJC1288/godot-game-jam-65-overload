@@ -2,7 +2,7 @@ extends Node2D
 
 class_name Overloader
 
-signal overloaded()
+signal overloaded(overloader)
 
 @onready var regen_timer = $RegenTimer
 @onready var sprite_2d = $Sprite2D
@@ -41,7 +41,7 @@ func take_damage(damage_power):
 	adjust_energy(damage_power)
 	if energy_bar.value == energy_to_kill:
 		regen_timer.start(4)
-		emit_signal("overloaded")
+		emit_signal("overloaded", self)
 		
 
 func stop_damaging():
