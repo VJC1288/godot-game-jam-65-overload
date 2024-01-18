@@ -34,7 +34,7 @@ var levelsDictionary = {
 	Vector2i(2,0): LEVEL_2_0_,
 	Vector2i(2,1): LEVEL_2_1_,
 	Vector2i(3,0): LEVEL_3_0_,
-	Vector2i(3,1): LEVEL_3_1_
+	Vector2i(3,1): LEVEL_3_1_,
 	Vector2i(-1,1): LEVEL__1_1_
 }
 

@@ -57,4 +57,4 @@ func adjust_energy(adjustment):
 	energy_bar.value += adjustment
 
 func _on_regen_timer_timeout():
-	
+	pass

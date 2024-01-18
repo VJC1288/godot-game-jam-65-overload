@@ -42,9 +42,6 @@ border_color = Color(0.8, 0.8, 0.8, 0)
 
 [node name="Overloader" type="Node2D"]
 script = ExtResource("1_8s6su")
-immobile = null
-team = null
-energy_to_kill = null
 regen_rate = -1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
