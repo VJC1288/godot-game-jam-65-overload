@@ -4,14 +4,16 @@ class_name Level
 
 signal change_room(direction)
 
+enum DifficultyStates {REGULAR = 1, TALL, TANK}
+
 @export var northExit: bool
 @export var southExit: bool
 @export var eastExit: bool
 @export var westExit: bool
 @export var levelCoordinates: Vector2i
 @export var hasShopkeeper: bool = false
-@export var spawnsEnemies: bool = true
-
+@export var numberOfEnemySpawns: int = 0
+@export var difficulty: DifficultyStates
 
 @onready var north_exit_area = $NorthExit
 @onready var south_exit_area = $SouthExit
@@ -24,8 +26,6 @@ signal change_room(direction)
 
 var houseFloor: int = 1
 
-func _ready():
-	pass
 
 
 func _on_north_exit_body_entered(_body):

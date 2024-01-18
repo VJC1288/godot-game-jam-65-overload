@@ -460,7 +460,6 @@ size = Vector2(18, 24)
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_6ma17")
-spawnsEnemies = false
 
 [node name="Ground" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ny8g5")
@@ -475,7 +474,7 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NorthExit"]
-position = Vector2(160, 14)
+position = Vector2(160, 11)
 shape = SubResource("RectangleShape2D_xuuk6")
 
 [node name="SouthExit" type="Area2D" parent="."]
@@ -484,7 +483,7 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SouthExit"]
-position = Vector2(161, 180)
+position = Vector2(160, 181)
 shape = SubResource("RectangleShape2D_xuuk6")
 
 [node name="EastExit" type="Area2D" parent="."]
@@ -493,7 +492,7 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EastExit"]
-position = Vector2(284, 96)
+position = Vector2(288, 96)
 shape = SubResource("RectangleShape2D_qxtcv")
 
 [node name="WestExit" type="Area2D" parent="."]
@@ -502,14 +501,14 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WestExit"]
-position = Vector2(37, 96)
+position = Vector2(33, 96)
 shape = SubResource("RectangleShape2D_qxtcv")
 
 [node name="NorthSpawn" type="Marker2D" parent="."]
 position = Vector2(160, 35)
 
 [node name="SouthSpawn" type="Marker2D" parent="."]
-position = Vector2(160, 155)
+position = Vector2(159, 155)
 
 [node name="EastSpawn" type="Marker2D" parent="."]
 position = Vector2(260, 95)

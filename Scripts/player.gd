@@ -19,6 +19,9 @@ enum PlayerAttackStates{FIRING, NOT_FIRING}
 
 @onready var health_component:HealthComponent = $HealthComponent
 
+const BUNGUS_SPECTRECOAT = preload("res://Assets/bungus-spectrecoat.png")
+const BUNGUS_SPECTRECOAT_2 = preload("res://Assets/bungus-spectrecoat2.png")
+
 @export var team: Globals.Teams
 @export var weapon_inv: WpnInv
 @export var item_inv: ItemInv
@@ -31,8 +34,9 @@ const JUMP_VELOCITY = -400.0
 var maxFireDistance = 100.0
 var damagePower = 5.0
 var speedIncrease = 1
-var healthIncrease: int
 var damagingGhost = null
+var damagingGhost: Ghost = null
+
 var currentMoveState: PlayerMoveStates
 var currentAttackState: PlayerAttackStates
 var tractorBeam: Line2D
@@ -161,11 +165,13 @@ func collect_upgrade(upgrade, amount):
 	if upgrade.name == "Wraith Boots":
 		speedIncrease += .1
 	if upgrade.name == "Spectre Coat":
-		healthIncrease = 25
+		var healthIncrease = 25
 		health_component.adjust_max_health(healthIncrease)
 		health_component.adjust_health(healthIncrease)
-		
-		sprite_2d.texture = preload("res://Assets/bungus-spectrecoat.png")
+		if sprite_2d.texture == BUNGUS_SPECTRECOAT:
+			sprite_2d.texture = BUNGUS_SPECTRECOAT_2
+		else:
+			sprite_2d.texture = BUNGUS_SPECTRECOAT
 		
 func _on_health_component_health_changed(new_health):
 	emit_signal("player_health_changed", new_health)

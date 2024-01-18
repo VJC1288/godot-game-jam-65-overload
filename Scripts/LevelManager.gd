@@ -11,6 +11,7 @@ const LEVEL_2_0_ = preload("res://Scenes/Levels/level(2,0).tscn")
 const LEVEL_2_1_ = preload("res://Scenes/Levels/level(2,1).tscn")
 const LEVEL_3_0_ = preload("res://Scenes/Levels/level(3,0).tscn")
 const LEVEL_3_1_ = preload("res://Scenes/Levels/level(3,1).tscn")
+const LEVEL__1_1_ = preload("res://Scenes/Levels/level(_1,1).tscn")
 
 ##Use this to start the game in a different room
 @export var debug_spawn_room = Vector2i(0,0)
@@ -34,10 +35,13 @@ var levelsDictionary = {
 	Vector2i(2,1): LEVEL_2_1_,
 	Vector2i(3,0): LEVEL_3_0_,
 	Vector2i(3,1): LEVEL_3_1_
+	Vector2i(-1,1): LEVEL__1_1_
 }
 
 var storedCoinsDict = {}
 var storedItemsDict = {}
+var storedEnemySpawnsDict = {}
+var storedEnemiesDict = {}
 var shopKeeper = null
 
 func _ready():
@@ -81,20 +85,25 @@ func switch_level(direction: Vector2i):
 				Globals.currentPlayer.global_position = current_level.west_spawn.global_position
 	
 	
-	#Clear the enemies
+	#Clear and save the enemies
+
+	storedEnemySpawnsDict[current_coords] = enemy_spawner.spawnsLeft
+	storedEnemiesDict[current_coords] = {}
 	for enemy in enemy_spawner.get_enemies():
+		storedEnemiesDict[current_coords][enemy.global_position] = enemy.ghost_type
 		enemy.call_deferred("queue_free")
 	
+	prints(storedEnemySpawnsDict)
 	#Clear the ShopKeeper
 	character_manager.remove_shopkeeper()
 	
-	#Clear the keys
+	#Clear and save the keys
 	storedItemsDict[current_coords] = {}
 	for item in item_spawner.get_children():
 		storedItemsDict[current_coords][item.global_position] = item.itemName
 		item.call_deferred("queue_free")
 	
-	#Clear the coins
+	#Clear and save the coins
 	storedCoinsDict[current_coords] = {}
 	for coin in coin_spawner.get_children():
 		storedCoinsDict[current_coords][coin.global_position] = coin.coin_value
@@ -109,11 +118,15 @@ func switch_level(direction: Vector2i):
 	#Create New Level
 	var new_level:Level = levelsDictionary[current_coords].instantiate()
 	current_level = new_level
-	if current_level.spawnsEnemies == true:
+	if current_level.numberOfEnemySpawns > 0:
 		enemy_spawner.active = true
+		enemy_spawner.spawnsLeft = current_level.numberOfEnemySpawns
+		enemy_spawner.spawnType = current_level.difficulty
 	else:
 		enemy_spawner.active = false
-
+		enemy_spawner.spawnsLeft = 0
+		enemy_spawner.spawnType = 0
+		
 	#Add previously saved coins
 	if storedCoinsDict.get(current_coords) != null:
 		for coin in storedCoinsDict[current_coords].keys():
@@ -124,7 +137,15 @@ func switch_level(direction: Vector2i):
 		for item in storedItemsDict[current_coords].keys():
 			item_spawner.spawn_item(item, storedItemsDict[current_coords][item])
 	
-
+	#Add previously saved enemies and enemy spawns
+	if storedEnemiesDict.get(current_coords) != null:
+		for enemy in storedEnemiesDict[current_coords].keys():
+			enemy_spawner.spawn_specific_ghost_at_area(enemy, storedEnemiesDict[current_coords][enemy])
+	if storedEnemySpawnsDict.has(current_coords):
+		enemy_spawner.spawnsLeft = storedEnemySpawnsDict[current_coords]
+	else:
+		enemy_spawner.spawnsLeft = current_level.numberOfEnemySpawns
+	
 	
 	add_child(new_level)
 	#Create a shopkeeper
@@ -136,3 +157,6 @@ func switch_level(direction: Vector2i):
 	await hud.unfade_from_black()
 	Globals.currentPlayer.unpause()
 	current_level.enable_exits()
+
+func enemy_killed():
+	current_level.numberOfEnemySpawns -= 1
