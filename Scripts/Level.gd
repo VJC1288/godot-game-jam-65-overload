@@ -3,6 +3,7 @@ extends Node2D
 class_name Level
 
 signal change_room(direction)
+signal level_coords(Vector2i)
 
 @export var northExit: bool
 @export var southExit: bool
@@ -25,8 +26,12 @@ signal change_room(direction)
 var houseFloor: int = 1
 
 func _ready():
+<<<<<<< Updated upstream
 	pass
 
+=======
+	level_coords.emit(levelCoordinates)
+>>>>>>> Stashed changes
 
 func _on_north_exit_body_entered(_body):
 	emit_signal("change_room", Vector2i.UP)

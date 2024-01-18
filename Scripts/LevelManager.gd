@@ -2,6 +2,8 @@ extends Node2D
 
 class_name LevelManager
 
+signal level_changed(coords)
+
 const SHOPKEEPER = preload("res://Scenes/shopkeeper.tscn")
 
 const LEVEL_0_0_ = preload("res://Scenes/Levels/level(0,0).tscn")
@@ -123,6 +125,8 @@ func switch_level(direction: Vector2i):
 
 	
 	add_child(new_level)
+	level_changed.emit(current_coords)
+	
 	#Create a shopkeeper
 	if new_level.hasShopkeeper:
 		character_manager.spawn_shopkeeper()
