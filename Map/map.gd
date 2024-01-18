@@ -1,8 +1,9 @@
 extends CanvasLayer
 
 @onready var map = $"."
-@onready var level_manager: LevelManager = $"../LevelManager"
+@onready var level_manager = $"../../LevelManager"
 @onready var game_map = %GameMap
+@onready var menu: PauseMenu = $"../Menu"
 
 var player_indicator: Vector2 = Vector2(2,3)
 
@@ -38,19 +39,20 @@ func _ready():
 	
 	setMapTile()
 
-func _process(_delta):
-
-	if Input.is_action_just_pressed("openmap"):
-		if map_open:
-			get_tree().paused = false
-			close_map()
-		else:
-			open_map()
-			get_tree().paused = true
-			
-	if Input.is_action_just_pressed("pause") and map_open:
-		close_map()
-	
+#func _process(_delta):
+#
+	#if Input.is_action_just_pressed("openmap"):
+		#if map_open:
+			#get_tree().paused = false
+			#close_map()
+		#else:
+			#open_map()
+			#get_tree().paused = true
+			#
+	#if Input.is_action_just_pressed("pause") and (map_open or menu.menu_open):
+		#close_map()
+		#menu.close_menu()
+	#
 func open_map():
 	map.visible = true
 	map_open = true
