@@ -38,6 +38,9 @@ func _process(_delta):
 		else:
 			open_map()
 			get_tree().paused = true
+			
+	if Input.is_action_just_pressed("pause") and map_open:
+		close_map()
 	
 func open_map():
 	map.visible = true
