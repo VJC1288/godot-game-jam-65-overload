@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="InvUpg" load_steps=4 format=3 uid="uid://c6pfo07umby7a"]
 
-[ext_resource type="Script" path="res://Scripts/inventory_upgrade.gd" id="1_qpiew"]
+[ext_resource type="Script" path="res://Scripts/Inventory/Upgrades/inventory_upgrade.gd" id="1_4httt"]
 [ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/pickup_tileset.png" id="2_8le3y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j06v1"]
@@ -8,7 +8,7 @@ atlas = ExtResource("2_8le3y")
 region = Rect2(32, 0, 32, 32)
 
 [resource]
-script = ExtResource("1_qpiew")
+script = ExtResource("1_4httt")
 name = "Arc Extender"
 texture = SubResource("AtlasTexture_j06v1")
 item_details = "+25 Beam Range"

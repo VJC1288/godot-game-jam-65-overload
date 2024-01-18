@@ -9,6 +9,8 @@ const LEVEL_1_0_ = preload("res://Scenes/Levels/level(1,0).tscn")
 const LEVEL_0_1_ = preload("res://Scenes/Levels/level(0,1).tscn")
 const LEVEL_2_0_ = preload("res://Scenes/Levels/level(2,0).tscn")
 const LEVEL_2_1_ = preload("res://Scenes/Levels/level(2,1).tscn")
+const LEVEL_3_0_ = preload("res://Scenes/Levels/level(3,0).tscn")
+const LEVEL_3_1_ = preload("res://Scenes/Levels/level(3,1).tscn")
 const LEVEL__1_1_ = preload("res://Scenes/Levels/level(_1,1).tscn")
 const LEVEL__2_1_ = preload("res://Scenes/Levels/level(_2,1).tscn")
 const LEVEL__2_2_ = preload("res://Scenes/Levels/level(_2,2).tscn")
@@ -35,8 +37,11 @@ var levelsDictionary = {
 	Vector2i(2,1): LEVEL_2_1_,
 	Vector2i(-1,1): LEVEL__1_1_,
 	Vector2i(-2,1): LEVEL__2_1_,
-	Vector2i(-2,2): LEVEL__2_2_
-	
+	Vector2i(-2,2): LEVEL__2_2_,
+	Vector2i(3,0): LEVEL_3_0_,
+	Vector2i(3,1): LEVEL_3_1_,
+	Vector2i(-1,1): LEVEL__1_1_
+
 }
 
 var storedCoinsDict = {}

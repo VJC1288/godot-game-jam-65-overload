@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="InvItem" load_steps=4 format=3 uid="uid://cijajkhprhj64"]
 
-[ext_resource type="Script" path="res://Scripts/inventory_item.gd" id="1_xehw6"]
+[ext_resource type="Script" path="res://Scripts/Inventory/Items/inventory_item.gd" id="1_wxbpl"]
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="2_b5bne"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rocrt"]
@@ -8,7 +8,7 @@ atlas = ExtResource("2_b5bne")
 region = Rect2(384, 32, 32, 32)
 
 [resource]
-script = ExtResource("1_xehw6")
+script = ExtResource("1_wxbpl")
 name = "Coins"
 texture = SubResource("AtlasTexture_rocrt")
 item_details = "Might be useful to someone"

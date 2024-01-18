@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://b83ulsmgx7ilw"]
 
 [ext_resource type="PackedScene" uid="uid://cdwte7f6l3kjt" path="res://Scenes/Ghosts/baseGhost.tscn" id="1_q0y3r"]
-[ext_resource type="PackedScene" uid="uid://d60omkkv500" path="res://Scenes/Ghosts/DeathEffects/regular_death_effect.tscn" id="2_glhax"]
 [ext_resource type="Shader" path="res://Shaders/ghost.gdshader" id="2_t6lba"]
+[ext_resource type="PackedScene" uid="uid://x0tch1mo43u8" path="res://Scenes/Ghosts/DeathEffects/regularDeathEffect.tscn" id="2_yfs1k"]
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="3_wcx45"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ewhuu"]
@@ -21,8 +21,11 @@ size = Vector2(24, 26)
 size = Vector2(30, 32)
 
 [node name="RegularGhost" instance=ExtResource("1_q0y3r")]
+immobile = null
+team = null
 energy_to_kill = 60
-death_scene = ExtResource("2_glhax")
+regen_rate = -1
+death_scene = ExtResource("2_yfs1k")
 ghost_type = "regular_ghost"
 
 [node name="Sprite2D" parent="." index="1"]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="InvUpg" load_steps=4 format=3 uid="uid://ck4jd1qed1s1d"]
 
-[ext_resource type="Script" path="res://Scripts/inventory_upgrade.gd" id="1_v8rdr"]
+[ext_resource type="Script" path="res://Scripts/Inventory/Upgrades/inventory_upgrade.gd" id="1_p18eg"]
 [ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/pickup_tileset.png" id="2_7a7qr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j06v1"]
@@ -8,7 +8,7 @@ atlas = ExtResource("2_7a7qr")
 region = Rect2(64, 0, 32, 32)
 
 [resource]
-script = ExtResource("1_v8rdr")
+script = ExtResource("1_p18eg")
 name = "Beam Battery+"
 texture = SubResource("AtlasTexture_j06v1")
 item_details = "+1 Beam DPS"

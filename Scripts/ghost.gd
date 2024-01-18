@@ -14,6 +14,7 @@ signal ghost_died(location)
 @export var team: Globals.Teams = Globals.Teams.ENEMIES
 @export var ghost_damage: int = 20
 @export var energy_to_kill: int = 100
+@export var regen_rate: int
 @export var death_scene: PackedScene
 @export var ghost_type: String
 
@@ -42,7 +43,7 @@ func _physics_process(_delta):
 	if taking_damage:
 		pass
 	else:
-		adjust_energy(-1)
+		adjust_energy(regen_rate)
 
 	
 	if player_to_attack != null:
