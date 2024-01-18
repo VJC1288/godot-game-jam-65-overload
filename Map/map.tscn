@@ -73,7 +73,6 @@ position = Vector2(134, 3)
 tile_set = SubResource("TileSet_0tta0")
 format = 2
 layer_0/name = "MapTiles"
-layer_0/tile_data = PackedInt32Array(0, 196609, 1)
 layer_1/name = "Player"
 layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array()

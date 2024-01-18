@@ -10,8 +10,8 @@ var map_open: bool = false
 
 var exits: Array
 
-var currentTile = Vector2(0,0)
-var previousTile = Vector2(0,0)
+var currentTile: Vector2i
+var previousTile: Vector2i
 
 var mapTileDictionary = {
 	["N","S","E","W"]: Vector2i(0,0),
@@ -32,7 +32,11 @@ var mapTileDictionary = {
 }
 
 func _ready():
-	game_map.set_cell(1, currentTile, 1, player_indicator)
+	check_doors()
+	currentTile = level_manager.debug_spawn_room
+	previousTile = level_manager.debug_spawn_room
+	
+	setMapTile()
 
 func _process(_delta):
 
@@ -59,10 +63,7 @@ func _on_level_manager_level_changed(coords):
 	check_doors()
 	previousTile = currentTile
 	currentTile = coords
-	
-	game_map.set_cell(0, currentTile, 1, mapTileDictionary[exits])
-	game_map.erase_cell(1, previousTile)
-	game_map.set_cell(1, currentTile, 1, player_indicator)
+	setMapTile()
 		
 func check_doors():
 	exits = []
@@ -87,6 +88,8 @@ func check_doors():
 		exits.append("W")
 	else: 
 		exits.append("X")
-		
-func currentTileIndicator():
-	pass
+
+func setMapTile():
+	game_map.set_cell(0, currentTile, 1, mapTileDictionary[exits])
+	game_map.erase_cell(1, previousTile)
+	game_map.set_cell(1, currentTile, 1, player_indicator)

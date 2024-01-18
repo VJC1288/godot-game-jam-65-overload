@@ -20,6 +20,7 @@ var menu_open: bool = false
 func _ready():
 	playerItems.updateItemSlot_sig.connect(update_item_slots)
 	playerWeapons.updateWpnSlot_sig.connect(update_wpn_slots)
+	update_item_slots()
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):

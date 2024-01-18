@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="ItemInv" load_steps=9 format=3 uid="uid://d3snppl5t1ve5"]
+[gd_resource type="Resource" script_class="ItemInv" load_steps=10 format=3 uid="uid://d3snppl5t1ve5"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory/Items/item_inventory.gd" id="1_2hxsd"]
+[ext_resource type="Resource" uid="uid://dw5nc8ffqaiv6" path="res://Assets/Inventory/bungusandjane.tres" id="2_dooum"]
 [ext_resource type="Script" path="res://Scripts/Inventory/Items/inv_slot.gd" id="2_trdvl"]
 
 [sub_resource type="Resource" id="Resource_1780x"]
 script = ExtResource("2_trdvl")
-amount = 0
+item = ExtResource("2_dooum")
+amount = 1
 
 [sub_resource type="Resource" id="Resource_o0nv4"]
 script = ExtResource("2_trdvl")

@@ -16,11 +16,11 @@ position = Vector2(295, 97)
 door_area_to_open = NodePath("../EastExit")
 
 [node name="Overloader" parent="OverloaderParent" index="0" instance=ExtResource("2_ihmf2")]
-position = Vector2(0, -29)
+position = Vector2(0, -30)
 energy_to_kill = 100
 
 [node name="Overloader2" parent="OverloaderParent" index="1" instance=ExtResource("2_ihmf2")]
-position = Vector2(0, 34)
+position = Vector2(0, 33)
 energy_to_kill = 100
 
 [editable path="OverloaderParent"]
