@@ -31,7 +31,7 @@ func _ready():
 	hud.update_coin_count()
 	
 	
-	################ Temp Testing Items to spawn ####################
+	################ Temp Testing Items to Spawn ####################
 	coin_spawner.spawn_coins(centerOfScreen + Vector2(50, 50), randi_range(1,5))
 	item_spawner.spawn_item(centerOfScreen + Vector2(-50, -50), "key")
 	item_spawner.spawn_item(centerOfScreen + Vector2(50, -50), "beam_battery")
@@ -70,6 +70,7 @@ func enemy_killed(location:Vector2, type: String):
 			amount = 1
 
 	coin_spawner.spawn_coins(location, amount)
+	level_manager.enemy_killed()
 
 func update_health_bar(new_value):
 	hud.update_health(new_value)
