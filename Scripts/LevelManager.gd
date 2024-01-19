@@ -99,7 +99,8 @@ func initialize(passed_hud, passed_enemy_spawner, passed_coin_spawner, passed_it
 
 func switch_level(direction: Vector2i):
 
-	Globals.currentPlayer.pause()	
+	if Globals.currentPlayer != null:
+		Globals.currentPlayer.pause()	
 	await hud.fade_to_black()	
 	
 		
@@ -197,7 +198,8 @@ func switch_level(direction: Vector2i):
 		current_level.on_first_enter()
 	
 	await hud.unfade_from_black()
-	Globals.currentPlayer.unpause()
+	if Globals.currentPlayer != null:
+		Globals.currentPlayer.unpause()
 	current_level.enable_exits()
 	
 
