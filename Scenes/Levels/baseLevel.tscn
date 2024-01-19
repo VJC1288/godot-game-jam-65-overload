@@ -476,7 +476,6 @@ size = Vector2(18, 24)
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_6ma17")
-southExit = true
 levelCoordinates = Vector2i(-3, 1)
 
 [node name="Ground" type="TileMap" parent="."]
