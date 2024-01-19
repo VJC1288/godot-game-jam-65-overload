@@ -17,6 +17,13 @@ const LEVEL__1_1_ = preload("res://Scenes/Levels/level(_1,1).tscn")
 const LEVEL__2_1_ = preload("res://Scenes/Levels/level(_2,1).tscn")
 const LEVEL__2_2_ = preload("res://Scenes/Levels/level(_2,2).tscn")
 const LEVEL_4_1_ = preload("res://Scenes/Levels/level(4,1).tscn")
+const LEVEL__3_2_ = preload("res://Scenes/Levels/level(_3,2).tscn")
+const LEVEL__3_3_ = preload("res://Scenes/Levels/level(_3,3).tscn")
+const LEVEL__4__2_ = preload("res://Scenes/Levels/level(_4,_2).tscn")
+const LEVEL_0_2_ = preload("res://Scenes/Levels/level(0,2).tscn")
+const LEVEL_0_3_ = preload("res://Scenes/Levels/level(0,3).tscn")
+const LEVEL_0_4_ = preload("res://Scenes/Levels/level(0,4).tscn")
+const LEVEL_1_3_ = preload("res://Scenes/Levels/level(1,3).tscn")
 
 ##Use this to start the game in a different room
 @export var debug_spawn_room = Vector2i(0,0)
@@ -43,7 +50,14 @@ var levelsDictionary = {
 	Vector2i(-2,2): LEVEL__2_2_,
 	Vector2i(3,0): LEVEL_3_0_,
 	Vector2i(3,1): LEVEL_3_1_,
-	Vector2i(4,1): LEVEL_4_1_
+	Vector2i(4,1): LEVEL_4_1_,
+	Vector2i(-3,2): LEVEL__3_2_,
+	Vector2i(-3,3): LEVEL__3_3_,
+	Vector2i(-4,2): LEVEL__4__2_,
+	Vector2i(0,2): LEVEL_0_2_,
+	Vector2i(0,3): LEVEL_0_3_,
+	Vector2i(0,4): LEVEL_0_4_,
+	Vector2i(1,3): LEVEL_1_3_
 
 }
 
