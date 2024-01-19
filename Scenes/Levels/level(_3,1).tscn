@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://blxxu0exoecmu"]
+
+[ext_resource type="PackedScene" uid="uid://d17dxk0qhpbm" path="res://Scenes/Levels/baseLevel.tscn" id="1_184nd"]
+
+[node name="Level(-3,1)" instance=ExtResource("1_184nd")]
+hasShopkeeper = true

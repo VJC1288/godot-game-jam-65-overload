@@ -23,28 +23,33 @@ func _ready():
 	spawn_player(centerOfScreen)
 	
 	enemy_spawner.connect("enemy_killed", enemy_killed)
+	
 	coin_spawner.connect("spawner_coin_collected", update_coin_count)
+	
 	character_manager.connect("sold_item", item_spawner.spawn_item)
 	character_manager.connect("update_coin_count", update_coin_count)
 	
 	level_manager.initialize(hud, enemy_spawner, coin_spawner, item_spawner, character_manager)
 	level_manager.connect("room_spawn_enemy", enemy_spawner.spawn_specific_ghost_at_area)
+	level_manager.connect("level_manager_item_spawn", item_spawner.spawn_item)
+	
 	item_spawner.initialize(hud)
+	
 	hud.update_coin_count()
 	
 	
 	################ Temp Testing Items to Spawn ####################
-	coin_spawner.spawn_coins(centerOfScreen + Vector2(50, 50), randi_range(1,5))
-	item_spawner.spawn_item(centerOfScreen + Vector2(-50, -50), "key")
-	item_spawner.spawn_item(centerOfScreen + Vector2(50, -50), "Beam Battery")
-	item_spawner.spawn_item(centerOfScreen + Vector2(70, -50), "Beam Battery")
-	item_spawner.spawn_item(centerOfScreen + Vector2(-50, 50), "Arc Extender")
-	item_spawner.spawn_item(centerOfScreen + Vector2(-70, 50), "Arc Extender")
-	item_spawner.spawn_item(centerOfScreen + Vector2(-100, 50), "Wraith Boots")
-	item_spawner.spawn_item(centerOfScreen + Vector2(-100, 30), "Wraith Boots")
-	item_spawner.spawn_item(centerOfScreen + Vector2(-100, -50), "Spectre Coat")
-	item_spawner.spawn_item(centerOfScreen + Vector2(-100, -30), "Spectre Coat")
-	item_spawner.spawn_item(centerOfScreen + Vector2(0, -60), "Geist Goulash")
+	#coin_spawner.spawn_coins(centerOfScreen + Vector2(50, 50), randi_range(1,5))
+	#item_spawner.spawn_item(centerOfScreen + Vector2(-50, -50), "key")
+	#item_spawner.spawn_item(centerOfScreen + Vector2(50, -50), "Beam Battery")
+	#item_spawner.spawn_item(centerOfScreen + Vector2(70, -50), "Beam Battery")
+	#item_spawner.spawn_item(centerOfScreen + Vector2(-50, 50), "Arc Extender")
+	#item_spawner.spawn_item(centerOfScreen + Vector2(-70, 50), "Arc Extender")
+	#item_spawner.spawn_item(centerOfScreen + Vector2(-100, 50), "Wraith Boots")
+	#item_spawner.spawn_item(centerOfScreen + Vector2(-100, 30), "Wraith Boots")
+	#item_spawner.spawn_item(centerOfScreen + Vector2(-100, -50), "Spectre Coat")
+	#item_spawner.spawn_item(centerOfScreen + Vector2(-100, -30), "Spectre Coat")
+	#item_spawner.spawn_item(centerOfScreen + Vector2(0, -60), "Geist Goulash")
 	##################### Remove on Release #########################
 	
 

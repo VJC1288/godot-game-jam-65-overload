@@ -20,6 +20,7 @@ const WRAITH_BOOTS = preload("res://Scenes/Pickups/wraith_boots.tscn")
 const BEAM_BATTERY_ = preload("res://Scenes/Pickups/beamBattery+.tscn")
 const ARC_EXTENDER = preload("res://Scenes/Pickups/arcExtender.tscn")
 const COIN_ICON = preload("res://Assets/Inventory/coin_icon.tres")
+const GEIST_GOULASH = preload("res://Scenes/Pickups/geist_goulash.tscn")
 
 var shopActive = false
 var roomCoords: Vector2i = Vector2i(2,1)
@@ -58,6 +59,9 @@ func build_shop():
 			"Wraith Boots":
 				item_to_add = WRAITH_BOOTS.instantiate()
 				cost = 35
+			"Geist Goulash":
+				item_to_add = GEIST_GOULASH.instantiate()
+				cost = 3
 			_:
 				item_to_add = null
 				

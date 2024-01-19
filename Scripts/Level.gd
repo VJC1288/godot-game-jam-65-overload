@@ -4,6 +4,7 @@ class_name Level
 
 signal change_room(direction)
 signal spawn_enemy(type, location)
+signal spawn_room_item(location, type)
 
 enum DifficultyStates {REGULAR = 1, TALL, SPEED, TANK}
 
@@ -61,3 +62,10 @@ func enable_exits():
 
 func on_first_enter():
 	pass
+
+func spawn_wall_ghost(location):
+	var type = "wall_ghost"
+	emit_signal("spawn_enemy", type, location)
+		
+func spawn_item(location, type):
+	emit_signal("spawn_room_item", location, type)

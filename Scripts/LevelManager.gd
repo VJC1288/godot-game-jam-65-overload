@@ -4,6 +4,7 @@ class_name LevelManager
 
 signal level_changed(coords)
 signal room_spawn_enemy(location, type)
+signal level_manager_item_spawn(type, location)
 
 const SHOPKEEPER = preload("res://Scenes/shopkeeper.tscn")
 
@@ -25,6 +26,7 @@ const LEVEL_0_2_ = preload("res://Scenes/Levels/level(0,2).tscn")
 const LEVEL_0_3_ = preload("res://Scenes/Levels/level(0,3).tscn")
 const LEVEL_0_4_ = preload("res://Scenes/Levels/level(0,4).tscn")
 const LEVEL_1_3_ = preload("res://Scenes/Levels/level(1,3).tscn")
+const LEVEL__3_1_ = preload("res://Scenes/Levels/level(_3,1).tscn")
 
 ##Use this to start the game in a different room
 @export var debug_spawn_room = Vector2i(0,0)
@@ -58,7 +60,8 @@ var levelsDictionary = {
 	Vector2i(0,2): LEVEL_0_2_,
 	Vector2i(0,3): LEVEL_0_3_,
 	Vector2i(0,4): LEVEL_0_4_,
-	Vector2i(1,3): LEVEL_1_3_
+	Vector2i(1,3): LEVEL_1_3_,
+	Vector2i(-3,1): LEVEL__3_1_
 
 }
 
@@ -186,7 +189,8 @@ func switch_level(direction: Vector2i):
 		character_manager.spawn_shopkeeper(current_coords)
 		
 	new_level.connect("change_room", switch_level)
-	new_level.connect("spawn_enemy", room_specific_spawn)
+	new_level.connect("spawn_enemy", room_specific_enemy_spawn)
+	new_level.connect("spawn_room_item", room_specific_item_spawn)
 	
 	if Globals.roomsSeen.find(current_coords) == -1:
 		Globals.roomsSeen.append(current_coords)
@@ -202,6 +206,8 @@ func switch_level(direction: Vector2i):
 func enemy_killed():
 	current_level.numberOfEnemySpawns -= 1
 
-func room_specific_spawn(type, location):
+func room_specific_enemy_spawn(type, location):
 	emit_signal("room_spawn_enemy", location, type)
-	
+
+func room_specific_item_spawn(type, location):
+	emit_signal("level_manager_item_spawn", type, location)

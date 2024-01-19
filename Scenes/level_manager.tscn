@@ -7,3 +7,4 @@
 script = ExtResource("1_032v6")
 
 [node name="Level(0,0)" parent="." instance=ExtResource("2_1qb63")]
+hasShopkeeper = true

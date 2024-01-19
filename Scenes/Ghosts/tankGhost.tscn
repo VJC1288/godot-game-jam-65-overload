@@ -1,23 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3jd7ui06j61y"]
+[gd_scene load_steps=10 format=3 uid="uid://c3jd7ui06j61y"]
 
 [ext_resource type="PackedScene" uid="uid://cdwte7f6l3kjt" path="res://Scenes/Ghosts/baseGhost.tscn" id="1_bc83c"]
-[ext_resource type="Material" uid="uid://cf0h644k7r806" path="res://Scenes/Ghosts/DeathEffects/tankGhostDeath.tres" id="2_ueeia"]
+[ext_resource type="PackedScene" uid="uid://c1bm501u3dfes" path="res://Scenes/Ghosts/DeathEffects/tallDeathEffect.tscn" id="2_vobiu"]
 [ext_resource type="Shader" path="res://Shaders/ghost.gdshader" id="2_wqwep"]
 [ext_resource type="Material" uid="uid://c8outlg1q2awy" path="res://Scenes/Particles/tankFloatParticle.tres" id="3_7i8ky"]
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="3_ph0qa"]
-
-[sub_resource type="PackedScene" id="PackedScene_6iv8n"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("TankDeathEffect", "emitting", "amount", "process_material", "one_shot", "explosiveness", "randomness", "GPUParticles2D"),
-"node_count": 1,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 7, 0, -1, 6, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 4, 0),
-"variants": [false, 150, ExtResource("2_ueeia"), true, 1.0],
-"version": 3
-}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e4x68"]
 resource_local_to_scene = true
@@ -38,7 +25,7 @@ SPEED = 10.0
 ghost_damage = -30
 energy_to_kill = 200
 regen_rate = -1
-death_scene = SubResource("PackedScene_6iv8n")
+death_scene = ExtResource("2_vobiu")
 ghost_type = "tank_ghost"
 
 [node name="FloatParticle" parent="." index="0"]
