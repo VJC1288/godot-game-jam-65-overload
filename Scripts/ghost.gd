@@ -71,7 +71,8 @@ func take_damage(damage_power):
 	adjust_energy(damage_power)
 	if energy_bar.value >= energy_to_kill:
 		emit_signal("ghost_died", global_position, ghost_type)
-		death_effect()
+		if death_scene != null:
+			death_effect()
 		queue_free()
 
 func stop_damaging():

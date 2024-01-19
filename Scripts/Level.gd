@@ -4,7 +4,7 @@ class_name Level
 
 signal change_room(direction)
 
-enum DifficultyStates {REGULAR = 1, TALL, TANK}
+enum DifficultyStates {REGULAR = 1, TALL, SPEED, TANK}
 
 @export var northExit: bool
 @export var southExit: bool
@@ -55,3 +55,6 @@ func enable_exits():
 		east_exit_area.monitoring = true
 	if westExit:
 		west_exit_area.monitoring = true
+
+func _on_player_enter():
+	pass

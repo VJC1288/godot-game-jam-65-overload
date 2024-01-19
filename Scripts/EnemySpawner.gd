@@ -5,6 +5,7 @@ signal enemy_killed(type, location)
 const REGULAR_GHOST = preload("res://Scenes/Ghosts/regularGhost.tscn")
 const TANK_GHOST = preload("res://Scenes/Ghosts/tankGhost.tscn")
 const TALL_GHOST = preload("res://Scenes/Ghosts/tallGhost.tscn")
+const SPEED_GHOST = preload("res://Scenes/Ghosts/speedGhost.tscn")
 
 @onready var spawn_point = $SpawnPath/SpawnPoint
 @onready var spawn_timer = $SpawnTimer
@@ -27,9 +28,11 @@ func _physics_process(_delta):
 func spawn_ghost():
 	var ghost_type = randi_range(1,100)
 	var enemy: Ghost
-	if ghost_type >= 90 and spawnType == 3:
+	if ghost_type >= 90 and spawnType == 4:
 		enemy = TANK_GHOST.instantiate()
-	elif ghost_type >= 70 and spawnType == 2:
+	elif ghost_type >= 80 and spawnType == 3:
+		enemy = SPEED_GHOST.instantiate()
+	elif ghost_type >= 60 and spawnType == 2:
 		enemy = TALL_GHOST.instantiate()
 	else:
 		enemy = REGULAR_GHOST.instantiate()
@@ -51,6 +54,8 @@ func spawn_specific_ghost_at_area(location: Vector2, type: String):
 	match type:
 		"tank_ghost":
 			enemy = TANK_GHOST.instantiate()
+		"speed_ghost":
+			enemy = SPEED_GHOST.instantiate()
 		"tall_ghost":
 			enemy = TALL_GHOST.instantiate()
 		"regular_ghost":
