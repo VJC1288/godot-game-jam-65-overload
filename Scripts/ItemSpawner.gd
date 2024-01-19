@@ -29,7 +29,7 @@ func spawn_item(location: Vector2, item_name: String = "key"):
 			spawnedItem = BEAM_BATTERY_.instantiate()
 		"Wraith Boots":
 			spawnedItem = WRAITH_BOOTS.instantiate()
-		"Sprectre Coat":
+		"Spectre Coat":
 			spawnedItem = SPECTRE_COAT.instantiate()
 		"Geist Goulash":
 			spawnedItem = GEIST_GOULASH.instantiate()

@@ -117,7 +117,6 @@ func switch_level(direction: Vector2i):
 		storedEnemiesDict[current_coords][enemy.global_position] = enemy.ghost_type
 		enemy.call_deferred("queue_free")
 	
-	prints(storedEnemySpawnsDict)
 	#Clear the ShopKeeper
 	character_manager.remove_shopkeeper()
 	
@@ -126,6 +125,7 @@ func switch_level(direction: Vector2i):
 	for item in item_spawner.get_children():
 		storedItemsDict[current_coords][item.global_position] = item.itemName
 		item.call_deferred("queue_free")
+
 	
 	#Clear and save the coins
 	storedCoinsDict[current_coords] = {}

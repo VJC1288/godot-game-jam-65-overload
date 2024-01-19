@@ -41,8 +41,8 @@ func _ready():
 	item_spawner.spawn_item(centerOfScreen + Vector2(-70, 50), "Arc Extender")
 	item_spawner.spawn_item(centerOfScreen + Vector2(-100, 50), "Wraith Boots")
 	item_spawner.spawn_item(centerOfScreen + Vector2(-100, 30), "Wraith Boots")
-	item_spawner.spawn_item(centerOfScreen + Vector2(-100, -50), "Sprectre Coat")
-	item_spawner.spawn_item(centerOfScreen + Vector2(-100, -30), "Sprectre Coat")
+	item_spawner.spawn_item(centerOfScreen + Vector2(-100, -50), "Spectre Coat")
+	item_spawner.spawn_item(centerOfScreen + Vector2(-100, -30), "Spectre Coat")
 	item_spawner.spawn_item(centerOfScreen + Vector2(0, -60), "Geist Goulash")
 	##################### Remove on Release #########################
 	

@@ -46,7 +46,7 @@ func build_shop():
 			"key":
 				item_to_add = KEY.instantiate()
 				cost = 5
-			"Sprectre Coat":
+			"Spectre Coat":
 				item_to_add = SPECTRE_COAT.instantiate()
 				cost = 40
 			"Beam Battery":

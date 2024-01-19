@@ -62,7 +62,7 @@ func _physics_process(_delta):
 			velocity.y = move_toward(velocity.y, 0, SPEED * speedIncrease)
 			
 			animation_player.play("idle")
-			weapon_bob.play("weaponidle")
+
 			
 			select_target()
 			check_damaging_ghost()
@@ -90,7 +90,7 @@ func _physics_process(_delta):
 				velocity.x = direction.x * SPEED * speedIncrease
 				velocity.y = direction.y * SPEED * speedIncrease
 				animation_player.play("walking")
-				weapon_bob.play("weaponbob")
+
 			
 			select_target()
 			check_damaging_ghost()
