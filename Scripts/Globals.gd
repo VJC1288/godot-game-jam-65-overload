@@ -11,3 +11,7 @@ var paused: bool = false
 var currentCoinCount = 0
 
 var lastPickup: String = ""
+
+var shopInventory = {
+	Vector2i(2, 1):["beam_battery", "key", "arc_extender"]
+}

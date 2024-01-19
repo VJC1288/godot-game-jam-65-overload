@@ -24,6 +24,8 @@ func _ready():
 	
 	enemy_spawner.connect("enemy_killed", enemy_killed)
 	coin_spawner.connect("spawner_coin_collected", update_coin_count)
+	character_manager.connect("sold_item", item_spawner.spawn_item)
+	character_manager.connect("update_coin_count", update_coin_count)
 	
 	level_manager.initialize(hud, enemy_spawner, coin_spawner, item_spawner, character_manager)
 	item_spawner.initialize(hud)

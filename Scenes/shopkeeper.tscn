@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3s8k3tpmo0fy"]
+[gd_scene load_steps=8 format=3 uid="uid://c3s8k3tpmo0fy"]
 
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="1_syxea"]
 [ext_resource type="Script" path="res://Scripts/shopkeeper.gd" id="1_x7mti"]
+[ext_resource type="PackedScene" uid="uid://c6s4tpl2k4n3q" path="res://Scenes/shop_item.tscn" id="3_08vgr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61a0f"]
 size = Vector2(26, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blnm6"]
+size = Vector2(42, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1hp7"]
 size = Vector2(26, 12)
@@ -22,17 +26,19 @@ texture = ExtResource("1_syxea")
 region_enabled = true
 region_rect = Rect2(320, 192, 32, 32)
 
-[node name="Shop" type="Node2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
-shape = SubResource("RectangleShape2D_61a0f")
-
 [node name="Table" type="Sprite2D" parent="."]
 position = Vector2(0, 7)
 texture = ExtResource("1_syxea")
 region_enabled = true
 region_rect = Rect2(384, 96, 64, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_61a0f")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_blnm6")
 
 [node name="EmbarrassedArea" type="Area2D" parent="."]
 position = Vector2(0, -14)
@@ -48,6 +54,20 @@ position = Vector2(0, 29)
 shape = SubResource("RectangleShape2D_qx2lx")
 debug_color = Color(0.313726, 0.619608, 0.262745, 0.419608)
 
+[node name="Shop" type="Node2D" parent="."]
+visible = false
+
+[node name="Item1" parent="Shop" instance=ExtResource("3_08vgr")]
+z_index = 1
+position = Vector2(-90, 50)
+
+[node name="Item2" parent="Shop" instance=ExtResource("3_08vgr")]
+position = Vector2(0, 50)
+
+[node name="Item3" parent="Shop" instance=ExtResource("3_08vgr")]
+position = Vector2(90, 50)
+
 [connection signal="body_entered" from="EmbarrassedArea" to="." method="_on_embarrassed_area_body_entered"]
 [connection signal="body_exited" from="EmbarrassedArea" to="." method="_on_embarrassed_area_body_exited"]
 [connection signal="body_entered" from="ShopArea" to="." method="_on_shop_area_body_entered"]
+[connection signal="body_exited" from="ShopArea" to="." method="_on_shop_area_body_exited"]

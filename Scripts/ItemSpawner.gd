@@ -16,6 +16,7 @@ func initialize(passed_hud):
 	hud = passed_hud
 
 func spawn_item(location: Vector2, item_name: String = "key"):
+
 	var spawnedItem
 	
 	match item_name:

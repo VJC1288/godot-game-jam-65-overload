@@ -162,7 +162,7 @@ func switch_level(direction: Vector2i):
 	
 	#Create a shopkeeper
 	if new_level.hasShopkeeper:
-		character_manager.spawn_shopkeeper()
+		character_manager.spawn_shopkeeper(current_coords)
 		
 	new_level.connect("change_room", switch_level)
 	

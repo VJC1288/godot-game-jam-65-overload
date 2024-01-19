@@ -12,15 +12,17 @@ signal upgrade_collected()
 @export var itemName: String
 
 var player = null
+var disabled = false
 
 func _on_area_body_entered(_body):
-	player = Globals.currentPlayer
-	var amount = 1
-	if item != null:
-		player.collect_item(item, amount)
-		item_collected.emit()
-	if upgrade != null:
-		player.collect_upgrade(upgrade, amount)
-		Globals.lastPickup = upgrade.name
-		upgrade_collected.emit()
-	queue_free()
+	if !disabled:
+		player = Globals.currentPlayer
+		var amount = 1
+		if item != null:
+			player.collect_item(item, amount)
+			item_collected.emit()
+		if upgrade != null:
+			player.collect_upgrade(upgrade, amount)
+			Globals.lastPickup = upgrade.name
+			upgrade_collected.emit()
+		queue_free()

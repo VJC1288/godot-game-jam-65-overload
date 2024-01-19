@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6s4tpl2k4n3q"]
+
+[ext_resource type="Script" path="res://Scripts/shop_item.gd" id="1_17rnh"]
+[ext_resource type="FontFile" uid="uid://ulu7kgqxb12r" path="res://Assets/Fonts/LoSumires-2X8l.ttf" id="2_aigcq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jagka"]
+bg_color = Color(0.721569, 0.588235, 0, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbamd"]
+bg_color = Color(0.431373, 0.431373, 0.431373, 0.290196)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u887b"]
+size = Vector2(30, 25)
+
+[node name="Item" type="Node2D"]
+script = ExtResource("1_17rnh")
+
+[node name="BoxSelect" type="Panel" parent="."]
+visible = false
+offset_left = -15.0
+offset_right = 15.0
+offset_bottom = 25.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jagka")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -15.0
+offset_right = 15.0
+offset_bottom = 25.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kbamd")
+
+[node name="SelectArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectArea"]
+position = Vector2(0, 12.5)
+shape = SubResource("RectangleShape2D_u887b")
+
+[node name="CostLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 20.0
+offset_bottom = 11.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.705882, 0.603922, 0, 1)
+theme_override_fonts/font = ExtResource("2_aigcq")
+theme_override_font_sizes/font_size = 15
+text = "$Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="SelectArea" to="." method="_on_select_area_input_event"]
+[connection signal="mouse_entered" from="SelectArea" to="." method="_on_select_area_mouse_entered"]
+[connection signal="mouse_exited" from="SelectArea" to="." method="_on_select_area_mouse_exited"]
