@@ -35,14 +35,15 @@ func _ready():
 	################ Temp Testing Items to Spawn ####################
 	coin_spawner.spawn_coins(centerOfScreen + Vector2(50, 50), randi_range(1,5))
 	item_spawner.spawn_item(centerOfScreen + Vector2(-50, -50), "key")
-	item_spawner.spawn_item(centerOfScreen + Vector2(50, -50), "beam_battery")
-	item_spawner.spawn_item(centerOfScreen + Vector2(70, -50), "beam_battery")
-	item_spawner.spawn_item(centerOfScreen + Vector2(-50, 50), "arc_extender")
-	item_spawner.spawn_item(centerOfScreen + Vector2(-70, 50), "arc_extender")
-	item_spawner.spawn_item(centerOfScreen + Vector2(-100, 50), "wraith_boots")
-	item_spawner.spawn_item(centerOfScreen + Vector2(-100, 30), "wraith_boots")
-	item_spawner.spawn_item(centerOfScreen + Vector2(-100, -50), "spectre_coat")
-	item_spawner.spawn_item(centerOfScreen + Vector2(-100, -30), "spectre_coat")
+	item_spawner.spawn_item(centerOfScreen + Vector2(50, -50), "Beam Battery")
+	item_spawner.spawn_item(centerOfScreen + Vector2(70, -50), "Beam Battery")
+	item_spawner.spawn_item(centerOfScreen + Vector2(-50, 50), "Arc Extender")
+	item_spawner.spawn_item(centerOfScreen + Vector2(-70, 50), "Arc Extender")
+	item_spawner.spawn_item(centerOfScreen + Vector2(-100, 50), "Wraith Boots")
+	item_spawner.spawn_item(centerOfScreen + Vector2(-100, 30), "Wraith Boots")
+	item_spawner.spawn_item(centerOfScreen + Vector2(-100, -50), "Sprectre Coat")
+	item_spawner.spawn_item(centerOfScreen + Vector2(-100, -30), "Sprectre Coat")
+	item_spawner.spawn_item(centerOfScreen + Vector2(0, -60), "Geist Goulash")
 	##################### Remove on Release #########################
 	
 
@@ -69,6 +70,8 @@ func enemy_killed(location:Vector2, type: String):
 			amount = randi_range(2,3)
 		"speed_ghost":
 			amount = 1
+		"wall_ghost":
+			amount = randi_range(2,3)
 		_:
 			amount = 1
 

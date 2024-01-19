@@ -12,6 +12,7 @@ enum PlayerAttackStates{FIRING, NOT_FIRING}
 @onready var sprite_2d = $Sprite2D
 @onready var dps_timer = $DPSTimer
 @onready var animation_player = $AnimationPlayer
+@onready var weapon_bob = $WeaponBob
 @onready var weapon_1 = $Weapon1
 @onready var weapon_muzzle = $WeaponMuzzle
 @onready var hitbox_component = $HitboxComponent
@@ -61,6 +62,7 @@ func _physics_process(_delta):
 			velocity.y = move_toward(velocity.y, 0, SPEED * speedIncrease)
 			
 			animation_player.play("idle")
+			weapon_bob.play("weaponidle")
 			
 			select_target()
 			check_damaging_ghost()
@@ -88,6 +90,7 @@ func _physics_process(_delta):
 				velocity.x = direction.x * SPEED * speedIncrease
 				velocity.y = direction.y * SPEED * speedIncrease
 				animation_player.play("walking")
+				weapon_bob.play("weaponbob")
 			
 			select_target()
 			check_damaging_ghost()
@@ -153,6 +156,16 @@ func move_tractor_beam():
 
 func collect_item(item, amount):
 	item_inv.insert(item, amount)
+	
+func collect_instantItem(item):
+	if item == "Geist Goulash":
+		health_component.adjust_health(20)
+		
+func bought_item(amount):
+	item_inv.removeCoins(amount)
+
+func used_item(item_resource):
+	item_inv.removeItem(item_resource)
 
 func collect_upgrade(upgrade, amount):
 	upg_inv.insert(upgrade, amount)
@@ -170,7 +183,7 @@ func collect_upgrade(upgrade, amount):
 			sprite_2d.texture = BUNGUS_SPECTRECOAT_2
 		else:
 			sprite_2d.texture = BUNGUS_SPECTRECOAT
-		
+
 func _on_health_component_health_changed(new_health):
 	emit_signal("player_health_changed", new_health)
 	

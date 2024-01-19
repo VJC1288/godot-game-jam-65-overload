@@ -9,7 +9,7 @@ size = Vector2(16, 8)
 
 [node name="BeamBattery+" instance=ExtResource("1_cm340")]
 upgrade = ExtResource("2_bgsj3")
-itemName = "beam_battery"
+itemName = "Beam Battery"
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_kr44j")

@@ -25,6 +25,7 @@ func remove_shopkeeper():
 func bought_item_at_cost(type, location, cost):
 	pass_item_to_spawner(type, location)
 	pass_cost_to_hud(cost)
+	Globals.currentPlayer.bought_item(cost)
 
 func pass_item_to_spawner(type, location):
 	prints(location, type)

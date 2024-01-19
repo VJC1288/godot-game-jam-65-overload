@@ -9,7 +9,7 @@ size = Vector2(12, 12)
 
 [node name="WraithBoots" instance=ExtResource("1_3x4ft")]
 upgrade = ExtResource("2_qcp50")
-itemName = "wraith_boots"
+itemName = "Wraith Boots"
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_gjak1")

@@ -19,6 +19,7 @@ const SPECTRE_COAT = preload("res://Scenes/Pickups/spectre_coat.tscn")
 const WRAITH_BOOTS = preload("res://Scenes/Pickups/wraith_boots.tscn")
 const BEAM_BATTERY_ = preload("res://Scenes/Pickups/beamBattery+.tscn")
 const ARC_EXTENDER = preload("res://Scenes/Pickups/arcExtender.tscn")
+const COIN_ICON = preload("res://Assets/Inventory/coin_icon.tres")
 
 var shopActive = false
 var roomCoords: Vector2i = Vector2i(2,1)
@@ -45,16 +46,16 @@ func build_shop():
 			"key":
 				item_to_add = KEY.instantiate()
 				cost = 5
-			"spectre_coat":
+			"Sprectre Coat":
 				item_to_add = SPECTRE_COAT.instantiate()
 				cost = 40
-			"beam_battery":
+			"Beam Battery":
 				item_to_add = BEAM_BATTERY_.instantiate()
 				cost = 30
-			"arc_extender":
+			"Arc Extender":
 				item_to_add = ARC_EXTENDER.instantiate()
 				cost = 30
-			"wraith_boots":
+			"Wraith Boots":
 				item_to_add = WRAITH_BOOTS.instantiate()
 				cost = 35
 			_:
@@ -77,6 +78,8 @@ func purchase_item(slot, cost):
 		var inventory = Globals.shopInventory[roomCoords]
 		emit_signal("item_purchased", slot.item_name_for_sale, slot.global_position + Vector2(0,15), cost)
 		
+		
+		
 		match slot:
 			item_1:
 				inventory[0] = "empty"
@@ -90,6 +93,7 @@ func purchase_item(slot, cost):
 		slot.item_for_sale.queue_free()
 		sprite_2d.region_rect.position.x = 320
 		sprite_2d.region_rect.position.y = 224
+		
 
 func _on_embarrassed_area_body_entered(_body):
 	sprite_2d.region_rect.position.x = 288
