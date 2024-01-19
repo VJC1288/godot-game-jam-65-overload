@@ -32,6 +32,7 @@ position = Vector2(3, 8)
 process_material = ExtResource("3_4ln2n")
 
 [node name="Sprite2D" parent="." index="2"]
+self_modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_ewhuu")
 texture = ExtResource("3_wcx45")
 

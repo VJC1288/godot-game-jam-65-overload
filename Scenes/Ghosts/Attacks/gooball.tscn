@@ -1,8 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://c155eryn4stkp"]
+[gd_scene load_steps=7 format=3 uid="uid://c155eryn4stkp"]
 
 [ext_resource type="Script" path="res://Scenes/Ghosts/Attacks/gooball.gd" id="1_7fls0"]
 [ext_resource type="Texture2D" uid="uid://xh36kh02gfxp" path="res://Assets/gooball.png" id="1_xvij2"]
 [ext_resource type="PackedScene" uid="uid://bmtkidpm0bjfa" path="res://Scenes/hurt_box.tscn" id="3_nk0j7"]
+
+[sub_resource type="Gradient" id="Gradient_kktku"]
+offsets = PackedFloat32Array(0.0909091, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2qyo1"]
+gradient = SubResource("Gradient_kktku")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.174312, 0.431193)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6mcph"]
 radius = 5.09902
@@ -12,7 +22,12 @@ texture_filter = 1
 collision_layer = 2
 script = ExtResource("1_7fls0")
 speed = 65
-damage = -20
+damage = -10
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 6)
+scale = Vector2(0.28125, 0.125)
+texture = SubResource("GradientTexture2D_2qyo1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_xvij2")
@@ -20,7 +35,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="ExplodeTimer" type="Timer" parent="."]
-wait_time = 2.5
+wait_time = 1.8
 one_shot = true
 
 [node name="HurtBox" parent="." instance=ExtResource("3_nk0j7")]

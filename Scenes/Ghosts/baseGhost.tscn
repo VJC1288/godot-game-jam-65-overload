@@ -6,12 +6,12 @@
 [ext_resource type="Material" uid="uid://xf0ee7yrnp6u" path="res://Scenes/Particles/baseFloatParticle.tres" id="3_kjvfp"]
 [ext_resource type="PackedScene" uid="uid://bmtkidpm0bjfa" path="res://Scenes/hurt_box.tscn" id="3_r7y4v"]
 
-[sub_resource type="Gradient" id="Gradient_kktku"]
+[sub_resource type="Gradient" id="Gradient_4cqmc"]
 offsets = PackedFloat32Array(0.0909091, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jeq60"]
-gradient = SubResource("Gradient_kktku")
+gradient = SubResource("Gradient_4cqmc")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.174312, 0.431193)
