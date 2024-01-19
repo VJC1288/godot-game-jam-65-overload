@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8io1fauo4nul"]
+
+[ext_resource type="Script" path="res://Scenes/Ghosts/Attacks/goo_puddle.gd" id="1_0wbfu"]
+[ext_resource type="Texture2D" uid="uid://xh36kh02gfxp" path="res://Assets/gooball.png" id="1_3lmlt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jom4w"]
+radius = 14.0357
+
+[node name="GooPuddle" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_0wbfu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3lmlt")
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_jom4w")
+
+[node name="PuddleTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="PuddleTimer" to="." method="_on_puddle_timer_timeout"]

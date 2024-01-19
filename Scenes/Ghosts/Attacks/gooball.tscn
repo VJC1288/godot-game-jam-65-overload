@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c155eryn4stkp"]
+
+[ext_resource type="Script" path="res://Scenes/Ghosts/Attacks/gooball.gd" id="1_7fls0"]
+[ext_resource type="Texture2D" uid="uid://xh36kh02gfxp" path="res://Assets/gooball.png" id="1_xvij2"]
+[ext_resource type="PackedScene" uid="uid://bmtkidpm0bjfa" path="res://Scenes/hurt_box.tscn" id="3_nk0j7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6mcph"]
+radius = 5.09902
+
+[node name="GooBall" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 2
+script = ExtResource("1_7fls0")
+speed = 65
+damage = -20
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xvij2")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="ExplodeTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[node name="HurtBox" parent="." instance=ExtResource("3_nk0j7")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_6mcph")
+
+[connection signal="timeout" from="ExplodeTimer" to="." method="_on_explode_timer_timeout"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
