@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdwte7f6l3kjt"]
+[gd_scene load_steps=14 format=3 uid="uid://cdwte7f6l3kjt"]
 
 [ext_resource type="Script" path="res://Scripts/ghost.gd" id="1_ly0sh"]
 [ext_resource type="Shader" path="res://Shaders/ghost.gdshader" id="2_blqpq"]
+[ext_resource type="PackedScene" uid="uid://wnxqxsr7fcwb" path="res://Scenes/Particles/baseFloatParticle.tscn" id="2_lragd"]
+[ext_resource type="Material" uid="uid://xf0ee7yrnp6u" path="res://Scenes/Particles/baseFloatParticle.tres" id="3_kjvfp"]
 [ext_resource type="PackedScene" uid="uid://bmtkidpm0bjfa" path="res://Scenes/hurt_box.tscn" id="3_r7y4v"]
 
 [sub_resource type="Gradient" id="Gradient_kktku"]
@@ -52,6 +54,9 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_ly0sh")
 ghost_damage = -20
+
+[node name="FloatParticle" parent="." instance=ExtResource("2_lragd")]
+process_material = ExtResource("3_kjvfp")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(5.96046e-08, 16)
