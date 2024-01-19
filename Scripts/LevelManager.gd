@@ -2,7 +2,7 @@ extends Node2D
 
 class_name LevelManager
 
-signal level_changed(coords)
+signal level_changed(coords, hasShopkeeper)
 signal room_spawn_enemy(location, type)
 signal level_manager_item_spawn(type, location)
 
@@ -27,7 +27,11 @@ const LEVEL_0_3_ = preload("res://Scenes/Levels/level(0,3).tscn")
 const LEVEL_0_4_ = preload("res://Scenes/Levels/level(0,4).tscn")
 const LEVEL_1_3_ = preload("res://Scenes/Levels/level(1,3).tscn")
 const LEVEL__3_1_ = preload("res://Scenes/Levels/level(_3,1).tscn")
-
+const LEVEL_3_2_ = preload("res://Scenes/Levels/level(3,2).tscn")
+const LEVEL_3_3_ = preload("res://Scenes/Levels/level(3,3).tscn")
+const LEVEL__1_4_ = preload("res://Scenes/Levels/level(_1,4).tscn")
+const LEVEL__2_4_ = preload("res://Scenes/Levels/level(_2,4).tscn")
+const LEVEL__2_5_ = preload("res://Scenes/Levels/level(_2,5).tscn")
 ##Use this to start the game in a different room
 @export var debug_spawn_room = Vector2i(0,0)
 
@@ -61,8 +65,12 @@ var levelsDictionary = {
 	Vector2i(0,3): LEVEL_0_3_,
 	Vector2i(0,4): LEVEL_0_4_,
 	Vector2i(1,3): LEVEL_1_3_,
-	Vector2i(-3,1): LEVEL__3_1_
-
+	Vector2i(-3,1): LEVEL__3_1_,
+	Vector2i(3,2): LEVEL_3_2_,
+	Vector2i(3,3): LEVEL_3_3_,
+	Vector2i(-1,4): LEVEL__1_4_,
+	Vector2i(-2,4): LEVEL__2_4_,
+	Vector2i(-2, 5): LEVEL__2_5_
 }
 
 var storedCoinsDict = {}
@@ -180,9 +188,11 @@ func switch_level(direction: Vector2i):
 
 	
 	add_child(new_level)
-	level_changed.emit(current_coords)
 	
-	#Document that the new room has been seen
+	#emit elvel change signal for map
+	level_changed.emit(current_coords, current_level.hasShopkeeper)
+	
+
 
 	
 	#Create a shopkeeper
@@ -193,6 +203,7 @@ func switch_level(direction: Vector2i):
 	new_level.connect("spawn_enemy", room_specific_enemy_spawn)
 	new_level.connect("spawn_room_item", room_specific_item_spawn)
 	
+	#Document that the new room has been seen
 	if Globals.roomsSeen.find(current_coords) == -1:
 		Globals.roomsSeen.append(current_coords)
 		current_level.on_first_enter()

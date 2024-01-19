@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var menu: PauseMenu = $"../Menu"
 
 var player_indicator: Vector2 = Vector2(2,3)
+var shop_indicator: Vector2 = Vector2(3,4)
 
 var map_open: bool = false
 
@@ -13,6 +14,8 @@ var exits: Array
 
 var currentTile: Vector2i
 var previousTile: Vector2i
+var previousTileHasShopkeeper: bool = false
+
 
 var mapTileDictionary = {
 	["N","S","E","W"]: Vector2i(0,0),
@@ -61,11 +64,12 @@ func close_map():
 	map.visible = false
 	map_open = false
 
-func _on_level_manager_level_changed(coords):
+func _on_level_manager_level_changed(coords, hasShopkeeper):
 	check_doors()
 	previousTile = currentTile
 	currentTile = coords
-	setMapTile()
+	setMapTile(previousTileHasShopkeeper)
+	previousTileHasShopkeeper = hasShopkeeper
 		
 func check_doors():
 	exits = []
@@ -91,7 +95,10 @@ func check_doors():
 	else: 
 		exits.append("X")
 
-func setMapTile():
+func setMapTile(hasShopkeer:bool=false):
 	game_map.set_cell(0, currentTile, 1, mapTileDictionary[exits])
-	game_map.erase_cell(1, previousTile)
+	if previousTileHasShopkeeper:
+		game_map.set_cell(1, previousTile, 1, shop_indicator)
+	else:	
+		game_map.erase_cell(1, previousTile)
 	game_map.set_cell(1, currentTile, 1, player_indicator)

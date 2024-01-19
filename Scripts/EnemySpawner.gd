@@ -17,7 +17,7 @@ const WALL_GHOST = preload("res://Scenes/Ghosts/wallGhost.tscn")
 var spawnsLeft:int = 0
 var spawnType:int = 1
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _physics_process(_delta):
 	if active and spawnsLeft > 0:
 		if spawn_timer.is_stopped() and Globals.currentPlayer != null:
@@ -29,11 +29,11 @@ func _physics_process(_delta):
 func spawn_ghost():
 	var ghost_type = randi_range(1,100)
 	var enemy: Ghost
-	if ghost_type >= 90 and spawnType == 4:
+	if ghost_type >= 80 and spawnType == 4:
 		enemy = TANK_GHOST.instantiate()
-	elif ghost_type >= 80 and spawnType == 3:
+	elif ghost_type >= 70 and spawnType == 3:
 		enemy = SPEED_GHOST.instantiate()
-	elif ghost_type >= 60 and spawnType == 2:
+	elif ghost_type >= 45 and spawnType == 2:
 		enemy = TALL_GHOST.instantiate()
 	else:
 		enemy = REGULAR_GHOST.instantiate()

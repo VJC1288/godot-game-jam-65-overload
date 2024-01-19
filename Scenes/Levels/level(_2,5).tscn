@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlh3eoekscu4l"]
+
+[ext_resource type="PackedScene" uid="uid://d17dxk0qhpbm" path="res://Scenes/Levels/baseLevel.tscn" id="1_h3tlq"]
+
+[node name="Level(-2,5)" instance=ExtResource("1_h3tlq")]
+northExit = true
+levelCoordinates = Vector2i(-2, 5)
+numberOfEnemySpawns = 7
+difficulty = 4

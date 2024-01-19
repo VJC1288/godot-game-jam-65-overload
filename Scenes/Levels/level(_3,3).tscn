@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0xwudmibcfbx"]
+[gd_scene load_steps=3 format=3 uid="uid://d0xwudmibcfbx"]
 
 [ext_resource type="PackedScene" uid="uid://d17dxk0qhpbm" path="res://Scenes/Levels/baseLevel.tscn" id="1_d4lix"]
+[ext_resource type="Script" path="res://Scripts/Level Scripts/level(_3,3).gd" id="2_e3w2y"]
 
 [node name="Level(-3,3)" instance=ExtResource("1_d4lix")]
+script = ExtResource("2_e3w2y")
 northExit = true
 levelCoordinates = Vector2i(-3, 3)
 numberOfEnemySpawns = 6

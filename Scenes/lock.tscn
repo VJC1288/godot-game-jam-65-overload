@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvy3qojq55bby"]
+
+[ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="1_jac6r"]
+[ext_resource type="Script" path="res://Scripts/lock.gd" id="1_pvd1t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fvdcl"]
+size = Vector2(28, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_miby7"]
+size = Vector2(32, 44)
+
+[node name="Lock" type="StaticBody2D"]
+collision_layer = 4
+script = ExtResource("1_pvd1t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jac6r")
+region_enabled = true
+region_rect = Rect2(512, 352, 32, 64)
+
+[node name="UnlockArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UnlockArea"]
+position = Vector2(0, 27)
+shape = SubResource("RectangleShape2D_fvdcl")
+debug_color = Color(0.145098, 0.623529, 0.486275, 0.419608)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_miby7")
+
+[connection signal="body_entered" from="UnlockArea" to="." method="_on_unlock_area_body_entered"]

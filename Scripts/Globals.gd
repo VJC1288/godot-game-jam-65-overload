@@ -17,5 +17,7 @@ var shopInventory = {
 	Vector2i(-3, 1):["Spectre Coat", "Geist Goulash", "Wraith Boots"]
 }
 
+var locksUnlocked = []
+
 var roomsSeen = []
 	

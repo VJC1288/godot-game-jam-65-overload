@@ -4,4 +4,5 @@
 
 [node name="Level(-3,1)" instance=ExtResource("1_184nd")]
 southExit = true
+levelCoordinates = Vector2i(-3, 1)
 hasShopkeeper = true
