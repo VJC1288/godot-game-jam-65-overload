@@ -3,6 +3,7 @@ extends Node2D
 class_name LevelManager
 
 signal level_changed(coords)
+signal room_spawn_enemy(location, type)
 
 const SHOPKEEPER = preload("res://Scenes/shopkeeper.tscn")
 
@@ -74,9 +75,12 @@ func _ready():
 	if debug_spawn_room != Vector2i(0,0):
 		new_level = levelsDictionary[debug_spawn_room].instantiate()
 		current_coords = debug_spawn_room
+		
 	else:
 		new_level = levelsDictionary[current_coords].instantiate()
-		
+	
+	Globals.roomsSeen.append(current_coords)
+	
 	new_level.connect("change_room", switch_level)
 	current_level = new_level
 	add_child(new_level)
@@ -110,7 +114,6 @@ func switch_level(direction: Vector2i):
 	
 	
 	#Clear and save the enemies
-
 	storedEnemySpawnsDict[current_coords] = enemy_spawner.spawnsLeft
 	storedEnemiesDict[current_coords] = {}
 	for enemy in enemy_spawner.get_enemies():
@@ -170,19 +173,35 @@ func switch_level(direction: Vector2i):
 	else:
 		enemy_spawner.spawnsLeft = current_level.numberOfEnemySpawns
 	
+
 	
 	add_child(new_level)
 	level_changed.emit(current_coords)
+	
+	#Document that the new room has been seen
+
 	
 	#Create a shopkeeper
 	if new_level.hasShopkeeper:
 		character_manager.spawn_shopkeeper(current_coords)
 		
 	new_level.connect("change_room", switch_level)
+	new_level.connect("spawn_enemy", room_specific_spawn)
+	
+	if Globals.roomsSeen.find(current_coords) == -1:
+		Globals.roomsSeen.append(current_coords)
+		current_level.on_first_enter()
 	
 	await hud.unfade_from_black()
 	Globals.currentPlayer.unpause()
 	current_level.enable_exits()
+	
+
+			
 
 func enemy_killed():
 	current_level.numberOfEnemySpawns -= 1
+
+func room_specific_spawn(type, location):
+	emit_signal("room_spawn_enemy", location, type)
+	

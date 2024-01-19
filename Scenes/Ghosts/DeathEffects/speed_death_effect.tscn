@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqmnj1d7tbdhs"]
+
+[ext_resource type="PackedScene" uid="uid://b72up8ghkqk1c" path="res://Scenes/Ghosts/DeathEffects/baseDeathEffect.tscn" id="1_8fo5e"]
+[ext_resource type="Material" uid="uid://dhmd82ny3b8h6" path="res://Scenes/Ghosts/DeathEffects/speedGhostDeath.tres" id="2_tcmuq"]
+
+[node name="SpeedDeathEffect" instance=ExtResource("1_8fo5e")]
+process_material = ExtResource("2_tcmuq")

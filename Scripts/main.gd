@@ -28,6 +28,7 @@ func _ready():
 	character_manager.connect("update_coin_count", update_coin_count)
 	
 	level_manager.initialize(hud, enemy_spawner, coin_spawner, item_spawner, character_manager)
+	level_manager.connect("room_spawn_enemy", enemy_spawner.spawn_specific_ghost_at_area)
 	item_spawner.initialize(hud)
 	hud.update_coin_count()
 	

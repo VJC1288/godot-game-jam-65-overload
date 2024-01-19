@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dt1dg0701yorv"]
+[gd_scene load_steps=9 format=3 uid="uid://dt1dg0701yorv"]
 
 [ext_resource type="PackedScene" uid="uid://cdwte7f6l3kjt" path="res://Scenes/Ghosts/baseGhost.tscn" id="1_y377v"]
 [ext_resource type="Shader" path="res://Shaders/ghost.gdshader" id="2_c4btd"]
+[ext_resource type="PackedScene" uid="uid://cqmnj1d7tbdhs" path="res://Scenes/Ghosts/DeathEffects/speed_death_effect.tscn" id="2_csqes"]
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="3_w24c7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nhopn"]
@@ -22,7 +23,14 @@ size = Vector2(28, 18)
 SPEED = 60.0
 ghost_damage = -10
 energy_to_kill = 30
+death_scene = ExtResource("2_csqes")
 ghost_type = "speed_ghost"
+
+[node name="FloatParticle" parent="." index="0"]
+modulate = Color(0.858824, 0.513726, 0.180392, 1)
+
+[node name="Shadow" parent="." index="1"]
+position = Vector2(3.55271e-15, 5)
 
 [node name="Sprite2D" parent="." index="2"]
 material = SubResource("ShaderMaterial_nhopn")
@@ -42,7 +50,6 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_3n5eh")
 
 [node name="Panel" parent="." index="6"]
-visible = true
 offset_top = -12.0
 offset_bottom = 12.0
 

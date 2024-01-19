@@ -3,8 +3,11 @@ extends Node2D
 class_name Level
 
 signal change_room(direction)
+signal spawn_enemy(type, location)
 
 enum DifficultyStates {REGULAR = 1, TALL, SPEED, TANK}
+
+@export var hasBeenEntered:bool = false
 
 @export var northExit: bool
 @export var southExit: bool
@@ -56,5 +59,5 @@ func enable_exits():
 	if westExit:
 		west_exit_area.monitoring = true
 
-func _on_player_enter():
+func on_first_enter():
 	pass

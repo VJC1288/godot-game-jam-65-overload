@@ -15,3 +15,6 @@ var lastPickup: String = ""
 var shopInventory = {
 	Vector2i(2, 1):["Beam Battery", "key", "Arc Extender"]
 }
+
+var roomsSeen = []
+	

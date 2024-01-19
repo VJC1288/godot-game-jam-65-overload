@@ -12,7 +12,6 @@ enum PlayerAttackStates{FIRING, NOT_FIRING}
 @onready var sprite_2d = $Sprite2D
 @onready var dps_timer = $DPSTimer
 @onready var animation_player = $AnimationPlayer
-@onready var weapon_bob = $WeaponBob
 @onready var weapon_1 = $Weapon1
 @onready var weapon_muzzle = $WeaponMuzzle
 @onready var hitbox_component = $HitboxComponent

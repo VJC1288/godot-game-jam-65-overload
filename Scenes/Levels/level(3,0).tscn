@@ -1,19 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://ffifag77pb7"]
+[gd_scene load_steps=4 format=3 uid="uid://ffifag77pb7"]
 
 [ext_resource type="PackedScene" uid="uid://d17dxk0qhpbm" path="res://Scenes/Levels/baseLevel.tscn" id="1_syk2b"]
+[ext_resource type="Script" path="res://Scripts/Level Scripts/level(3,0).gd" id="2_0lg5l"]
 [ext_resource type="PackedScene" uid="uid://c8eqityirmdou" path="res://Scenes/Particles/risingparticles25by25.tscn" id="2_dbmmw"]
-[ext_resource type="PackedScene" uid="uid://s1uf7n2lyg4w" path="res://Scenes/Ghosts/wallGhost.tscn" id="3_gqkhv"]
-[ext_resource type="Shader" path="res://Shaders/ghost.gdshader" id="4_uxvas"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sewm5"]
-resource_local_to_scene = true
-shader = ExtResource("4_uxvas")
-shader_parameter/intensity = 0.0
 
 [node name="Level(3,0)" instance=ExtResource("1_syk2b")]
+script = ExtResource("2_0lg5l")
 southExit = true
 westExit = true
 levelCoordinates = Vector2i(3, 0)
+numberOfEnemySpawns = 3
+difficulty = 3
 
 [node name="Ground" parent="." index="0"]
 layer_0/tile_data = PackedInt32Array(0, 131072, 1, 65536, 131072, 4, 131072, 458752, 10, 196608, 458752, 11, 262144, 65536, 3, 327680, 131072, 6, 1, 196608, 0, 65537, 196608, 2, 131073, 524288, 10, 196609, 524288, 11, 262145, 196608, 2, 327681, 196608, 6, 2, 262144, 1, 65538, 262144, 2, 131074, 262144, 2, 196610, 262144, 2, 262146, 262144, 2, 327682, 262144, 6, 3, 262144, 1, 65539, 262144, 2, 131075, 262144, 2, 196611, 262144, 2, 262147, 262144, 2, 327683, 262144, 6, 196612, 262144, 2, 262148, 327680, 4, 327684, 524288, 9, 196613, 262144, 2, 262149, 327680, 3, 327685, 589824, 9, 6, 262144, 1, 65542, 262144, 2, 131078, 262144, 2, 196614, 262144, 2, 262150, 262144, 2, 327686, 262144, 7, 7, 262144, 1, 65543, 262144, 2, 262151, 262144, 2, 327687, 262144, 6, 8, 393216, 1, 65544, 393216, 2, 131080, 393216, 2, 196616, 393216, 2, 262152, 393216, 2, 327688, 393216, 6, 9, 458752, 1, 65545, 458752, 4, 131081, 458752, 4, 196617, 458752, 4, 262153, 524288, 3, 327689, 458752, 6, 65540, 65536, 16, 65541, 196608, 16, 131076, 65536, 18, 131077, 196608, 18, 4, 262144, 1, 5, 262144, 1, 131079, 262144, 2, 196615, 262144, 2)
@@ -25,16 +22,3 @@ unique_name_in_owner = true
 [node name="RisingParticles" parent="." index="10" instance=ExtResource("2_dbmmw")]
 position = Vector2(160, 69)
 amount = 10
-
-[node name="WallGhost" parent="." index="11" instance=ExtResource("3_gqkhv")]
-position = Vector2(277, 55)
-rotation = 4.71239
-
-[node name="Sprite2D" parent="WallGhost" index="2"]
-material = SubResource("ShaderMaterial_sewm5")
-
-[node name="AttackTimer" parent="WallGhost" index="9"]
-rightWall = true
-
-[editable path="WallGhost"]
-[editable path="WallGhost/HurtBox"]

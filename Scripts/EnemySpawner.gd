@@ -6,6 +6,7 @@ const REGULAR_GHOST = preload("res://Scenes/Ghosts/regularGhost.tscn")
 const TANK_GHOST = preload("res://Scenes/Ghosts/tankGhost.tscn")
 const TALL_GHOST = preload("res://Scenes/Ghosts/tallGhost.tscn")
 const SPEED_GHOST = preload("res://Scenes/Ghosts/speedGhost.tscn")
+const WALL_GHOST = preload("res://Scenes/Ghosts/wallGhost.tscn")
 
 @onready var spawn_point = $SpawnPath/SpawnPoint
 @onready var spawn_timer = $SpawnTimer
@@ -51,6 +52,8 @@ func get_enemies() -> Array[Node]:
 func spawn_specific_ghost_at_area(location: Vector2, type: String):
 	var enemy: Ghost
 	
+
+	
 	match type:
 		"tank_ghost":
 			enemy = TANK_GHOST.instantiate()
@@ -60,10 +63,28 @@ func spawn_specific_ghost_at_area(location: Vector2, type: String):
 			enemy = TALL_GHOST.instantiate()
 		"regular_ghost":
 			enemy = REGULAR_GHOST.instantiate()
+		"wall_ghost":
+			enemy = WALL_GHOST.instantiate()
+
 		_:
 			print("Tried to make a poo poo ghost")
 			return
 	
+	
 	enemy.global_position = location
+	
+
+
 	enemy.connect("ghost_died", ghost_died)
 	enemies.add_child(enemy)
+	
+	########## Wall Ghost Rotation logic #############
+	if enemy.ghost_type == "wall_ghost":
+		if enemy.global_position.x > (get_viewport_rect().size.x * 8/10):
+			enemy.rotate(deg_to_rad(-90))
+			
+		elif enemy.global_position.x <= (get_viewport_rect().size.x * 2/10):
+			enemy.rotate(deg_to_rad(90))
+		else:
+			pass
+	##################################################
