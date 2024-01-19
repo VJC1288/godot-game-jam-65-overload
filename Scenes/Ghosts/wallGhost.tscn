@@ -1,0 +1,114 @@
+[gd_scene load_steps=13 format=3 uid="uid://s1uf7n2lyg4w"]
+
+[ext_resource type="PackedScene" uid="uid://cdwte7f6l3kjt" path="res://Scenes/Ghosts/baseGhost.tscn" id="1_lsu6m"]
+[ext_resource type="PackedScene" uid="uid://b3pugg6bajbmm" path="res://Scenes/Ghosts/DeathEffects/wallGhostDeathEffect.tscn" id="2_770ua"]
+[ext_resource type="Shader" path="res://Shaders/ghost.gdshader" id="2_wnt1t"]
+[ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="3_r7cqq"]
+[ext_resource type="Script" path="res://Scripts/wallGhostAttack.gd" id="4_8qm2k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_27r45"]
+resource_local_to_scene = true
+shader = ExtResource("2_wnt1t")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhwbr"]
+size = Vector2(22, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6n58k"]
+size = Vector2(30, 32)
+
+[sub_resource type="Animation" id="Animation_oksx5"]
+resource_name = "wallGhostAttack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(448, 480, 32, 32), Rect2(448, 480, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_ipnyp"]
+resource_name = "wallGhostIdle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(416, 448, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_fbu0y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(416, 448, 32, 32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0b6jw"]
+_data = {
+"RESET": SubResource("Animation_fbu0y"),
+"wallGhostAttack": SubResource("Animation_oksx5"),
+"wallGhostIdle": SubResource("Animation_ipnyp")
+}
+
+[node name="WallGhost" instance=ExtResource("1_lsu6m")]
+SPEED = 0.0
+regen_rate = -1
+death_scene = ExtResource("2_770ua")
+ghost_type = "wall_ghost"
+
+[node name="FloatParticle" parent="." index="0"]
+visible = false
+process_material = null
+
+[node name="Shadow" parent="." index="1"]
+position = Vector2(1, -1)
+scale = Vector2(0.640625, 0.828125)
+
+[node name="Sprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_27r45")
+texture = ExtResource("3_r7cqq")
+region_rect = Rect2(416, 448, 32, 32)
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_fhwbr")
+
+[node name="CollisionShape2D" parent="SelectArea" index="0"]
+shape = SubResource("RectangleShape2D_6n58k")
+
+[node name="AttackTimer" type="Timer" parent="." index="9"]
+wait_time = 4.0
+autostart = true
+script = ExtResource("4_8qm2k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="10"]
+libraries = {
+"": SubResource("AnimationLibrary_0b6jw")
+}
+
+[node name="AttackSource" type="Marker2D" parent="." index="11"]
+texture_filter = 1
+position = Vector2(13, -10)
+
+[connection signal="timeout" from="AttackTimer" to="AttackTimer" method="_on_timeout"]
+
+[editable path="HurtBox"]

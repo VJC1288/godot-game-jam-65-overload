@@ -474,6 +474,8 @@ layer_0/name = "Ground"
 layer_1/name = "Doodads"
 layer_1/tile_data = PackedInt32Array()
 
+[node name="AttackContainer" type="Node2D" parent="."]
+
 [node name="NorthExit" type="Area2D" parent="."]
 collision_layer = 0
 monitoring = false

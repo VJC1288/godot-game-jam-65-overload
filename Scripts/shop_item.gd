@@ -22,7 +22,7 @@ func _on_select_area_mouse_exited():
 	box_select.visible = false
 
 
-func _on_select_area_input_event(viewport, event, shape_idx):
+func _on_select_area_input_event(_viewport, event, _shape_idx):
 	if !purchased:
 		if Globals.currentCoinCount >= cost:
 			if event is InputEventMouseButton:

@@ -24,6 +24,8 @@ var taking_damage:bool = false
 
 var sprite2d_shader: ShaderMaterial
 var startingRectX: int
+var startingRectY: int
+var direction: Vector2
 
 func _ready():
 	player_to_attack = Globals.currentPlayer
@@ -33,6 +35,7 @@ func _ready():
 	hurt_box.initialize_team(team)
 	hurt_box.set_damage(ghost_damage)
 	startingRectX = sprite_2d.region_rect.position.x
+	startingRectY = sprite_2d.region_rect.position.y
 	
 func _physics_process(_delta):
 	
@@ -49,7 +52,7 @@ func _physics_process(_delta):
 	
 	if player_to_attack != null:
 
-		var direction = global_position.direction_to(player_to_attack.global_position)
+		direction = global_position.direction_to(player_to_attack.global_position)
 		if direction.x > 0:
 			sprite_2d.flip_h = true
 			float_particle.position.x *= -1
@@ -71,7 +74,8 @@ func take_damage(damage_power):
 	adjust_energy(damage_power)
 	if energy_bar.value >= energy_to_kill:
 		emit_signal("ghost_died", global_position, ghost_type)
-		death_effect()
+		if death_scene != null:
+			death_effect()
 		queue_free()
 
 func stop_damaging():
@@ -95,6 +99,7 @@ func adjust_energy(adjustment):
 		sprite_2d.region_rect.position.x = startingRectX + sprite_2d.region_rect.size.x
 	else:
 		sprite_2d.region_rect.position.x = startingRectX
+		sprite_2d.region_rect.position.y = startingRectY
 
 func death_effect():
 		var death_animation = death_scene.instantiate()
