@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://wnxqxsr7fcwb"]
+
+[ext_resource type="Material" uid="uid://c8outlg1q2awy" path="res://Scenes/Particles/tankFloatParticle.tres" id="1_au5jg"]
+[ext_resource type="Texture2D" uid="uid://boknldr066yk1" path="res://Assets/orb3.svg" id="2_qvx8u"]
+
+[node name="baseFloatParticle" type="GPUParticles2D"]
+amount = 50
+process_material = ExtResource("1_au5jg")
+texture = ExtResource("2_qvx8u")
+lifetime = 3.0
+trail_lifetime = 2.0
+trail_sections = 2
+trail_section_subdivisions = 2

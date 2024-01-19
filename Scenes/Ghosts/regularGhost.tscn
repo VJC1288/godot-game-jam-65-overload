@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b83ulsmgx7ilw"]
+[gd_scene load_steps=10 format=3 uid="uid://b83ulsmgx7ilw"]
 
 [ext_resource type="PackedScene" uid="uid://cdwte7f6l3kjt" path="res://Scenes/Ghosts/baseGhost.tscn" id="1_q0y3r"]
 [ext_resource type="Shader" path="res://Shaders/ghost.gdshader" id="2_t6lba"]
 [ext_resource type="PackedScene" uid="uid://x0tch1mo43u8" path="res://Scenes/Ghosts/DeathEffects/regularDeathEffect.tscn" id="2_yfs1k"]
+[ext_resource type="Material" uid="uid://dy1griuwbcmbb" path="res://Scenes/Particles/regularFloatParticle.tres" id="3_4ln2n"]
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="3_wcx45"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ewhuu"]
@@ -21,18 +22,20 @@ size = Vector2(24, 26)
 size = Vector2(30, 32)
 
 [node name="RegularGhost" instance=ExtResource("1_q0y3r")]
-immobile = null
-team = null
 energy_to_kill = 60
 regen_rate = -1
 death_scene = ExtResource("2_yfs1k")
 ghost_type = "regular_ghost"
 
-[node name="Sprite2D" parent="." index="1"]
+[node name="FloatParticle" parent="." index="0"]
+position = Vector2(3, 8)
+process_material = ExtResource("3_4ln2n")
+
+[node name="Sprite2D" parent="." index="2"]
 material = SubResource("ShaderMaterial_ewhuu")
 texture = ExtResource("3_wcx45")
 
-[node name="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" parent="." index="3"]
 position = Vector2(0, 9)
 shape = SubResource("CapsuleShape2D_e6b76")
 
@@ -42,7 +45,7 @@ shape = SubResource("RectangleShape2D_8utq2")
 [node name="CollisionShape2D" parent="SelectArea" index="0"]
 shape = SubResource("RectangleShape2D_5lpc3")
 
-[node name="VisibleOnScreenNotifier2D" parent="." index="7"]
+[node name="VisibleOnScreenNotifier2D" parent="." index="8"]
 visible = false
 
 [editable path="HurtBox"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8eqityirmdou"]
+
+[sub_resource type="Curve" id="Curve_w852o"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gyieb"]
+curve = SubResource("Curve_w852o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4ujs1"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(25, 25, 1)
+gravity = Vector3(0, -100, 0)
+alpha_curve = SubResource("CurveTexture_gyieb")
+
+[node name="RisingParticles" type="GPUParticles2D"]
+self_modulate = Color(0.247059, 0.247059, 0.454902, 1)
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_4ujs1")
+randomness = 1.0
+trail_enabled = true
+trail_lifetime = 0.2
+trail_sections = 2
+trail_section_subdivisions = 1

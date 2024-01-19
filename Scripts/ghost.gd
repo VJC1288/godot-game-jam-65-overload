@@ -8,6 +8,7 @@ signal ghost_died(location)
 @onready var panel = $Panel
 @onready var energy_bar = %EnergyBar
 @onready var hurt_box = $HurtBox
+@onready var float_particle = $FloatParticle
 
 @export var immobile: bool = false
 @export var SPEED = 20.0
@@ -51,8 +52,10 @@ func _physics_process(_delta):
 		var direction = global_position.direction_to(player_to_attack.global_position)
 		if direction.x > 0:
 			sprite_2d.flip_h = true
+			float_particle.position.x *= -1
 		elif direction.x < 0:
-			sprite_2d.flip_h = false	
+			sprite_2d.flip_h = false
+			float_particle.position.x *= -1
 		
 		if !immobile:
 			velocity = direction * SPEED

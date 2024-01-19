@@ -40,12 +40,15 @@ regen_rate = -1
 death_scene = SubResource("PackedScene_6iv8n")
 ghost_type = "tank_ghost"
 
-[node name="Sprite2D" parent="." index="1"]
+[node name="FloatParticle" parent="." index="0"]
+position = Vector2(10, 18)
+
+[node name="Sprite2D" parent="." index="2"]
 material = SubResource("ShaderMaterial_e4x68")
 texture = ExtResource("3_ph0qa")
 region_rect = Rect2(384, 224, 64, 64)
 
-[node name="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" parent="." index="3"]
 position = Vector2(0, 16)
 shape = SubResource("CapsuleShape2D_obvqx")
 
@@ -55,19 +58,19 @@ shape = SubResource("RectangleShape2D_u217t")
 [node name="CollisionShape2D" parent="SelectArea" index="0"]
 shape = SubResource("RectangleShape2D_xn3mp")
 
-[node name="Panel" parent="." index="5"]
+[node name="Panel" parent="." index="6"]
 offset_left = -31.0
 offset_top = -31.0
 offset_right = 31.0
 offset_bottom = 31.0
 
-[node name="BoxContainer" parent="." index="6"]
+[node name="BoxContainer" parent="." index="7"]
 offset_left = -28.0
 offset_top = -35.0
 offset_right = 28.0
 offset_bottom = 35.0
 
-[node name="VisibleOnScreenNotifier2D" parent="." index="7"]
+[node name="VisibleOnScreenNotifier2D" parent="." index="8"]
 visible = false
 
 [editable path="HurtBox"]
