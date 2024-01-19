@@ -1,24 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8io1fauo4nul"]
+[gd_scene load_steps=5 format=3 uid="uid://b8io1fauo4nul"]
 
 [ext_resource type="Script" path="res://Scenes/Ghosts/Attacks/goo_puddle.gd" id="1_0wbfu"]
 [ext_resource type="Texture2D" uid="uid://xh36kh02gfxp" path="res://Assets/gooball.png" id="1_3lmlt"]
+[ext_resource type="PackedScene" uid="uid://bmtkidpm0bjfa" path="res://Scenes/hurt_box.tscn" id="2_uj0ce"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jom4w"]
 radius = 14.0357
 
 [node name="GooPuddle" type="Area2D"]
 texture_filter = 1
+collision_layer = 2
 script = ExtResource("1_0wbfu")
+damagePerTick = -3
+
+[node name="HurtBox" parent="." instance=ExtResource("2_uj0ce")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_jom4w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_3lmlt")
 region_enabled = true
 region_rect = Rect2(0, 32, 32, 32)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -1)
-shape = SubResource("CircleShape2D_jom4w")
-
 [node name="PuddleTimer" type="Timer" parent="."]
 
+[node name="DamageTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="area_exited" from="HurtBox" to="." method="_on_hurt_box_area_exited"]
 [connection signal="timeout" from="PuddleTimer" to="." method="_on_puddle_timer_timeout"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

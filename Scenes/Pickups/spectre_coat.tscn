@@ -9,7 +9,7 @@ size = Vector2(17, 20)
 
 [node name="SpectreCoat" instance=ExtResource("1_afa1h")]
 upgrade = ExtResource("2_6xrd8")
-itemName = "spectre_coat"
+itemName = "Spectre Coat"
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_govsh")

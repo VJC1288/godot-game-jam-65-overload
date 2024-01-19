@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce7uxu840hqcy"]
+
+[ext_resource type="Material" uid="uid://cdgdf67hsciyc" path="res://Scenes/Ghosts/DeathEffects/gooballImpact.tres" id="1_8lmub"]
+[ext_resource type="Script" path="res://Scenes/Ghosts/Attacks/impact_particle.gd" id="2_x3cg0"]
+
+[node name="ImpactParticle" type="GPUParticles2D"]
+self_modulate = Color(0.121569, 0.423529, 0.184314, 1)
+emitting = false
+amount = 6
+process_material = ExtResource("1_8lmub")
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+trail_enabled = true
+trail_lifetime = 0.15
+script = ExtResource("2_x3cg0")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

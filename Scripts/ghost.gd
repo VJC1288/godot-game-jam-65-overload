@@ -60,6 +60,7 @@ func _physics_process(_delta):
 			sprite_2d.flip_h = false
 			float_particle.position.x *= -1
 		
+		
 		if !immobile:
 			velocity = direction * SPEED
 		

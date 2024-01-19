@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7plx8pyi41lw"]
+
+[ext_resource type="PackedScene" uid="uid://b454kg3worpwc" path="res://Scenes/Pickups/basePickup.tscn" id="1_3qidb"]
+[ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/pickup_tileset.png" id="2_wp3gq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_keaul"]
+radius = 5.0
+
+[node name="GeistGoulash" instance=ExtResource("1_3qidb")]
+itemName = "Geist Goulash"
+instantItem = true
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_wp3gq")
+region_enabled = true
+region_rect = Rect2(64, 33, 31, 31)
+
+[node name="CollisionShape2D" parent="Area" index="0"]
+shape = SubResource("CircleShape2D_keaul")

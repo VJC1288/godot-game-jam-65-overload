@@ -1,5 +1,7 @@
 extends Timer
 
+enum WallStates{BOTTOM, TOP, LEFT, RIGHT}
+
 @onready var wall_ghost: Ghost = $".."
 @onready var animation_player = $"../AnimationPlayer"
 @onready var attack_source = $"../AttackSource"
@@ -7,15 +9,62 @@ extends Timer
 const GOOBALL = preload("res://Scenes/Ghosts/Attacks/gooball.tscn")
 const GOO_PUDDLE = preload("res://Scenes/Ghosts/Attacks/goo_puddle.tscn")
 
+@export var bottomWall: bool
+@export var topWall: bool
+@export var leftWall: bool
+@export var rightWall: bool
+
+var currentWallState: WallStates
+
 var goo_ball: Node2D
 
+func _ready():
+	if bottomWall:
+		currentWallState = WallStates.BOTTOM
+	if topWall:
+		currentWallState = WallStates.TOP
+	if leftWall:
+		currentWallState = WallStates.LEFT
+	if rightWall:
+		currentWallState = WallStates.RIGHT
+		
+		
+		
 func _physics_process(_delta):
+	
+	match currentWallState:
+		
+		WallStates.BOTTOM:
+			if wall_ghost.direction.x > 0:
+				attack_source.position.x = 15
+			elif wall_ghost.direction.x < 0:
+				attack_source.position.x = -15
+				
+		WallStates.TOP:
+			if wall_ghost.direction.x < 0:
+				attack_source.position.x = 15
+				wall_ghost.sprite_2d.flip_h = true
+			elif wall_ghost.direction.x > 0:
+				attack_source.position.x = -15
+				wall_ghost.sprite_2d.flip_h = false
+				
+		WallStates.LEFT:
+			if wall_ghost.direction.y > 0:
+				wall_ghost.sprite_2d.flip_h = true
+				attack_source.position.x = 15
+			elif wall_ghost.direction.y < 0:
+				wall_ghost.sprite_2d.flip_h = false
+				attack_source.position.x = -15
 
-	if wall_ghost.direction.x > 0:
-		attack_source.position.x *= -1
-	elif wall_ghost.direction.x < 1:
-		attack_source.position.x *= -1
+		WallStates.RIGHT:
+			if wall_ghost.direction.y < 0:
+				wall_ghost.sprite_2d.flip_h = true
+				attack_source.position.x = 15
+			elif wall_ghost.direction.y > 0:
+				wall_ghost.sprite_2d.flip_h = false
+				attack_source.position.x = -15
 
+	
 func _on_timeout():
 	animation_player.play("wallGhostAttack")
 	goo_ball = GOOBALL.instantiate()

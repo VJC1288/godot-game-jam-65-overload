@@ -23,7 +23,10 @@ func display_last_pickup():
 	var pickup_tween_shadow = create_tween()
 	pickup_tween.tween_property(pickup_message.label_settings, "font_color", Color(1, 1, 1, 0), 1).set_ease(Tween.EASE_OUT).set_delay(3.0)
 	pickup_tween_shadow.tween_property(pickup_message.label_settings, "shadow_color", Color(0, 0, 0, 0), .65).set_ease(Tween.EASE_OUT).set_delay(3.0)
-	pickup_message.text = str("Aquired: " + Globals.lastPickup)
+	if Globals.lastPickup == "Geist Goulash":
+		pickup_message.text = str("Ate: " + Globals.lastPickup)
+	else:
+		pickup_message.text = str("Aquired: " + Globals.lastPickup)
 
 
 func fade_to_black():

@@ -8,7 +8,9 @@ atlas = ExtResource("2_b5bne")
 region = Rect2(384, 32, 32, 32)
 
 [resource]
+resource_name = "Coins"
 script = ExtResource("1_wxbpl")
 name = "Coins"
 texture = SubResource("AtlasTexture_rocrt")
 item_details = "Might be useful to someone"
+metadata/item_name = "Coins"

@@ -27,10 +27,14 @@ position = Vector2(160, 69)
 amount = 10
 
 [node name="WallGhost" parent="." index="11" instance=ExtResource("3_gqkhv")]
-position = Vector2(100, 165)
+position = Vector2(277, 55)
+rotation = 4.71239
 
 [node name="Sprite2D" parent="WallGhost" index="2"]
 material = SubResource("ShaderMaterial_sewm5")
+
+[node name="AttackTimer" parent="WallGhost" index="9"]
+rightWall = true
 
 [editable path="WallGhost"]
 [editable path="WallGhost/HurtBox"]
