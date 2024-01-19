@@ -67,6 +67,8 @@ func enemy_killed(location:Vector2, type: String):
 			amount = randi_range(3,5)
 		"tall_ghost":
 			amount = randi_range(2,3)
+		"speed_ghost":
+			amount = 1
 		_:
 			amount = 1
 

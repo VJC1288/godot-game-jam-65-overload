@@ -21,6 +21,7 @@ func _physics_process(_delta):
 			closeAll()
 		else:
 			map.open_map()
+			get_tree().paused = true
 
 func quit():
 	get_tree().quit()

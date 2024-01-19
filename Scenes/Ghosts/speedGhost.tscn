@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://dt1dg0701yorv"]
+
+[ext_resource type="PackedScene" uid="uid://cdwte7f6l3kjt" path="res://Scenes/Ghosts/baseGhost.tscn" id="1_y377v"]
+[ext_resource type="Shader" path="res://Shaders/ghost.gdshader" id="2_c4btd"]
+[ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="3_w24c7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nhopn"]
+resource_local_to_scene = true
+shader = ExtResource("2_c4btd")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_un7ja"]
+size = Vector2(26, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8iag"]
+size = Vector2(22, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3n5eh"]
+size = Vector2(28, 18)
+
+[node name="SpeedGhost" instance=ExtResource("1_y377v")]
+SPEED = 60.0
+ghost_damage = -10
+energy_to_kill = 30
+ghost_type = "speed_ghost"
+
+[node name="Sprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_nhopn")
+texture = ExtResource("3_w24c7")
+region_rect = Rect2(320, 64, 32, 32)
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_un7ja")
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_i8iag")
+
+[node name="CollisionShape2D" parent="SelectArea" index="0"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_3n5eh")
+
+[node name="Panel" parent="." index="6"]
+visible = true
+offset_top = -12.0
+offset_bottom = 12.0
+
+[node name="BoxContainer" parent="." index="7"]
+offset_top = -17.0
+offset_bottom = 23.0
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="8"]
+position = Vector2(1.19209e-07, 8)
+
+[editable path="HurtBox"]
