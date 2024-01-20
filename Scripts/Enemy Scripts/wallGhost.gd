@@ -12,6 +12,9 @@ const GOO_PUDDLE = preload("res://Scenes/Ghosts/Attacks/goo_puddle.tscn")
 @onready var attack_timer = %AttackTimer
 @onready var animation_player = %AnimationPlayer
 @onready var attack_source = %AttackSource
+@onready var bubble_shot_sound = $BubbleShotSound
+@onready var bubble_land_sound = $BubbleLandSound
+
 
 var currentWallState: WallStates
 var goo_ball: Node2D
@@ -66,7 +69,7 @@ func _on_attack_timer_timeout():
 	wall_ghost.add_child(goo_ball)
 	goo_ball.createGooPuddle.connect(makePuddle)
 	attack_timer.start(randf_range(2,3))
-	
+	bubble_shot_sound.play()
 	rotateGooShadow()
 	
 func makePuddle():
@@ -74,6 +77,7 @@ func makePuddle():
 	goo_puddle.set_deferred("rotation", randf_range(0,360))
 	goo_puddle.set_deferred("position", goo_ball.position)
 	puddle_container.call_deferred("add_child", goo_puddle)
+	bubble_land_sound.play()
 
 func checkWall():
 	if wall_ghost.global_position.x > (get_viewport_rect().size.x * 8/10):
