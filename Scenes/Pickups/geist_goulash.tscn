@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/pickup_tileset.png" id="2_wp3gq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_keaul"]
-radius = 5.0
+radius = 8.0
 
 [node name="GeistGoulash" instance=ExtResource("1_3qidb")]
 itemName = "Geist Goulash"
