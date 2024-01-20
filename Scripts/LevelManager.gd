@@ -175,7 +175,12 @@ func switch_level(direction: Vector2i):
 	#Create New Level
 	var new_level:Level = levelsDictionary[current_coords].instantiate()
 	current_level = new_level
-	if current_level.numberOfEnemySpawns > 0:
+	
+	
+	#setup Enemy Spawner
+	enemy_spawner.bossIsAlive = new_level.bossIsAlive
+	enemy_spawner.set_spawn_timer(new_level.bossIsAlive)
+	if current_level.numberOfEnemySpawns > 0 or enemy_spawner.bossIsAlive:
 		enemy_spawner.active = true
 		enemy_spawner.spawnsLeft = current_level.numberOfEnemySpawns
 		enemy_spawner.spawnType = current_level.difficulty
@@ -203,14 +208,13 @@ func switch_level(direction: Vector2i):
 	else:
 		enemy_spawner.spawnsLeft = current_level.numberOfEnemySpawns
 	
-
+	
 	
 	add_child(new_level)
 	
 	#emit elvel change signal for map
 	level_changed.emit(current_coords, current_level.hasShopkeeper)
 	
-
 
 	
 	#Create a shopkeeper

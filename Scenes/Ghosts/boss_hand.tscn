@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="1_cdwt8"]
 [ext_resource type="PackedScene" uid="uid://cdwte7f6l3kjt" path="res://Scenes/Ghosts/baseGhost.tscn" id="1_ku2hy"]
-[ext_resource type="Script" path="res://Scenes/Ghosts/boss_hand.gd" id="1_vhhqf"]
 [ext_resource type="Shader" path="res://Shaders/ghost.gdshader" id="2_it2hw"]
+[ext_resource type="Script" path="res://Scripts/Enemy Scripts/boss_hand.gd" id="2_p705f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6lmmg"]
 resource_local_to_scene = true
@@ -13,34 +13,42 @@ shader_parameter/intensity = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jxwkt"]
 size = Vector2(44, 20)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_c2rok"]
-radius = 22.0227
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v74st"]
+radius = 22.0
+height = 72.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56xta"]
-size = Vector2(80, 50)
+size = Vector2(68, 40)
 
 [node name="BossHand" instance=ExtResource("1_ku2hy")]
-script = ExtResource("1_vhhqf")
-ghost_damage = 20
+script = ExtResource("2_p705f")
+SPEED = 15.0
 energy_to_kill = 250
 regen_rate = -1
 
 [node name="Sprite2D" parent="." index="2"]
 material = SubResource("ShaderMaterial_6lmmg")
 texture = ExtResource("1_cdwt8")
-region_rect = Rect2(416, 512, 96, 64)
+region_rect = Rect2(192, 512, 96, 64)
 
 [node name="CollisionShape2D" parent="." index="3"]
 position = Vector2(20, 12)
 shape = SubResource("RectangleShape2D_jxwkt")
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(-19, 2)
-shape = SubResource("CircleShape2D_c2rok")
+position = Vector2(-2, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_v74st")
 
 [node name="CollisionShape2D" parent="SelectArea" index="0"]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_56xta")
+
+[node name="Panel" parent="." index="6"]
+offset_left = -42.0
+offset_top = -26.0
+offset_right = 42.0
+offset_bottom = 26.0
 
 [node name="BoxContainer" parent="." index="7"]
 custom_minimum_size = Vector2(50, 60)

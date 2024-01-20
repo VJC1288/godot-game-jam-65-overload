@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgdq1yhfskciu"]
+[gd_scene load_steps=9 format=3 uid="uid://dgdq1yhfskciu"]
 
 [ext_resource type="PackedScene" uid="uid://cdwte7f6l3kjt" path="res://Scenes/Ghosts/baseGhost.tscn" id="1_iyvjn"]
 [ext_resource type="Script" path="res://Scripts/Enemy Scripts/boss_ghost.gd" id="2_88c6p"]
@@ -10,11 +10,20 @@ resource_local_to_scene = true
 shader = ExtResource("2_vjk0x")
 shader_parameter/intensity = 0.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x106v"]
+size = Vector2(94, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8pkm"]
+size = Vector2(99, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3csv"]
+size = Vector2(72, 92)
+
 [node name="BossGhost" instance=ExtResource("1_iyvjn")]
 script = ExtResource("2_88c6p")
 immobile = true
 ghost_damage = 20
-energy_to_kill = 1000
+energy_to_kill = 600
 ghost_type = "boss_ghost"
 
 [node name="Shadow" parent="." index="1"]
@@ -24,13 +33,26 @@ scale = Vector2(3.10875, 0.21875)
 [node name="Sprite2D" parent="." index="2"]
 material = SubResource("ShaderMaterial_pr4lr")
 texture = ExtResource("3_oqecc")
-region_rect = Rect2(512, 512, 128, 128)
+region_rect = Rect2(384, 512, 128, 128)
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(-2, 52)
+shape = SubResource("RectangleShape2D_x106v")
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(-2, 35)
+shape = SubResource("RectangleShape2D_c8pkm")
+
+[node name="CollisionShape2D" parent="SelectArea" index="0"]
+shape = SubResource("RectangleShape2D_d3csv")
+
+[node name="Panel" parent="." index="6"]
+offset_left = -48.0
+offset_top = -58.0
+offset_right = 48.0
+offset_bottom = 58.0
 
 [node name="BoxContainer" parent="." index="7"]
 custom_minimum_size = Vector2(100, 130)
-
-[node name="EnergyBar" parent="BoxContainer" index="0"]
-max_value = 1000.0
-value = 0.0
 
 [editable path="HurtBox"]

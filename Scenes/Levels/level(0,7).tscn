@@ -5,6 +5,9 @@
 
 [node name="Level(0,7)" instance=ExtResource("1_34kvx")]
 script = ExtResource("2_owjkm")
+westExit = true
+levelCoordinates = Vector2i(0, 7)
+bossIsAlive = true
 difficulty = 4
 
 [node name="Ground" parent="." index="0"]

@@ -22,11 +22,19 @@ var spawnType:int = 1
 var bossIsAlive:bool = false
 
 func _physics_process(_delta):
+
 	if active and (spawnsLeft > 0 or bossIsAlive):
 		if spawn_timer.is_stopped() and Globals.currentPlayer != null:
 			spawn_timer.start()
 			spawn_ghost()
 			spawnsLeft -= 1
+
+
+func set_spawn_timer(boss_timer:bool = false):
+	if boss_timer:
+		spawn_timer.wait_time = 8
+	else:
+		spawn_timer.wait_time = 2.5
 
 
 func spawn_ghost():

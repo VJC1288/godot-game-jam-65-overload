@@ -16,6 +16,7 @@ enum DifficultyStates {REGULAR = 1, TALL, SPEED, TANK}
 @export var westExit: bool
 @export var levelCoordinates: Vector2i
 @export var hasShopkeeper: bool = false
+@export var bossIsAlive: bool = false
 @export var numberOfEnemySpawns: int = 0
 @export var difficulty: DifficultyStates
 
