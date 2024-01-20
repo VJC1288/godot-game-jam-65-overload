@@ -11,14 +11,14 @@ func _ready():
 	currentMusic = main_music
 
 
-func room_change(room_coords, hasShopkeeper):
+func room_change(_room_coords, hasShopkeeper):
 	
 	if hasShopkeeper:
 		switch_music(shop_music)
 	else:
 		switch_music(main_music)
 
-func _process(delta):
+func _process(_delta):
 	
 	if currentMusic.playing:
 		pass

@@ -37,6 +37,4 @@ func spawn_coins(location: Vector2, amount:int):
 	
 func coin_collected(amount):
 	emit_signal("spawner_coin_collected", amount)
-	
-	
-
+	Globals.currentPlayer.coins_n_keys_sound.play()

@@ -7,7 +7,6 @@ signal upgrade_collected
 
 @onready var sprite_2d = $Sprite2D
 @onready var pickup = $"."
-@onready var key_pickup_sound = $KeyPickupSound
 
 @export var item: InvItem
 @export var upgrade: InvUpg

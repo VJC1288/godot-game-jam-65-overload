@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var menu = $Menu
 @onready var map = $Map
+@onready var settings = $Settings
 
 
 func _physics_process(_delta):
@@ -22,6 +23,12 @@ func _physics_process(_delta):
 		else:
 			map.open_map()
 			get_tree().paused = true
+	if Input.is_action_just_pressed("opensettings"):
+		if settings.settings_open:
+			closeAll()
+		else:
+			settings.open_settings()
+			get_tree().paused = true
 
 func quit():
 	get_tree().quit()
@@ -29,4 +36,5 @@ func quit():
 func closeAll():
 	map.close_map()
 	menu.close_menu()
+	settings.close_settings()
 	get_tree().paused = false

@@ -187,7 +187,6 @@ func collect_item(item: InvItem, amount):
 	if item != null:
 		if item.name == "Key":
 			coins_n_keys_sound.play()
-
 	
 func collect_instantItem(item):
 	if item == "Geist Goulash":
