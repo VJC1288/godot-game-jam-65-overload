@@ -19,7 +19,7 @@ const GAMEOVER = preload("res://Scenes/gameover.tscn")
 func _ready():
 	randomize()
 	var viewport = get_viewport_rect()
-	var centerOfScreen = Vector2(viewport.size.x / 2, viewport.size.y / 2)
+	var centerOfScreen = Vector2(viewport.size.x / 2, viewport.size.y / 2 - 45)
 	
 	spawn_player(centerOfScreen)
 	

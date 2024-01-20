@@ -7,6 +7,9 @@ const TANK_GHOST = preload("res://Scenes/Ghosts/tankGhost.tscn")
 const TALL_GHOST = preload("res://Scenes/Ghosts/tallGhost.tscn")
 const SPEED_GHOST = preload("res://Scenes/Ghosts/speedGhost.tscn")
 const WALL_GHOST = preload("res://Scenes/Ghosts/wallGhost.tscn")
+const BOSS_HAND = preload("res://Scenes/Ghosts/boss_hand.tscn")
+const BOSS_GHOST = preload("res://Scenes/Ghosts/boss_ghost.tscn")
+
 
 @onready var spawn_point = $SpawnPath/SpawnPoint
 @onready var spawn_timer = $SpawnTimer
@@ -16,10 +19,10 @@ const WALL_GHOST = preload("res://Scenes/Ghosts/wallGhost.tscn")
 
 var spawnsLeft:int = 0
 var spawnType:int = 1
-
+var bossIsAlive:bool = false
 
 func _physics_process(_delta):
-	if active and spawnsLeft > 0:
+	if active and (spawnsLeft > 0 or bossIsAlive):
 		if spawn_timer.is_stopped() and Globals.currentPlayer != null:
 			spawn_timer.start()
 			spawn_ghost()
@@ -65,7 +68,10 @@ func spawn_specific_ghost_at_area(location: Vector2, type: String):
 			enemy = REGULAR_GHOST.instantiate()
 		"wall_ghost":
 			enemy = WALL_GHOST.instantiate()
-
+		"boss_ghost":
+			enemy = BOSS_GHOST.instantiate()
+		"boss_hand":
+			enemy = BOSS_HAND.instantiate()
 		_:
 			print("Tried to make a poo poo ghost")
 			return

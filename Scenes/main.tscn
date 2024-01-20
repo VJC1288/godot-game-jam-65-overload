@@ -50,6 +50,7 @@ script = ExtResource("1_7koke")
 [node name="AudioManager" parent="." instance=ExtResource("2_ae3nn")]
 
 [node name="LevelManager" parent="." instance=ExtResource("2_rrv55")]
+debug_spawn_room = Vector2i(-1, 7)
 
 [node name="CoinSpawner" parent="." instance=ExtResource("3_2bmkk")]
 
