@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://14l7x12cke6i"]
+[gd_scene load_steps=6 format=3 uid="uid://14l7x12cke6i"]
 
 [ext_resource type="Texture2D" uid="uid://c7r66dv5rcfl0" path="res://Assets/titlebackground.png" id="1_rnqdy"]
 [ext_resource type="FontFile" uid="uid://ulu7kgqxb12r" path="res://Assets/Fonts/LoSumires-2X8l.ttf" id="1_xt548"]
+[ext_resource type="PackedScene" uid="uid://c355gahncdv7e" path="res://Scenes/title_startbutton.tscn" id="4_261mt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxcum"]
 bg_color = Color(0.0509804, 0.0509804, 0.0509804, 1)
@@ -34,6 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_jxcum")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
@@ -79,3 +81,10 @@ theme_override_fonts/font = ExtResource("1_xt548")
 theme_override_font_sizes/font_size = 30
 text = "(working title)"
 label_settings = SubResource("LabelSettings_fldtg")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 6
+
+[node name="StartButton" parent="Panel/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_261mt")]
+layout_mode = 2
