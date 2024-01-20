@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bxha03nksdagd"]
+[gd_scene load_steps=22 format=3 uid="uid://bxha03nksdagd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_48hap"]
 [ext_resource type="Resource" uid="uid://0bkd3m0eno00" path="res://Assets/Inventory/player_weapons.tres" id="2_v42ke"]
@@ -8,6 +8,11 @@
 [ext_resource type="Resource" uid="uid://bpvl82vhommsx" path="res://Assets/Inventory/player_upgrades.tres" id="4_xqpgn"]
 [ext_resource type="Texture2D" uid="uid://dnyhpla2r32vn" path="res://Assets/bungusspritesheet.png" id="5_lnxah"]
 [ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/pickup_tileset.png" id="6_g1cmc"]
+[ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="7_6tg62"]
+[ext_resource type="AudioStream" uid="uid://dtyghsigoq78u" path="res://Assets/Sounds/Accent,Sound Design,Electric,Arc,Buzz,Resonant,Fizzle,Surges,LongClipped.wav" id="9_75wds"]
+[ext_resource type="AudioStream" uid="uid://dbjdw0c7b6nqc" path="res://Assets/Sounds/458353__dwoboyle__footsteps-tile-run-14(pitchdown).wav" id="10_qlgiy"]
+[ext_resource type="AudioStream" uid="uid://bbjq8ihkoavba" path="res://Assets/Sounds/ELECTRIC Shock Zap Short 03.wav" id="11_6fj74"]
+[ext_resource type="AudioStream" uid="uid://cv5h3en3nr0bj" path="res://Assets/Sounds/coinsNkeys.wav" id="13_rsell"]
 
 [sub_resource type="Gradient" id="Gradient_sjtlc"]
 offsets = PackedFloat32Array(0.0909091, 1)
@@ -141,6 +146,14 @@ offset = Vector2(-7, 2)
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
+[node name="FailSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -7)
+texture = ExtResource("7_6tg62")
+offset = Vector2(-25, 0)
+region_enabled = true
+region_rect = Rect2(352, 96, 32, 32)
+
 [node name="WeaponMuzzle" type="Marker2D" parent="."]
 position = Vector2(-16, 2)
 
@@ -170,6 +183,31 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_k3ylf")
 }
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="BeamShockSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("9_75wds")
+volume_db = -8.0
+bus = &"SFX"
+
+[node name="FootStepSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("10_qlgiy")
+volume_db = -15.0
+pitch_scale = 0.7
+bus = &"SFX"
+
+[node name="BeamShockFailSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("11_6fj74")
+volume_db = -8.0
+pitch_scale = 0.7
+bus = &"SFX"
+
+[node name="CoinsNKeysSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("13_rsell")
+volume_db = -8.0
+pitch_scale = 0.7
+bus = &"SFX"
 
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="max_health_changed" from="HealthComponent" to="." method="_on_health_component_max_health_changed"]

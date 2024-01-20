@@ -5,6 +5,8 @@ extends Node2D
 @export var exploded_texture: Texture2D
 @export var door_area_to_open: Area2D
 
+@onready var burst_sound = $BurstSound
+
 var overloaded: bool = false
 var child_overloaders: Array[Overloader]
 
@@ -20,17 +22,13 @@ func _ready():
 
 
 func unlock_door():
+	burst_sound.play()
 	lock.queue_free()
 	
 func explode_overloaders():
 	for obj in child_overloaders:
 		obj.sprite_2d.region_rect.position.x += 64
 		obj.disabled = true
-	
-	#overloader_1.sprite_2d.region_rect.position.x += 64
-	#overloader_2.sprite_2d.region_rect.position.x += 64
-	#overloader_1.disabled = true
-	#overloader_2.disabled = true
 
 func child_overloaded(overloaded_child:Overloader):
 	if !overloaded:
@@ -46,17 +44,6 @@ func child_overloaded(overloaded_child:Overloader):
 			unlock_door()
 			explode_overloaders()
 			overloaded = true
-			print("door open")
+			
 
-#
-#func _on_overloader_1_overloaded():
-	#if overloader_2.energy_bar.value == overloader_2.energy_bar.max_value and !overloaded:
-		#unlock_door()
-		#explode_overloaders()
-		#overloaded = true
-		#
-#func _on_overloader_2_overloaded():
-	#if overloader_1.energy_bar.value == overloader_1.energy_bar.max_value and !overloaded:
-		#unlock_door()
-		#explode_overloaders()
-		#overloaded = true
+

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3s8k3tpmo0fy"]
+[gd_scene load_steps=9 format=3 uid="uid://c3s8k3tpmo0fy"]
 
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="1_syxea"]
 [ext_resource type="Script" path="res://Scripts/shopkeeper.gd" id="1_x7mti"]
 [ext_resource type="PackedScene" uid="uid://c6s4tpl2k4n3q" path="res://Scenes/shop_item.tscn" id="3_08vgr"]
+[ext_resource type="AudioStream" uid="uid://tiqm5mvv42kd" path="res://Assets/Sounds/register.wav" id="4_toslq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61a0f"]
 size = Vector2(26, 10)
@@ -66,6 +67,11 @@ position = Vector2(0, 50)
 
 [node name="Item3" parent="Shop" instance=ExtResource("3_08vgr")]
 position = Vector2(90, 50)
+
+[node name="RegisterSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_toslq")
+volume_db = -7.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="EmbarrassedArea" to="." method="_on_embarrassed_area_body_entered"]
 [connection signal="body_exited" from="EmbarrassedArea" to="." method="_on_embarrassed_area_body_exited"]

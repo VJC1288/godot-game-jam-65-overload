@@ -10,6 +10,7 @@ const GAMEOVER = preload("res://Scenes/gameover.tscn")
 @onready var level_manager = $LevelManager
 @onready var item_spawner = $ItemSpawner
 @onready var character_manager = $CharacterManager
+@onready var audio_manager = $AudioManager
 
 
 @onready var hud = $UIElements/HUD
@@ -32,6 +33,7 @@ func _ready():
 	level_manager.initialize(hud, enemy_spawner, coin_spawner, item_spawner, character_manager)
 	level_manager.connect("room_spawn_enemy", enemy_spawner.spawn_specific_ghost_at_area)
 	level_manager.connect("level_manager_item_spawn", item_spawner.spawn_item)
+	level_manager.connect("level_changed", audio_manager.room_change)
 	
 	item_spawner.initialize(hud)
 	
@@ -39,8 +41,8 @@ func _ready():
 	
 	
 	################ Temp Testing Items to Spawn ####################
-	#coin_spawner.spawn_coins(centerOfScreen + Vector2(50, 50), randi_range(1,5))
-	#item_spawner.spawn_item(centerOfScreen + Vector2(-50, -50), "key")
+	coin_spawner.spawn_coins(centerOfScreen + Vector2(50, 50), randi_range(1,5))
+	item_spawner.spawn_item(centerOfScreen + Vector2(-50, -50), "key")
 	#item_spawner.spawn_item(centerOfScreen + Vector2(50, -50), "Beam Battery")
 	#item_spawner.spawn_item(centerOfScreen + Vector2(70, -50), "Beam Battery")
 	#item_spawner.spawn_item(centerOfScreen + Vector2(-50, 50), "Arc Extender")

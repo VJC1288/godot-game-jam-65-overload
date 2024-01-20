@@ -9,9 +9,9 @@ signal item_purchased(type, location, cost)
 @onready var item_1 = $Shop/Item1
 @onready var item_2 = $Shop/Item2
 @onready var item_3 = $Shop/Item3
-
-
 @onready var shop = $Shop
+
+@onready var register_sound = $RegisterSound
 
 
 const KEY = preload("res://Scenes/Pickups/key.tscn")
@@ -97,6 +97,7 @@ func purchase_item(slot, cost):
 		slot.item_for_sale.queue_free()
 		sprite_2d.region_rect.position.x = 320
 		sprite_2d.region_rect.position.y = 224
+		register_sound.play()
 		
 
 func _on_embarrassed_area_body_entered(_body):

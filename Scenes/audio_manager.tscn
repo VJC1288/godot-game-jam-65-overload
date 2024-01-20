@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://fgu5bdlhkcmm"]
+
+[ext_resource type="Script" path="res://Scripts/audio_manager.gd" id="1_y8qk8"]
+[ext_resource type="AudioStream" uid="uid://dhvxip21kb1jh" path="res://Assets/Sounds/Fear and Horror (loop).mp3" id="2_t5usy"]
+[ext_resource type="AudioStream" uid="uid://d2m00nyvpd54d" path="res://Assets/Sounds/Up to no Good (loop).mp3" id="3_j08uc"]
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_y8qk8")
+
+[node name="MainMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_t5usy")
+volume_db = -13.0
+bus = &"Music"
+
+[node name="ShopMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_j08uc")
+volume_db = -12.0
+bus = &"Music"

@@ -16,6 +16,13 @@ enum PlayerAttackStates{FIRING, NOT_FIRING}
 @onready var weapon_muzzle = $WeaponMuzzle
 @onready var hitbox_component = $HitboxComponent
 @onready var beam_container = $BeamContainer
+@onready var fail_sprite = $FailSprite
+
+@onready var beam_shock_sound = $Sounds/BeamShockSound
+@onready var foot_step_sound = $Sounds/FootStepSound
+@onready var beam_shock_fail_sound = $Sounds/BeamShockFailSound
+@onready var coins_n_keys_sound = $Sounds/CoinsNKeysSound
+
 
 @onready var health_component:HealthComponent = $HealthComponent
 
@@ -61,7 +68,8 @@ func _physics_process(_delta):
 			velocity.y = move_toward(velocity.y, 0, SPEED * speedIncrease)
 			
 			animation_player.play("idle")
-
+			if foot_step_sound.playing:
+				foot_step_sound.stop()
 			
 			select_target()
 			check_damaging_ghost()
@@ -82,14 +90,19 @@ func _physics_process(_delta):
 					sprite_2d.flip_h = true
 					weapon_1.scale.x = -1
 					weapon_muzzle.position.x = 16
+					fail_sprite.scale.x = -1
 				elif direction.x < 0 and damagingGhost == null:
 					sprite_2d.flip_h = false
 					weapon_1.scale.x = 1
 					weapon_muzzle.position.x = -16
+					fail_sprite.scale.x = 1
 				velocity.x = direction.x * SPEED * speedIncrease
 				velocity.y = direction.y * SPEED * speedIncrease
 				animation_player.play("walking")
-
+				if foot_step_sound.playing:
+					pass
+				else:
+					foot_step_sound.play()
 			
 			select_target()
 			check_damaging_ghost()
@@ -102,10 +115,15 @@ func _physics_process(_delta):
 
 		PlayerMoveStates.PAUSED:
 			animation_player.play("idle")
+			if foot_step_sound.playing:
+				foot_step_sound.stop()
 		
 	if health_component.current_health <= 0:
 		player_death.emit()
-		
+	
+	if !beam_shock_fail_sound.playing:
+		fail_sprite.visible = false
+	
 func select_target():
 	if Input.is_action_just_pressed("fire_beam") and Globals.currentTargetedGhost != null:
 		damagingGhost = Globals.currentTargetedGhost
@@ -124,6 +142,16 @@ func select_target():
 		tractorBeam.end_cap_mode = Line2D.LINE_CAP_ROUND
 		beam_container.add_child(tractorBeam)
 		
+		if beam_shock_sound.playing:
+			pass
+		else:
+			beam_shock_sound.play()
+	elif Input.is_action_just_pressed("fire_beam") and Globals.currentTargetedGhost == null:
+		
+		fail_sprite.visible = true			
+		if !beam_shock_fail_sound.playing:
+			beam_shock_fail_sound.play()
+		
 	
 func check_damaging_ghost():
 	
@@ -131,16 +159,17 @@ func check_damaging_ghost():
 		if Input.is_action_just_released("fire_beam") or global_position.distance_to(damagingGhost.global_position) > maxFireDistance:
 			damagingGhost.stop_damaging()
 			damagingGhost = null
-			#tractorBeam.queue_free()
-			for i in beam_container.get_children():
-				i.queue_free()
+			clear_beams()
+			if beam_shock_sound.playing:
+				beam_shock_sound.stop()
+
 			
 		elif dps_timer.is_stopped():
 			damagingGhost.take_damage(damagePower)
 			dps_timer.start()
 	else:
-		if tractorBeam != null:
-			tractorBeam.queue_free()
+		clear_beams()
+
 
 func move_tractor_beam():
 	if tractorBeam != null and damagingGhost != null:
@@ -153,8 +182,12 @@ func move_tractor_beam():
 		tractorBeam.points[points_size - 1] = end_point 
 
 
-func collect_item(item, amount):
+func collect_item(item: InvItem, amount):
 	item_inv.insert(item, amount)
+	if item != null:
+		if item.name == "Key":
+			coins_n_keys_sound.play()
+
 	
 func collect_instantItem(item):
 	if item == "Geist Goulash":
@@ -195,5 +228,9 @@ func pause():
 func unpause():
 	currentMoveState = PlayerMoveStates.IDLE
 
-
+func clear_beams():
+	for i in beam_container.get_children():
+		i.queue_free()
+	if beam_shock_sound.playing:
+		beam_shock_sound.stop()
 

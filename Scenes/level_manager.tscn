@@ -1,10 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://2mypy1um0ki7"]
+[gd_scene load_steps=5 format=3 uid="uid://2mypy1um0ki7"]
 
 [ext_resource type="Script" path="res://Scripts/LevelManager.gd" id="1_032v6"]
 [ext_resource type="PackedScene" uid="uid://bh6u2srhk2rhw" path="res://Scenes/Levels/level(0,0).tscn" id="2_1qb63"]
+[ext_resource type="AudioStream" uid="uid://dk7gge8w7tlp6" path="res://Assets/Sounds/Dooropen.wav" id="3_xrfy4"]
+[ext_resource type="AudioStream" uid="uid://cyodf7hcm6wil" path="res://Assets/Sounds/doorclose.wav" id="4_qkwk6"]
 
 [node name="LevelManager" type="Node2D"]
 script = ExtResource("1_032v6")
 
 [node name="Level(0,0)" parent="." instance=ExtResource("2_1qb63")]
 hasShopkeeper = true
+
+[node name="DoorOpenSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_xrfy4")
+volume_db = -4.0
+bus = &"SFX"
+
+[node name="DoorCloseSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_qkwk6")
+volume_db = -15.0
+bus = &"SFX"

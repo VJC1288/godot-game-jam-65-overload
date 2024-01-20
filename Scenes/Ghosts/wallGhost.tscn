@@ -1,10 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://s1uf7n2lyg4w"]
+[gd_scene load_steps=14 format=3 uid="uid://s1uf7n2lyg4w"]
 
 [ext_resource type="PackedScene" uid="uid://cdwte7f6l3kjt" path="res://Scenes/Ghosts/baseGhost.tscn" id="1_lsu6m"]
 [ext_resource type="PackedScene" uid="uid://b3pugg6bajbmm" path="res://Scenes/Ghosts/DeathEffects/wallGhostDeathEffect.tscn" id="2_770ua"]
 [ext_resource type="Script" path="res://Scripts/Enemy Scripts/wallGhost.gd" id="2_ctm7n"]
 [ext_resource type="Shader" path="res://Shaders/ghost.gdshader" id="2_wnt1t"]
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="3_r7cqq"]
+
+[ext_resource type="Script" path="res://Scripts/wallGhostAttack.gd" id="4_8qm2k"]
+[ext_resource type="AudioStream" uid="uid://b1v65v12ijhxi" path="res://Assets/Sounds/wallghostdeath.wav" id="6_k3slt"]
+
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_27r45"]
 resource_local_to_scene = true
@@ -116,6 +120,16 @@ unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(-15, -12)
 
+
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+
+[node name="DeathSound" parent="." index="12"]
+stream = ExtResource("6_k3slt")
+
+[node name="BubbleShotSound" type="AudioStreamPlayer2D" parent="." index="13"]
+
+[node name="BubbleLandSound" type="AudioStreamPlayer2D" parent="." index="14"]
+
+[connection signal="timeout" from="AttackTimer" to="AttackTimer" method="_on_timeout"]
 
 [editable path="HurtBox"]

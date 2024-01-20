@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvy3qojq55bby"]
+[gd_scene load_steps=6 format=3 uid="uid://cvy3qojq55bby"]
 
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="1_jac6r"]
 [ext_resource type="Script" path="res://Scripts/lock.gd" id="1_pvd1t"]
+[ext_resource type="AudioStream" uid="uid://dg3fg1eo2tbib" path="res://Assets/Sounds/671417__geoff-bremner-audio__keys-handling-8.wav" id="3_j7uv2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fvdcl"]
 size = Vector2(28, 10)
@@ -28,5 +29,9 @@ debug_color = Color(0.145098, 0.623529, 0.486275, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_miby7")
+
+[node name="UnlockSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_j7uv2")
+bus = &"SFX"
 
 [connection signal="body_entered" from="UnlockArea" to="." method="_on_unlock_area_body_entered"]

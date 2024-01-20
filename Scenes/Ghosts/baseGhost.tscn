@@ -121,6 +121,10 @@ show_percentage = false
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(7.6, 6.6)
 
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+volume_db = -8.0
+bus = &"SFX"
+
 [connection signal="mouse_entered" from="SelectArea" to="." method="targetted"]
 [connection signal="mouse_exited" from="SelectArea" to="." method="untargetted"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
