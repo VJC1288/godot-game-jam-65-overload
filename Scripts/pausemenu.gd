@@ -23,17 +23,6 @@ func _ready():
 	playerItems.updateItemSlot_sig.connect(update_item_slots)
 	playerWeapons.updateWpnSlot_sig.connect(update_wpn_slots)
 	update_item_slots()
-	
-#func _process(_delta):
-	#if Input.is_action_just_pressed("pause"):
-		#if menu_open:
-			#get_tree().paused = false
-			#close_menu()
-		#else:
-			#open_menu()
-			#get_tree().paused = true
-	#if Input.is_action_just_pressed("quit") and menu_open:
-		#quit()
 
 func open_menu():
 	menu.visible = true

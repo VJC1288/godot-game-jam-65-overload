@@ -163,8 +163,8 @@ func collect_instantItem(item):
 func bought_item(amount):
 	item_inv.removeCoins(amount)
 
-func used_item(item_resource):
-	item_inv.removeItem(item_resource)
+func used_item(item_resource, correctSlot):
+	item_inv.removeItem(item_resource, correctSlot)
 
 func collect_upgrade(upgrade, amount):
 	upg_inv.insert(upgrade, amount)

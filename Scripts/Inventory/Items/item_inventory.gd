@@ -32,11 +32,10 @@ func removeCoins(amount):
 					playerItems.slots[slot].item = null
 				updateItemSlot_sig.emit()
 
-func removeItem(item_resource):
+func removeItem(item_resource, correctSlot):
 	playerItems = Globals.currentPlayer.item_inv
-	for slot in invSize:
-		if playerItems.slots[slot].item == item_resource and playerItems.slots[slot].amount >= 1:
-			playerItems.slots[slot].amount -= 1
-			if playerItems.slots[slot].amount == 0:
-				playerItems.slots[slot].item = null
-			updateItemSlot_sig.emit()
+	if playerItems.slots[correctSlot].item == item_resource and playerItems.slots[correctSlot].amount >= 1:
+		playerItems.slots[correctSlot].amount -= 1
+		if playerItems.slots[correctSlot].amount == 0:
+			playerItems.slots[correctSlot].item = null
+		updateItemSlot_sig.emit()
