@@ -26,7 +26,7 @@ func on_spawn():
 	attack_timer.start(randf_range(2,3))
 
 func match_states():
-	print(currentWallState)
+
 	match currentWallState:
 		
 		WallStates.BOTTOM:

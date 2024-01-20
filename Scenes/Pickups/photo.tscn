@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdna8cwq4v4t4"]
+
+[ext_resource type="PackedScene" uid="uid://b454kg3worpwc" path="res://Scenes/Pickups/basePickup.tscn" id="1_7o4se"]
+[ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="2_pqqjt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukn12"]
+atlas = ExtResource("2_pqqjt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5aupf"]
+size = Vector2(14, 10)
+
+[node name="Photo" instance=ExtResource("1_7o4se")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = SubResource("AtlasTexture_ukn12")
+
+[node name="CollisionShape2D" parent="Area" index="0"]
+shape = SubResource("RectangleShape2D_5aupf")
