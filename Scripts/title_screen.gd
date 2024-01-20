@@ -1,7 +1,5 @@
 extends CanvasLayer
 
-
-@onready var settings_button = %SettingsButton
 @onready var start_button = %StartButton
 @onready var how_to_play = %HowToPlay
 @onready var how_to_play_close = %HowToPlayClose

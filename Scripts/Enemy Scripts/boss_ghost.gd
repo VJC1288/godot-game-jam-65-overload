@@ -1,6 +1,7 @@
 extends Ghost
 
 
+
 func adjust_energy(adjustment):
 	energy_bar.value += adjustment
 	sprite_2d.scale = Vector2(1,1) * (1 + energy_bar.value / 900.0)
@@ -10,3 +11,4 @@ func adjust_energy(adjustment):
 	else:
 		sprite_2d.region_rect.position.x = startingRectX
 		sprite_2d.region_rect.position.y = startingRectY
+
