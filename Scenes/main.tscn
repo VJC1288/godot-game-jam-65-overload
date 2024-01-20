@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://cegkilxcjyun2"]
+[gd_scene load_steps=22 format=3 uid="uid://cegkilxcjyun2"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_7koke"]
+[ext_resource type="PackedScene" uid="uid://fgu5bdlhkcmm" path="res://Scenes/audio_manager.tscn" id="2_ae3nn"]
 [ext_resource type="PackedScene" uid="uid://2mypy1um0ki7" path="res://Scenes/level_manager.tscn" id="2_rrv55"]
 [ext_resource type="PackedScene" uid="uid://dv15kfvce1ln" path="res://Scenes/coin_spawner.tscn" id="3_2bmkk"]
 [ext_resource type="PackedScene" uid="uid://cym3hn10fvug2" path="res://Scenes/enemy_spawner.tscn" id="4_g27an"]
@@ -44,6 +45,8 @@ shader_parameter/gradient = SubResource("GradientTexture1D_ohr1n")
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_7koke")
+
+[node name="AudioManager" parent="." instance=ExtResource("2_ae3nn")]
 
 [node name="LevelManager" parent="." instance=ExtResource("2_rrv55")]
 

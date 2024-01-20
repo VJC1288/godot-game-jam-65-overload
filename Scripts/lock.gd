@@ -2,6 +2,9 @@ extends StaticBody2D
 
 const KEY_RESOURCE = preload("res://Assets/Inventory/key_resource.tres")
 
+@onready var unlock_sound = $UnlockSound
+
+
 @export var room_coords := Vector2i(0,0)
 var playerItems: ItemInv 
 
@@ -29,6 +32,8 @@ func _on_unlock_area_body_entered(_body):
 	if hasKey:
 		Globals.currentPlayer.used_item(KEY_RESOURCE, correctSlot)
 		Globals.locksUnlocked.append(room_coords)
+		unlock_sound.play()
+		await unlock_sound.finished
 		call_deferred("queue_free")
 	else:
 		print("Player has no key!")

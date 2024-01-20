@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://y67nbydr3477"]
+[gd_scene load_steps=6 format=3 uid="uid://y67nbydr3477"]
 
 [ext_resource type="Script" path="res://Scripts/Overloaders.gd" id="1_uvanj"]
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="2_peqty"]
+[ext_resource type="AudioStream" uid="uid://cqy68mtjweosu" path="res://Assets/Sounds/overloaderburst.wav" id="3_vsfn2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_30j06"]
 atlas = ExtResource("2_peqty")
@@ -25,3 +26,8 @@ region_rect = Rect2(480, 352, 32, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lock"]
 shape = SubResource("RectangleShape2D_0r8ya")
+
+[node name="BurstSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_vsfn2")
+volume_db = -8.0
+bus = &"SFX"

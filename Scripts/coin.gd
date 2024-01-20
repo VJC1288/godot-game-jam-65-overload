@@ -4,7 +4,6 @@ class_name Coin
 
 signal coin_collected(value)
 
-var player = null
 
 @export var item: InvItem
 
@@ -16,10 +15,10 @@ var player = null
 var coin_value:int
 
 func _on_area_body_entered(_body):
-	player = Globals.currentPlayer
+ 
 	emit_signal("coin_collected", coin_value)
 	var amount = coin_value
-	player.collect_item(item, amount)
+	Globals.currentPlayer.collect_item(item, amount)
   
 	prints("Coins:",Globals.currentCoinCount)
 	queue_free()

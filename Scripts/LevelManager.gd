@@ -32,10 +32,17 @@ const LEVEL_3_3_ = preload("res://Scenes/Levels/level(3,3).tscn")
 const LEVEL__1_4_ = preload("res://Scenes/Levels/level(_1,4).tscn")
 const LEVEL__2_4_ = preload("res://Scenes/Levels/level(_2,4).tscn")
 const LEVEL__2_5_ = preload("res://Scenes/Levels/level(_2,5).tscn")
+const LEVEL__2_6_ = preload("res://Scenes/Levels/level(_2,6).tscn")
+
+
+
 ##Use this to start the game in a different room
 @export var debug_spawn_room = Vector2i(0,0)
 
 @onready var current_level:Level = $"Level(0,0)"
+@onready var door_open_sound = $DoorOpenSound
+@onready var door_close_sound = $DoorCloseSound
+
 
 var hud = null
 var enemy_spawner = null
@@ -70,7 +77,8 @@ var levelsDictionary = {
 	Vector2i(3,3): LEVEL_3_3_,
 	Vector2i(-1,4): LEVEL__1_4_,
 	Vector2i(-2,4): LEVEL__2_4_,
-	Vector2i(-2, 5): LEVEL__2_5_
+	Vector2i(-2, 5): LEVEL__2_5_,
+	Vector2i(-2, 6): LEVEL__2_6_
 }
 
 var storedCoinsDict = {}
@@ -107,6 +115,7 @@ func initialize(passed_hud, passed_enemy_spawner, passed_coin_spawner, passed_it
 
 func switch_level(direction: Vector2i):
 
+	door_open_sound.play()
 	if Globals.currentPlayer != null:
 		Globals.currentPlayer.pause()	
 	await hud.fade_to_black()	
@@ -203,6 +212,10 @@ func switch_level(direction: Vector2i):
 	new_level.connect("spawn_enemy", room_specific_enemy_spawn)
 	new_level.connect("spawn_room_item", room_specific_item_spawn)
 	
+	#Clear glitched beams
+	if Globals.currentPlayer != null:
+		Globals.currentPlayer.clear_beams()
+	
 	#Document that the new room has been seen
 	if Globals.roomsSeen.find(current_coords) == -1:
 		Globals.roomsSeen.append(current_coords)
@@ -212,7 +225,7 @@ func switch_level(direction: Vector2i):
 	if Globals.currentPlayer != null:
 		Globals.currentPlayer.unpause()
 	current_level.enable_exits()
-	
+	door_close_sound.play()
 
 			
 

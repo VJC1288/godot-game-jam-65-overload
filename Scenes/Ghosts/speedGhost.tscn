@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dt1dg0701yorv"]
+[gd_scene load_steps=10 format=3 uid="uid://dt1dg0701yorv"]
 
 [ext_resource type="PackedScene" uid="uid://cdwte7f6l3kjt" path="res://Scenes/Ghosts/baseGhost.tscn" id="1_y377v"]
 [ext_resource type="Shader" path="res://Shaders/ghost.gdshader" id="2_c4btd"]
 [ext_resource type="PackedScene" uid="uid://cqmnj1d7tbdhs" path="res://Scenes/Ghosts/DeathEffects/speed_death_effect.tscn" id="2_csqes"]
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="3_w24c7"]
+[ext_resource type="AudioStream" uid="uid://cl3elqbsqpnx1" path="res://Assets/Sounds/speedghostdeath.wav" id="5_8xr6x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nhopn"]
 resource_local_to_scene = true
@@ -59,5 +60,8 @@ offset_bottom = 23.0
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="8"]
 position = Vector2(1.19209e-07, 8)
+
+[node name="DeathSound" parent="." index="9"]
+stream = ExtResource("5_8xr6x")
 
 [editable path="HurtBox"]

@@ -9,6 +9,10 @@ signal ghost_died(location)
 @onready var energy_bar = %EnergyBar
 @onready var hurt_box = $HurtBox
 @onready var float_particle = $FloatParticle
+@onready var death_sound = $DeathSound
+@onready var shadow = $Shadow
+@onready var box_container = $BoxContainer
+
 
 @export var immobile: bool = false
 @export var SPEED = 20.0
@@ -21,6 +25,7 @@ signal ghost_died(location)
 
 var player_to_attack:CharacterBody2D = null
 var taking_damage:bool = false
+var deathState = false
 
 var sprite2d_shader: ShaderMaterial
 var startingRectX: int
@@ -73,19 +78,17 @@ func take_damage(damage_power):
 	taking_damage = true
 	panel.visible = false
 	adjust_energy(damage_power)
-	if energy_bar.value >= energy_to_kill:
-		emit_signal("ghost_died", global_position, ghost_type)
-		if death_scene != null:
-			death_effect()
-		queue_free()
+	if energy_bar.value >= energy_to_kill and deathState == false:
+		kill_ghost()
 
 func stop_damaging():
 	taking_damage = false
 
 func targetted():
-	if Globals.currentTargetedGhost == null:
-		panel.visible = true
-		Globals.currentTargetedGhost = self
+	if !deathState:
+		if Globals.currentTargetedGhost == null:
+			panel.visible = true
+			Globals.currentTargetedGhost = self
 	
 func untargetted():
 	panel.visible = false
@@ -107,6 +110,24 @@ func death_effect():
 		death_animation.position = global_position
 		death_animation.emitting = true
 		get_tree().current_scene.add_child(death_animation)
+		
+func kill_ghost():
+		deathState = true
+		emit_signal("ghost_died", global_position, ghost_type)
+		if death_scene != null:
+			death_effect()
+		Globals.currentTargetedGhost = null
+		Globals.currentPlayer.clear_beams()
+		hurt_box.monitoring = false
+		hurt_box.monitorable = false
+		float_particle.visible = false
+		shadow.visible = false
+		sprite_2d.visible = false
+		panel.visible = false
+		box_container.visible = false		
+		death_sound.play()
+		await death_sound.finished
+		queue_free()
 		
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
