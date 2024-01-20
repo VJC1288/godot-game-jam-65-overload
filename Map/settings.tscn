@@ -49,10 +49,14 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="SettingsLabel" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SettingsLabel" type="Label" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
@@ -62,7 +66,7 @@ text = "SETTINGS"
 label_settings = SubResource("LabelSettings_d68d4")
 horizontal_alignment = 1
 
-[node name="MasterVolume" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="MasterVolume" type="Label" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -70,17 +74,17 @@ theme_override_fonts/font = ExtResource("1_83y2u")
 text = "Master Volume: 50"
 horizontal_alignment = 1
 
-[node name="MasterSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-value = 50.0
-tick_count = 10
+step = 5.0
+value = 80.0
 ticks_on_borders = true
 
-[node name="MusicVolume" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="MusicVolume" type="Label" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -88,17 +92,16 @@ theme_override_fonts/font = ExtResource("1_83y2u")
 text = "Music Volume: 50"
 horizontal_alignment = 1
 
-[node name="MusicSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-value = 50.0
-tick_count = 10
-ticks_on_borders = true
+step = 5.0
+value = 100.0
 
-[node name="SoundEffectsVolume" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="SoundEffectsVolume" type="Label" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -106,16 +109,15 @@ theme_override_fonts/font = ExtResource("1_83y2u")
 text = "Sound Effects Volume: 50"
 horizontal_alignment = 1
 
-[node name="SoundEffectsSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="SoundEffectsSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-value = 50.0
-tick_count = 10
-ticks_on_borders = true
+step = 5.0
+value = 100.0
 
-[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
-[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/SoundEffectsSlider" to="." method="_on_sound_effects_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/SoundEffectsSlider" to="." method="_on_sound_effects_slider_value_changed"]

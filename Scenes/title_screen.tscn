@@ -111,7 +111,9 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -128,17 +130,6 @@ theme_override_styles/normal = ExtResource("3_pf2k2")
 theme_override_styles/hover = ExtResource("4_kuwwj")
 theme_override_styles/pressed = ExtResource("5_jba6x")
 text = "Start"
-
-[node name="SettingsButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 2
-theme_override_fonts/font = ExtResource("1_xt548")
-theme_override_font_sizes/font_size = 19
-theme_override_styles/normal = ExtResource("3_pf2k2")
-theme_override_styles/hover = ExtResource("4_kuwwj")
-theme_override_styles/pressed = ExtResource("5_jba6x")
-text = "Settings"
 
 [node name="HowToPlay" type="Button" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -238,6 +229,5 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/MarginContainer/VBoxContainer/HowToPlay" to="." method="_on_how_to_play_pressed"]
 [connection signal="pressed" from="How To Play Container/How To Play Panel/MarginContainer/Panel/VBoxContainer/HBoxContainer/HowToPlayClose" to="." method="_on_how_to_play_close_pressed"]

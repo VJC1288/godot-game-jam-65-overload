@@ -6,12 +6,10 @@ extends CanvasLayer
 @onready var how_to_play = %HowToPlay
 @onready var how_to_play_close = %HowToPlayClose
 
+
 @onready var how_to_play_container = $"How To Play Container"
 
 
-
-func _on_settings_button_pressed():
-	pass # Replace with function body.
 
 func _on_how_to_play_close_pressed():
 	how_to_play_container.visible = false

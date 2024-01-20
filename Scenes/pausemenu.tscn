@@ -305,6 +305,5 @@ size_flags_vertical = 10
 theme_override_fonts/font = ExtResource("2_qi3kb")
 text = "Tab: Resume
 M: Open Map
-F: Settings
-Q: Exit Game"
+F: Settings"
 label_settings = SubResource("LabelSettings_q5p75")
