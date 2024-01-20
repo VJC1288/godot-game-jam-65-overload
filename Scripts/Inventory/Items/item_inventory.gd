@@ -24,6 +24,7 @@ func insert(item: InvItem, amount):
 	updateItemSlot_sig.emit()
 		
 func removeCoins(amount):
+	playerItems = Globals.currentPlayer.item_inv
 	for slot in invSize:
 			if playerItems.slots[slot].item == COIN_ICON:
 				playerItems.slots[slot].amount -= amount
@@ -32,8 +33,9 @@ func removeCoins(amount):
 				updateItemSlot_sig.emit()
 
 func removeItem(item_resource):
+	playerItems = Globals.currentPlayer.item_inv
 	for slot in invSize:
-		if playerItems.slots[slot].item == item_resource:
+		if playerItems.slots[slot].item == item_resource and playerItems.slots[slot].amount >= 1:
 			playerItems.slots[slot].amount -= 1
 			if playerItems.slots[slot].amount == 0:
 				playerItems.slots[slot].item = null

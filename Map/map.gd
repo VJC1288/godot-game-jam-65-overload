@@ -97,7 +97,7 @@ func check_doors():
 		exits.append("X")
 
 
-func setMapTile(hasShopkeer:bool=false):
+func setMapTile(_hasShopkeer:bool=false):
 	if mapTileDictionary[exits] != Vector2i(-1,-1):
 		game_map.set_cell(0, currentTile, 1, mapTileDictionary[exits])
 		if previousTileHasShopkeeper:
