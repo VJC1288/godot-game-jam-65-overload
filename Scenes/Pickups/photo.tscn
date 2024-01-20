@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdna8cwq4v4t4"]
+[gd_scene load_steps=6 format=3 uid="uid://bdna8cwq4v4t4"]
 
 [ext_resource type="PackedScene" uid="uid://b454kg3worpwc" path="res://Scenes/Pickups/basePickup.tscn" id="1_7o4se"]
+[ext_resource type="Resource" uid="uid://dw5nc8ffqaiv6" path="res://Assets/Inventory/photo.tres" id="2_i7p2f"]
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="2_pqqjt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ukn12"]
@@ -11,6 +12,8 @@ region = Rect2(0, 0, 32, 32)
 size = Vector2(14, 10)
 
 [node name="Photo" instance=ExtResource("1_7o4se")]
+item = ExtResource("2_i7p2f")
+itemName = "Photo"
 
 [node name="Sprite2D" parent="." index="0"]
 texture = SubResource("AtlasTexture_ukn12")

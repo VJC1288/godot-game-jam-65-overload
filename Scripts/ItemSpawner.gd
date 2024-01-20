@@ -10,6 +10,7 @@ const BEAM_BATTERY_ = preload("res://Scenes/Pickups/beamBattery+.tscn")
 const WRAITH_BOOTS = preload("res://Scenes/Pickups/wraith_boots.tscn")
 const SPECTRE_COAT = preload("res://Scenes/Pickups/spectre_coat.tscn")
 const GEIST_GOULASH = preload("res://Scenes/Pickups/geist_goulash.tscn")
+const PHOTO = preload("res://Scenes/Pickups/photo.tscn")
 
 var hud = null
 
@@ -33,10 +34,11 @@ func spawn_item(location: Vector2, item_name: String = "key"):
 			spawnedItem = SPECTRE_COAT.instantiate()
 		"Geist Goulash":
 			spawnedItem = GEIST_GOULASH.instantiate()
-			
+		"Photo":
+			spawnedItem = PHOTO.instantiate()
 	spawnedItem.global_position = location
 	
-	if spawnedItem.instantItem:
+	if spawnedItem.instantItem or item_name == "Photo":
 		spawnedItem.item_collected.connect(hud.display_last_pickup)
 	
 	spawnedItem.upgrade_collected.connect(hud.display_last_pickup)

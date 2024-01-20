@@ -106,5 +106,5 @@ func setMapTile(_hasShopkeer:bool=false):
 			game_map.erase_cell(1, previousTile)
 		game_map.set_cell(1, currentTile, 1, player_indicator)
 	else:
-		print("Entered room has nso exit doors available!")
+		print("Entered room has no exit doors available!")
 	

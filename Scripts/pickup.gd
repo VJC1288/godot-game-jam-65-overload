@@ -22,6 +22,7 @@ func _on_area_body_entered(_body):
 		var amount = 1
 		if item != null:
 			player.collect_item(item, amount)
+			Globals.lastPickup = item.name
 			item_collected.emit()
 		if upgrade != null:
 			player.collect_upgrade(upgrade, amount)

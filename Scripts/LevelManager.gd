@@ -21,7 +21,7 @@ const LEVEL__2_2_ = preload("res://Scenes/Levels/level(_2,2).tscn")
 const LEVEL_4_1_ = preload("res://Scenes/Levels/level(4,1).tscn")
 const LEVEL__3_2_ = preload("res://Scenes/Levels/level(_3,2).tscn")
 const LEVEL__3_3_ = preload("res://Scenes/Levels/level(_3,3).tscn")
-const LEVEL__4__2_ = preload("res://Scenes/Levels/level(_4,_2).tscn")
+const LEVEL__4_2_ = preload("res://Scenes/Levels/level(_4,2).tscn")
 const LEVEL_0_2_ = preload("res://Scenes/Levels/level(0,2).tscn")
 const LEVEL_0_3_ = preload("res://Scenes/Levels/level(0,3).tscn")
 const LEVEL_0_4_ = preload("res://Scenes/Levels/level(0,4).tscn")
@@ -67,7 +67,7 @@ var levelsDictionary = {
 	Vector2i(4,1): LEVEL_4_1_,
 	Vector2i(-3,2): LEVEL__3_2_,
 	Vector2i(-3,3): LEVEL__3_3_,
-	Vector2i(-4,2): LEVEL__4__2_,
+	Vector2i(-4,2): LEVEL__4_2_,
 	Vector2i(0,2): LEVEL_0_2_,
 	Vector2i(0,3): LEVEL_0_3_,
 	Vector2i(0,4): LEVEL_0_4_,
@@ -144,7 +144,7 @@ func switch_level(direction: Vector2i):
 	#Clear the ShopKeeper
 	character_manager.remove_shopkeeper()
 	
-	#Clear and save the keys
+	#Clear and save the items
 	storedItemsDict[current_coords] = {}
 	for item in item_spawner.get_children():
 		storedItemsDict[current_coords][item.global_position] = item.itemName
