@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://14l7x12cke6i"]
+
+[ext_resource type="Texture2D" uid="uid://c7r66dv5rcfl0" path="res://Assets/titlebackground.png" id="1_rnqdy"]
+[ext_resource type="FontFile" uid="uid://ulu7kgqxb12r" path="res://Assets/Fonts/LoSumires-2X8l.ttf" id="1_xt548"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxcum"]
+bg_color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.603922, 0.305882, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fldtg"]
+line_spacing = 1.0
+font_size = 15
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+outline_color = Color(0.603922, 0.305882, 0, 1)
+
+[node name="TitleScreen" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("1_rnqdy")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_jxcum")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_xt548")
+theme_override_font_sizes/font_size = 30
+text = "PROJECT GHOST"
+label_settings = SubResource("LabelSettings_fldtg")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_xt548")
+theme_override_font_sizes/font_size = 30
+text = "(working title)"
+label_settings = SubResource("LabelSettings_fldtg")

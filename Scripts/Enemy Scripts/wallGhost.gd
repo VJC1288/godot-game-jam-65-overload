@@ -1,37 +1,29 @@
-extends Timer
+extends Ghost
 
-enum WallStates{BOTTOM, TOP, LEFT, RIGHT}
+class_name WallGhost
 
-@onready var wall_ghost: Ghost = $".."
-@onready var animation_player = $"../AnimationPlayer"
-@onready var attack_source = $"../AttackSource"
+enum WallStates{BOTTOM=1, TOP, LEFT, RIGHT, OFF}
 
 const GOOBALL = preload("res://Scenes/Ghosts/Attacks/gooball.tscn")
 const GOO_PUDDLE = preload("res://Scenes/Ghosts/Attacks/goo_puddle.tscn")
 
-@export var bottomWall: bool
-@export var topWall: bool
-@export var leftWall: bool
-@export var rightWall: bool
+@onready var puddle_container = $PuddleContainer
+@onready var wall_ghost = $"."
+@onready var attack_timer = %AttackTimer
+@onready var animation_player = %AnimationPlayer
+@onready var attack_source = %AttackSource
 
 var currentWallState: WallStates
-
 var goo_ball: Node2D
 
-func _ready():
-	if bottomWall:
-		currentWallState = WallStates.BOTTOM
-	if topWall:
-		currentWallState = WallStates.TOP
-	if leftWall:
-		currentWallState = WallStates.LEFT
-	if rightWall:
-		currentWallState = WallStates.RIGHT
-		
-		
-		
-func _physics_process(_delta):
+func on_spawn():
 	
+	checkWall()
+	
+	attack_timer.start(randf_range(2,3))
+
+func match_states():
+	print(currentWallState)
 	match currentWallState:
 		
 		WallStates.BOTTOM:
@@ -63,17 +55,44 @@ func _physics_process(_delta):
 			elif wall_ghost.direction.y > 0:
 				wall_ghost.sprite_2d.flip_h = false
 				attack_source.position.x = -15
+			
+		WallStates.OFF:
+			pass
 
-	
-func _on_timeout():
+func _on_attack_timer_timeout():
 	animation_player.play("wallGhostAttack")
 	goo_ball = GOOBALL.instantiate()
 	goo_ball.position = attack_source.position
 	wall_ghost.add_child(goo_ball)
 	goo_ball.createGooPuddle.connect(makePuddle)
+	attack_timer.start(randf_range(2,3))
+	
+	rotateGooShadow()
 	
 func makePuddle():
 	var goo_puddle = GOO_PUDDLE.instantiate()
 	goo_puddle.set_deferred("rotation", randf_range(0,360))
 	goo_puddle.set_deferred("position", goo_ball.position)
-	wall_ghost.call_deferred("add_child", goo_puddle)
+	puddle_container.call_deferred("add_child", goo_puddle)
+
+func checkWall():
+	if wall_ghost.global_position.x > (get_viewport_rect().size.x * 8/10):
+		currentWallState = WallStates.RIGHT
+	elif wall_ghost.global_position.x <= (get_viewport_rect().size.x * 2/10):
+		currentWallState = WallStates.LEFT
+	else:
+		currentWallState = WallStates.BOTTOM
+		
+func rotateGooShadow():
+	
+	match currentWallState:
+		
+		WallStates.BOTTOM:
+			goo_ball.look_at(goo_ball.global_position + Vector2.UP)
+		WallStates.TOP:
+			pass
+		WallStates.LEFT:
+			goo_ball.look_at(goo_ball.global_position + Vector2.RIGHT)
+		WallStates.RIGHT:
+			goo_ball.look_at(goo_ball.global_position + Vector2.RIGHT)
+	

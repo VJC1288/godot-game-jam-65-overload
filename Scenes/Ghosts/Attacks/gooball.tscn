@@ -1,8 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://c155eryn4stkp"]
+[gd_scene load_steps=11 format=3 uid="uid://c155eryn4stkp"]
 
 [ext_resource type="Script" path="res://Scenes/Ghosts/Attacks/gooball.gd" id="1_7fls0"]
 [ext_resource type="Texture2D" uid="uid://xh36kh02gfxp" path="res://Assets/gooball.png" id="1_xvij2"]
 [ext_resource type="PackedScene" uid="uid://bmtkidpm0bjfa" path="res://Scenes/hurt_box.tscn" id="3_nk0j7"]
+
+[sub_resource type="Curve" id="Curve_rdrd1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6aofk"]
+curve = SubResource("Curve_rdrd1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ii3wk"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 10, 0)
+scale_curve = SubResource("CurveTexture_6aofk")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnq0g"]
+atlas = ExtResource("1_xvij2")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="Gradient" id="Gradient_kktku"]
 offsets = PackedFloat32Array(0.0909091, 1)
@@ -23,6 +39,10 @@ collision_layer = 2
 script = ExtResource("1_7fls0")
 speed = 65
 damage = -10
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_ii3wk")
+texture = SubResource("AtlasTexture_pnq0g")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(0, 6)

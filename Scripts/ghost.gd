@@ -36,7 +36,8 @@ func _ready():
 	hurt_box.set_damage(ghost_damage)
 	startingRectX = sprite_2d.region_rect.position.x
 	startingRectY = sprite_2d.region_rect.position.y
-	
+	on_spawn()
+
 func _physics_process(_delta):
 	
 	if energy_bar.value <= 0:
@@ -68,6 +69,13 @@ func _physics_process(_delta):
 		player_to_attack = Globals.currentPlayer
 
 	move_and_slide()
+	match_states()
+
+func on_spawn():
+	pass
+	
+func match_states():
+	pass
 
 func take_damage(damage_power):
 	taking_damage = true
