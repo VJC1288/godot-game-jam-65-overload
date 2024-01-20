@@ -18,6 +18,7 @@ var previousTileHasShopkeeper: bool = false
 
 
 var mapTileDictionary = {
+	["X","X","X","X"]: Vector2i(-1,-1),
 	["N","S","E","W"]: Vector2i(0,0),
 	["N","X","X","X"]: Vector2i(1,0),
 	["N","X","X","W"]: Vector2i(2,0),
@@ -95,10 +96,15 @@ func check_doors():
 	else: 
 		exits.append("X")
 
+
 func setMapTile(hasShopkeer:bool=false):
-	game_map.set_cell(0, currentTile, 1, mapTileDictionary[exits])
-	if previousTileHasShopkeeper:
-		game_map.set_cell(1, previousTile, 1, shop_indicator)
-	else:	
-		game_map.erase_cell(1, previousTile)
-	game_map.set_cell(1, currentTile, 1, player_indicator)
+	if mapTileDictionary[exits] != Vector2i(-1,-1):
+		game_map.set_cell(0, currentTile, 1, mapTileDictionary[exits])
+		if previousTileHasShopkeeper:
+			game_map.set_cell(1, previousTile, 1, shop_indicator)
+		else:	
+			game_map.erase_cell(1, previousTile)
+		game_map.set_cell(1, currentTile, 1, player_indicator)
+	else:
+		print("Entered room has nso exit doors available!")
+	
