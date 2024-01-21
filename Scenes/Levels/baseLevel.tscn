@@ -453,6 +453,15 @@ texture_region_size = Vector2i(32, 32)
 5:7/0 = 0
 5:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:7/0/physics_layer_0/angular_velocity = 0.0
+1:6/0 = 0
+1:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:6/0/physics_layer_0/angular_velocity = 0.0
+0:6/0 = 0
+0:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:6/0/physics_layer_0/angular_velocity = 0.0
+0:5/0 = 0
+0:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:5/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lxeuc"]
 texture = ExtResource("3_d6jdp")
@@ -552,6 +561,22 @@ texture_region_size = Vector2i(32, 32)
 6:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:2/0/physics_layer_0/angular_velocity = 0.0
 6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 12, 16, 12, -10, -16, -10)
+3:5/0 = 0
+3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:5/0/physics_layer_0/angular_velocity = 0.0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(4, -6, 16, -6, 16, 16, 4, 16)
+4:5/0 = 0
+4:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:5/0/physics_layer_0/angular_velocity = 0.0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -6, -4, -6, -4, 7.6014, 10, 8, 10, 16, -4, 16, -16, 16)
+4:6/0 = 0
+4:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:6/0/physics_layer_0/angular_velocity = 0.0
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -6, -16, 10, -16, 10, -6, -4, -6, -4, 8, -16, 8)
+3:6/0 = 0
+3:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:6/0/physics_layer_0/angular_velocity = 0.0
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(4, -16, 16, -16, 16, 8, 4, 8)
 
 [sub_resource type="TileSet" id="TileSet_ny8g5"]
 tile_size = Vector2i(32, 32)

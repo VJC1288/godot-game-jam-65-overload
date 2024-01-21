@@ -7,3 +7,6 @@ func on_first_enter():
 	
 	centerOfScreen = Vector2(viewport.size.x / 2 + 45, viewport.size.y / 2)
 	spawn_item(centerOfScreen, "Geist Goulash")
+	
+	centerOfScreen = Vector2(viewport.size.x / 2, viewport.size.y / 2 + 60)
+	spawn_item(centerOfScreen, "Beam Battery")
