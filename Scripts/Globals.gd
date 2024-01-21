@@ -25,3 +25,22 @@ var locksUnlocked = []
 
 var roomsSeen = []
 	
+func resetGlobals():
+	currentPlayer = null
+
+	currentTargetedGhost= null
+
+	paused = false
+
+	currentCoinCount = 0
+
+	lastPickup = ""
+	
+	shopInventory = {
+	Vector2i(2, 1):["Beam Battery", "key", "Arc Extender"],
+	Vector2i(-3, 1):["Spectre Coat", "Geist Goulash", "Wraith Boots"]
+	}
+
+	locksUnlocked = []
+
+	roomsSeen = []
