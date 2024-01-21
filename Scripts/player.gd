@@ -22,6 +22,7 @@ enum PlayerAttackStates{FIRING, NOT_FIRING}
 @onready var foot_step_sound = $Sounds/FootStepSound
 @onready var beam_shock_fail_sound = $Sounds/BeamShockFailSound
 @onready var coins_n_keys_sound = $Sounds/CoinsNKeysSound
+@onready var player_hurt = $Sounds/PlayerHurt
 
 
 @onready var health_component:HealthComponent = $HealthComponent
@@ -147,6 +148,7 @@ func select_target():
 			pass
 		else:
 			beam_shock_sound.play()
+			
 	elif Input.is_action_just_pressed("fire_beam") and Globals.currentTargetedGhost == null:
 		
 		fail_sprite.visible = true			
@@ -219,8 +221,11 @@ func collect_upgrade(upgrade, amount):
 func _on_health_component_health_changed(new_health):
 	emit_signal("player_health_changed", new_health)
 	
+	
+	
 func _on_health_component_max_health_changed(new_max_health):
 	player_max_health_changed.emit(new_max_health)
+	
 	
 func pause():
 	currentMoveState = PlayerMoveStates.PAUSED

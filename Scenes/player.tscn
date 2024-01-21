@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bxha03nksdagd"]
+[gd_scene load_steps=23 format=3 uid="uid://bxha03nksdagd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_48hap"]
 [ext_resource type="Resource" uid="uid://0bkd3m0eno00" path="res://Assets/Inventory/player_weapons.tres" id="2_v42ke"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://dbjdw0c7b6nqc" path="res://Assets/Sounds/458353__dwoboyle__footsteps-tile-run-14(pitchdown).wav" id="10_qlgiy"]
 [ext_resource type="AudioStream" uid="uid://bbjq8ihkoavba" path="res://Assets/Sounds/ELECTRIC Shock Zap Short 03.wav" id="11_6fj74"]
 [ext_resource type="AudioStream" uid="uid://cv5h3en3nr0bj" path="res://Assets/Sounds/coinsNkeys.wav" id="13_rsell"]
+[ext_resource type="AudioStream" uid="uid://jh0srmjtuoeg" path="res://Assets/Sounds/hurt.ogg" id="14_bqxtk"]
 
 [sub_resource type="Gradient" id="Gradient_sjtlc"]
 offsets = PackedFloat32Array(0.0909091, 1)
@@ -167,9 +168,10 @@ health_component = NodePath("../HealthComponent")
 [node name="CollisionShape2D" parent="HitboxComponent" index="0"]
 shape = SubResource("RectangleShape2D_xqdcp")
 
-[node name="HealthComponent" type="Node2D" parent="."]
+[node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("hurt_sound")]
 position = Vector2(0, -9)
 script = ExtResource("3_f3wxu")
+hurt_sound = NodePath("../Sounds/PlayerHurt")
 max_health = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -205,6 +207,12 @@ bus = &"SFX"
 
 [node name="CoinsNKeysSound" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("13_rsell")
+volume_db = -8.0
+pitch_scale = 0.7
+bus = &"SFX"
+
+[node name="PlayerHurt" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("14_bqxtk")
 volume_db = -8.0
 pitch_scale = 0.7
 bus = &"SFX"

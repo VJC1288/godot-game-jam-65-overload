@@ -15,10 +15,10 @@ size = Vector2(44, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v74st"]
 radius = 22.0
-height = 72.0
+height = 58.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56xta"]
-size = Vector2(68, 40)
+size = Vector2(54, 32)
 
 [node name="BossHand" instance=ExtResource("1_ku2hy")]
 script = ExtResource("2_p705f")
@@ -33,7 +33,7 @@ texture = ExtResource("1_cdwt8")
 region_rect = Rect2(192, 512, 96, 64)
 
 [node name="CollisionShape2D" parent="." index="3"]
-position = Vector2(20, 12)
+position = Vector2(11, 12)
 shape = SubResource("RectangleShape2D_jxwkt")
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
@@ -46,10 +46,11 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_56xta")
 
 [node name="Panel" parent="." index="6"]
-offset_left = -42.0
-offset_top = -26.0
-offset_right = 42.0
-offset_bottom = 26.0
+visible = true
+offset_left = -30.0
+offset_top = -20.0
+offset_right = 30.0
+offset_bottom = 20.0
 
 [node name="BoxContainer" parent="." index="7"]
 custom_minimum_size = Vector2(50, 60)

@@ -14,6 +14,7 @@ const GAMEOVER = preload("res://Scenes/gameover.tscn")
 
 @onready var hud = $UIElements/HUD
 
+var game_win_flag = false
 
 func _ready():
 	randomize()
@@ -100,7 +101,8 @@ func update_coin_count(amount):
 func game_over():
 	var game_over_screen = GAMEOVER.instantiate()
 	add_child(game_over_screen)
-	game_over_screen.set_text("GAME OVER?")
+	if game_win_flag:
+		game_over_screen.set_text("GAME OVER?")
 	get_tree().paused = true
 
 func game_win():
@@ -114,4 +116,5 @@ func game_win():
 	await tween.finished
 	audio_manager.gameEnd = true
 	audio_manager.currentMusic.playing = false
+	game_win_flag = true
 	game_over()

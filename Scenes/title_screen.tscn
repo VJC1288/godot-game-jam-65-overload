@@ -43,6 +43,7 @@ font_color = Color(0.803922, 0.803922, 0.803922, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_doo02"]
 font = ExtResource("1_xt548")
+font_size = 13
 font_color = Color(0.658824, 0.658824, 0.658824, 1)
 
 [node name="TitleScreen" type="CanvasLayer"]
@@ -201,7 +202,7 @@ vertical_alignment = 1
 [node name="HowToPlayText" type="Label" parent="How To Play Container/How To Play Panel/MarginContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
-text = "Use WASD to move around, and left click to overload ghosts. Use coins to purchase things from the shop. If you are running low on health, make sure you look for some Geist Goulash. 
+text = "Use WASD to move around, and left click to overload ghosts. M will open the map. F for settings. ESC or TAB will Pause. Use coins to purchase things from the shop. If you are running low on health, make sure you look for some Geist Goulash. 
 How could you have let her go...you have to find Jane."
 label_settings = SubResource("LabelSettings_doo02")
 autowrap_mode = 2

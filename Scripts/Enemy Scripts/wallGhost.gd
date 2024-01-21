@@ -63,14 +63,15 @@ func match_states():
 			pass
 
 func _on_attack_timer_timeout():
-	animation_player.play("wallGhostAttack")
-	goo_ball = GOOBALL.instantiate()
-	goo_ball.position = attack_source.position
-	wall_ghost.add_child(goo_ball)
-	goo_ball.createGooPuddle.connect(makePuddle)
-	attack_timer.start(randf_range(2,3))
-	bubble_shot_sound.play()
-	rotateGooShadow()
+	if !deathState:
+		animation_player.play("wallGhostAttack")
+		goo_ball = GOOBALL.instantiate()
+		goo_ball.position = attack_source.position
+		wall_ghost.add_child(goo_ball)
+		goo_ball.createGooPuddle.connect(makePuddle)
+		attack_timer.start(randf_range(2,3))
+		bubble_shot_sound.play()
+		rotateGooShadow()
 	
 func makePuddle():
 	var goo_puddle = GOO_PUDDLE.instantiate()
