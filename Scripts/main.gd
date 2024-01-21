@@ -3,7 +3,7 @@ extends Node2D
 const PLAYER = preload("res://Scenes/player.tscn")
 const PAUSEMENU = preload("res://Scenes/pausemenu.tscn")
 const GAMEOVER = preload("res://Scenes/gameover.tscn")
-
+const PHOTO = preload("res://Assets/Inventory/photo.tres")
 
 @onready var coin_spawner:CoinSpawner = $CoinSpawner
 @onready var enemy_spawner = $EnemySpawner
@@ -21,6 +21,8 @@ func _ready():
 	var centerOfScreen = Vector2(viewport.size.x / 2, viewport.size.y / 2 - 45)
 	
 	spawn_player(centerOfScreen)
+	resetItemInventory()
+	resetUpgradeInventory()
 	
 	enemy_spawner.connect("enemy_killed", enemy_killed)
 	enemy_spawner.connect("spawner_boss_died", game_win)
@@ -96,7 +98,18 @@ func update_max_health(new_value):
 func update_coin_count(amount):
 	Globals.currentCoinCount += amount
 	hud.update_coin_count()
-	
+
+func resetItemInventory():
+	for slot in range(0,6):
+			if Globals.currentPlayer.item_inv.slots[slot].item == PHOTO:
+				Globals.currentPlayer.item_inv.slots[slot].amount = 1
+			else:
+				Globals.currentPlayer.item_inv.slots[slot].item = null
+		
+func resetUpgradeInventory():
+	for slot in range(0,6):
+		Globals.currentPlayer.upg_inv.slots[slot].item = null
+
 func game_over():
 	var game_over_screen = GAMEOVER.instantiate()
 	add_child(game_over_screen)
