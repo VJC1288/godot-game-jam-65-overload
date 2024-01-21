@@ -5,6 +5,11 @@ extends CanvasLayer
 @onready var coin_count = %CoinCount
 @onready var screen_transition = $ScreenTransition
 @onready var pickup_message = %PickupMessage
+@onready var jane_shadow = %JaneShadow
+@onready var screen_transition_2 = $ScreenTransition2
+@onready var jane_ = %"Jane?"
+@onready var jane__ = %"JANE!?"
+@onready var jane_container = %JaneContainer
 
 
 func update_health(new_value):
@@ -40,3 +45,25 @@ func unfade_from_black():
 	tween.tween_property(screen_transition, "color", Color(0, 0, 0, 0), .5).set_ease(Tween.EASE_OUT).set_delay(.2)
 	await tween.finished
 	screen_transition.visible = false
+
+func fade_to_white():
+	screen_transition.visible = true
+	screen_transition_2.visible = true
+	jane_shadow.visible = true
+	jane_.visible = true
+	jane__.visible = true
+	jane_container.visible = true
+	
+	var tween = create_tween()
+	tween.tween_property(screen_transition, "color", Color(1, 1, 1, 1), 5)
+	tween.tween_property(jane_shadow, "modulate", Color(1,1,1,1), 5)
+	tween.tween_property(jane_, "modulate", Color(0,0,0,1), 3)
+	tween.tween_property(jane__, "modulate", Color(0,0,0,1), 3)
+	tween.tween_property(screen_transition_2, "color", Color(1, 1, 1, 1), 5)
+	tween.tween_property(screen_transition_2, "color", Color(0, 0, 0, 1), 5)
+	
+	await tween.finished
+	
+	
+	
+

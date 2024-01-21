@@ -2,9 +2,9 @@ extends Node
 
 enum Teams {PLAYER = 1, ENEMIES = 2}
 
-const TITLE_SCREEN = preload("res://Scenes/title_screen.tscn")
-const MAIN = preload("res://Scenes/main.tscn")
-const GAMEOVER = preload("res://Scenes/gameover.tscn")
+const TITLE_SCREEN:PackedScene = preload("res://Scenes/title_screen.tscn")
+const MAIN:PackedScene = preload("res://Scenes/main.tscn")
+const GAMEOVER:PackedScene = preload("res://Scenes/gameover.tscn")
 
 var currentPlayer: Player
 

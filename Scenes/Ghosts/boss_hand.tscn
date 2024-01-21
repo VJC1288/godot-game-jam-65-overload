@@ -25,6 +25,7 @@ script = ExtResource("2_p705f")
 SPEED = 15.0
 energy_to_kill = 250
 regen_rate = -1
+ghost_type = "boss_hand"
 
 [node name="Sprite2D" parent="." index="2"]
 material = SubResource("ShaderMaterial_6lmmg")

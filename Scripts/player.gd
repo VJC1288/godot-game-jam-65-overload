@@ -47,6 +47,7 @@ var currentAttackState: PlayerAttackStates
 var tractorBeam: Line2D
 
 var paused: bool = false
+var game_end = false
 
 func _ready():
 	currentMoveState = PlayerMoveStates.IDLE
@@ -86,12 +87,12 @@ func _physics_process(_delta):
 			
 			else:
 				direction = direction.normalized()
-				if direction.x > 0 and damagingGhost == null:
+				if direction.x > 0:
 					sprite_2d.flip_h = true
 					weapon_1.scale.x = -1
 					weapon_muzzle.position.x = 16
 					fail_sprite.scale.x = -1
-				elif direction.x < 0 and damagingGhost == null:
+				elif direction.x < 0:
 					sprite_2d.flip_h = false
 					weapon_1.scale.x = 1
 					weapon_muzzle.position.x = -16
@@ -118,7 +119,7 @@ func _physics_process(_delta):
 			if foot_step_sound.playing:
 				foot_step_sound.stop()
 		
-	if health_component.current_health <= 0:
+	if health_component.current_health <= 0 and !game_end:
 		player_death.emit()
 	
 	if !beam_shock_fail_sound.playing:

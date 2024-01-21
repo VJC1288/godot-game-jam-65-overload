@@ -64,6 +64,10 @@ func enable_exits():
 func on_first_enter():
 	pass
 
+func on_every_enter():
+	pass
+
+
 func spawn_wall_ghost(location):
 	var type = "wall_ghost"
 	emit_signal("spawn_enemy", type, location)

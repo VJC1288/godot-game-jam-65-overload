@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bywq5ya1hvex6"]
+
+[ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="1_higtg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_al8q1"]
+size = Vector2(32, 44)
+
+[node name="BossLock" type="StaticBody2D"]
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_higtg")
+region_enabled = true
+region_rect = Rect2(544, 352, 32, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_al8q1")

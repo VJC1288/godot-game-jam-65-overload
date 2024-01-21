@@ -65,7 +65,7 @@ func close_map():
 	map.visible = false
 	map_open = false
 
-func _on_level_manager_level_changed(coords, hasShopkeeper):
+func _on_level_manager_level_changed(coords, hasShopkeeper, hasBoss):
 	check_doors()
 	previousTile = currentTile
 	currentTile = coords

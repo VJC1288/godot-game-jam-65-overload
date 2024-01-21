@@ -12,7 +12,6 @@ const GAMEOVER = preload("res://Scenes/gameover.tscn")
 @onready var character_manager = $CharacterManager
 @onready var audio_manager = $AudioManager
 
-
 @onready var hud = $UIElements/HUD
 
 
@@ -24,6 +23,7 @@ func _ready():
 	spawn_player(centerOfScreen)
 	
 	enemy_spawner.connect("enemy_killed", enemy_killed)
+	enemy_spawner.connect("spawner_boss_died", game_win)
 	
 	coin_spawner.connect("spawner_coin_collected", update_coin_count)
 	
@@ -82,9 +82,9 @@ func enemy_killed(location:Vector2, type: String):
 		"wall_ghost":
 			amount = randi_range(2,3)
 		_:
-			amount = 1
-
-	coin_spawner.spawn_coins(location, amount)
+			amount = 0
+	if amount != 0:
+		coin_spawner.spawn_coins(location, amount)
 	level_manager.enemy_killed()
 
 func update_health_bar(new_value):
@@ -96,10 +96,20 @@ func update_max_health(new_value):
 func update_coin_count(amount):
 	Globals.currentCoinCount += amount
 	hud.update_coin_count()
-
-func equip_wpn1():
-	Globals.currentPlayer.weapon_1.show()
 	
 func game_over():
 	add_child(GAMEOVER.instantiate())
 	get_tree().paused = true
+
+func game_win():
+	hud.fade_to_white()
+	Globals.currentPlayer.pause()
+	Globals.currentPlayer.game_end = true
+	for enemy in enemy_spawner.get_enemies():
+		enemy.queue_free()
+	var tween = create_tween()
+	tween.tween_property(audio_manager.currentMusic, "volume_db", -35, 30)
+	await tween.finished
+	audio_manager.gameEnd = true
+	audio_manager.currentMusic.playing = false
+	game_over()

@@ -22,8 +22,9 @@ size = Vector2(72, 92)
 [node name="BossGhost" instance=ExtResource("1_iyvjn")]
 script = ExtResource("2_88c6p")
 immobile = true
-ghost_damage = 20
-energy_to_kill = 600
+ghost_damage = -10
+energy_to_kill = 500
+regen_rate = -1
 ghost_type = "boss_ghost"
 
 [node name="Shadow" parent="." index="1"]

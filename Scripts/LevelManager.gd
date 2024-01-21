@@ -2,7 +2,7 @@ extends Node2D
 
 class_name LevelManager
 
-signal level_changed(coords, hasShopkeeper)
+signal level_changed(coords, hasShopkeeper, hasBoss)
 signal room_spawn_enemy(location, type)
 signal level_manager_item_spawn(type, location)
 
@@ -80,13 +80,13 @@ var levelsDictionary = {
 	Vector2i(3,3): LEVEL_3_3_,
 	Vector2i(-1,4): LEVEL__1_4_,
 	Vector2i(-2,4): LEVEL__2_4_,
-	Vector2i(-2, 5): LEVEL__2_5_,
-	Vector2i(-2, 6): LEVEL__2_6_,
-	Vector2i(-3, 6): LEVEL__3_6_,
-	Vector2i(-4, 6): LEVEL__4_6_,
-	Vector2i(-1, 6): LEVEL__1_6_,
-	Vector2i(-1, 7): LEVEL__1_7_,
-	Vector2i(0, 7): LEVEL_0_7_
+	Vector2i(-2,5): LEVEL__2_5_,
+	Vector2i(-2,6): LEVEL__2_6_,
+	Vector2i(-3,6): LEVEL__3_6_,
+	Vector2i(-4,6): LEVEL__4_6_,
+	Vector2i(-1,6): LEVEL__1_6_,
+	Vector2i(-1,7): LEVEL__1_7_,
+	Vector2i(0,7): LEVEL_0_7_
 	
 }
 
@@ -173,6 +173,7 @@ func switch_level(direction: Vector2i):
 	current_coords += direction
 	
 	#Create New Level
+	print(current_coords)
 	var new_level:Level = levelsDictionary[current_coords].instantiate()
 	current_level = new_level
 	
@@ -212,8 +213,8 @@ func switch_level(direction: Vector2i):
 	
 	add_child(new_level)
 	
-	#emit elvel change signal for map
-	level_changed.emit(current_coords, current_level.hasShopkeeper)
+	#emit level change signal for map and audio
+	level_changed.emit(current_coords, current_level.hasShopkeeper, current_level.bossIsAlive)
 	
 
 	
@@ -233,6 +234,8 @@ func switch_level(direction: Vector2i):
 	if Globals.roomsSeen.find(current_coords) == -1:
 		Globals.roomsSeen.append(current_coords)
 		current_level.on_first_enter()
+		
+	new_level.on_every_enter()
 	
 	await hud.unfade_from_black()
 	if Globals.currentPlayer != null:

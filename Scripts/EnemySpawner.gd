@@ -1,6 +1,8 @@
 extends Node2D
 
 signal enemy_killed(type, location)
+signal spawner_boss_died
+
 
 const REGULAR_GHOST = preload("res://Scenes/Ghosts/regularGhost.tscn")
 const TANK_GHOST = preload("res://Scenes/Ghosts/tankGhost.tscn")
@@ -32,7 +34,7 @@ func _physics_process(_delta):
 
 func set_spawn_timer(boss_timer:bool = false):
 	if boss_timer:
-		spawn_timer.wait_time = 8
+		spawn_timer.wait_time = 7
 	else:
 		spawn_timer.wait_time = 2.5
 
@@ -40,11 +42,11 @@ func set_spawn_timer(boss_timer:bool = false):
 func spawn_ghost():
 	var ghost_type = randi_range(1,100)
 	var enemy: Ghost
-	if ghost_type >= 80 and spawnType == 4:
+	if ghost_type >= 80 and spawnType >= 4:
 		enemy = TANK_GHOST.instantiate()
-	elif ghost_type >= 70 and spawnType == 3:
+	elif ghost_type >= 65 and spawnType >= 3:
 		enemy = SPEED_GHOST.instantiate()
-	elif ghost_type >= 45 and spawnType == 2:
+	elif ghost_type >= 45 and spawnType >= 2:
 		enemy = TALL_GHOST.instantiate()
 	else:
 		enemy = REGULAR_GHOST.instantiate()
@@ -78,6 +80,7 @@ func spawn_specific_ghost_at_area(location: Vector2, type: String):
 			enemy = WALL_GHOST.instantiate()
 		"boss_ghost":
 			enemy = BOSS_GHOST.instantiate()
+			enemy.connect("boss_died", boss_died)
 		"boss_hand":
 			enemy = BOSS_HAND.instantiate()
 		_:
@@ -102,3 +105,6 @@ func spawn_specific_ghost_at_area(location: Vector2, type: String):
 		else:
 			pass
 	##################################################
+
+func boss_died():
+	emit_signal("spawner_boss_died")
