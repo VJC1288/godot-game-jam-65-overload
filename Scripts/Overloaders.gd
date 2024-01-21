@@ -38,7 +38,6 @@ func child_overloaded(overloaded_child:Overloader):
 				pass
 			elif obj.energy_bar.value == obj.energy_bar.max_value:
 				amount_overloaded += 1
-			print(amount_overloaded)
 				
 		if amount_overloaded == child_overloaders.size():
 			unlock_door()

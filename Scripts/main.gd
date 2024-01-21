@@ -79,9 +79,9 @@ func enemy_killed(location:Vector2, type: String):
 		"tall_ghost":
 			amount = randi_range(2,3)
 		"speed_ghost":
-			amount = 1
+			amount = randi_range(1,2)
 		"wall_ghost":
-			amount = randi_range(2,3)
+			amount = randi_range(2,4)
 		"boss_hand":
 			item_spawner.spawn_item(location, "Geist Goulash")
 			amount = 0
