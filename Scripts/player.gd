@@ -204,9 +204,9 @@ func used_item(item_resource, correctSlot):
 func collect_upgrade(upgrade, amount):
 	upg_inv.insert(upgrade, amount)
 	if upgrade.name == "Arc Extender":
-		maxFireDistance += 5
+		maxFireDistance += 10
 	if upgrade.name == "Beam Battery+":
-		damagePower += 1
+		damagePower += 2
 	if upgrade.name == "Wraith Boots":
 		speedIncrease += .1
 	if upgrade.name == "Spectre Coat":

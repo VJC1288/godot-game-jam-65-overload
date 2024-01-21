@@ -82,6 +82,9 @@ func enemy_killed(location:Vector2, type: String):
 			amount = 1
 		"wall_ghost":
 			amount = randi_range(2,3)
+		"boss_hand":
+			item_spawner.spawn_item(location, "Geist Goulash")
+			amount = 0
 		_:
 			amount = 0
 	if amount != 0:

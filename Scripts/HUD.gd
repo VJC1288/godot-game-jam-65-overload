@@ -11,9 +11,15 @@ extends CanvasLayer
 @onready var jane__ = %"JANE!?"
 @onready var jane_container = %JaneContainer
 
+var health_color: Color = Color(0.38, 0.031, 0)
 
 func update_health(new_value):
-	health_bar.value = new_value
+	
+	var tween = create_tween()
+	tween.set_parallel()
+	tween.tween_property(health_bar, "value", new_value, 1).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(health_bar, "theme_override_styles/fill:bg_color", Color.INDIAN_RED, 0.3).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(health_bar, "theme_override_styles/fill:bg_color", health_color, 0.3).set_ease(Tween.EASE_IN_OUT).set_delay(0.3)
 	
 func update_max_health(new_value):
 	health_bar.max_value = new_value

@@ -44,3 +44,4 @@ func adjust_energy(adjustment):
 		sprite_2d.region_rect.position.x = startingRectX
 		sprite_2d.region_rect.position.y = startingRectY
 
+
