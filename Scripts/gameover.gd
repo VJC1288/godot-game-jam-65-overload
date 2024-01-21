@@ -1,11 +1,15 @@
 extends CanvasLayer
 
+@onready var game_over_text = %"Game Over Text"
+
+
 func _process(_delta):
 
 	if Input.is_action_just_pressed("restart"):
 		get_tree().change_scene_to_packed(Globals.TITLE_SCREEN)
 
 		
-		
-func quit():
-	get_tree().quit()
+
+
+func set_text(text):
+	game_over_text.text = text

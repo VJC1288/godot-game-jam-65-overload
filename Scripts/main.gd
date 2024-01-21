@@ -98,7 +98,9 @@ func update_coin_count(amount):
 	hud.update_coin_count()
 	
 func game_over():
-	add_child(GAMEOVER.instantiate())
+	var game_over_screen = GAMEOVER.instantiate()
+	add_child(game_over_screen)
+	game_over_screen.set_text("GAME OVER?")
 	get_tree().paused = true
 
 func game_win():

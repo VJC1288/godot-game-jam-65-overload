@@ -27,7 +27,7 @@ func on_every_enter():
 	var midBottomPhoto = Vector2i(9,4)
 	var bottomRightPhoto = Vector2i(9,5)
 	
-	photo_amount = 4
+
 	match photo_amount:
 		1:
 			ground.set_cell(1, topRightPhoto, 0, filledTopRightPhoto)
