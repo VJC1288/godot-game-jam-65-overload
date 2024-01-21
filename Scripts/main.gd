@@ -42,7 +42,6 @@ func _ready():
 	
 	hud.update_coin_count()
 	
-	
 	################ Temp Testing Items to Spawn ####################
 	#coin_spawner.spawn_coins(centerOfScreen + Vector2(50, 50), randi_range(1,5))
 	#item_spawner.spawn_item(centerOfScreen + Vector2(-50, -50), "key")
@@ -57,7 +56,6 @@ func _ready():
 	#item_spawner.spawn_item(centerOfScreen + Vector2(-100, -30), "Spectre Coat")
 	#item_spawner.spawn_item(centerOfScreen + Vector2(0, -60), "Geist Goulash")
 	##################### Remove on Release #########################
-	
 
 
 func spawn_player(locationToSpawn:Vector2):
