@@ -22,7 +22,6 @@ var menu_open: bool = false
 func _ready():
 	playerItems.updateItemSlot_sig.connect(update_item_slots)
 	playerWeapons.updateWpnSlot_sig.connect(update_wpn_slots)
-	update_item_slots()
 
 func open_menu():
 	menu.visible = true
@@ -31,6 +30,7 @@ func open_menu():
 	update_fire_distance()
 	update_beam_damage()
 	update_move_speed()
+	update_item_slots()
 	update_wpn_slots()
 	update_upg_slots()
 	

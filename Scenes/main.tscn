@@ -51,6 +51,7 @@ script = ExtResource("1_7koke")
 
 [node name="LevelManager" parent="." instance=ExtResource("2_rrv55")]
 
+
 [node name="CoinSpawner" parent="." instance=ExtResource("3_2bmkk")]
 
 [node name="ItemSpawner" parent="." instance=ExtResource("4_witci")]
