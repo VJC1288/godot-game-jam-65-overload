@@ -11,7 +11,7 @@ radius = 14.0357
 texture_filter = 1
 collision_layer = 2
 script = ExtResource("1_0wbfu")
-damagePerTick = -3
+damagePerTick = -4
 
 [node name="HurtBox" parent="." instance=ExtResource("2_uj0ce")]
 
