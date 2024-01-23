@@ -46,22 +46,22 @@ func build_shop():
 		match item:
 			"key":
 				item_to_add = KEY.instantiate()
-				cost = 5
+				cost = 10
 			"Spectre Coat":
 				item_to_add = SPECTRE_COAT.instantiate()
-				cost = 40
+				cost = 45
 			"Beam Battery":
 				item_to_add = BEAM_BATTERY_.instantiate()
-				cost = 30
+				cost = 35
 			"Arc Extender":
 				item_to_add = ARC_EXTENDER.instantiate()
-				cost = 30
+				cost = 35
 			"Wraith Boots":
 				item_to_add = WRAITH_BOOTS.instantiate()
 				cost = 35
 			"Geist Goulash":
 				item_to_add = GEIST_GOULASH.instantiate()
-				cost = 3
+				cost = 5
 			_:
 				item_to_add = null
 				

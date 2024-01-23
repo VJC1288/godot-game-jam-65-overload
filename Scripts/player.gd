@@ -203,6 +203,8 @@ func used_item(item_resource, correctSlot):
 
 func collect_upgrade(upgrade, amount):
 	upg_inv.insert(upgrade, amount)
+	if upgrade.name == "Coin Attractor":
+		Globals.hasCoinAttractor = true
 	if upgrade.name == "Arc Extender":
 		maxFireDistance += 10
 	if upgrade.name == "Beam Battery+":
