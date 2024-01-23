@@ -7,21 +7,27 @@
 [sub_resource type="Resource" id="Resource_64wp0"]
 script = ExtResource("3_c5pl3")
 item = ExtResource("2_0cowr")
+amount = 0
 
 [sub_resource type="Resource" id="Resource_mfbh7"]
 script = ExtResource("3_c5pl3")
+amount = 0
 
 [sub_resource type="Resource" id="Resource_lkoyr"]
 script = ExtResource("3_c5pl3")
+amount = 0
 
 [sub_resource type="Resource" id="Resource_d02kx"]
 script = ExtResource("3_c5pl3")
+amount = 0
 
 [sub_resource type="Resource" id="Resource_ugkbj"]
 script = ExtResource("3_c5pl3")
+amount = 0
 
 [sub_resource type="Resource" id="Resource_4hml5"]
 script = ExtResource("3_c5pl3")
+amount = 0
 
 [resource]
 script = ExtResource("1_aqfx1")

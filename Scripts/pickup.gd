@@ -4,10 +4,12 @@ class_name Pickup
 
 signal item_collected
 signal upgrade_collected
+signal weapon_collected
 
 @onready var sprite_2d = $Sprite2D
 @onready var pickup = $"."
 
+@export var weapon: InvWpn
 @export var item: InvItem
 @export var upgrade: InvUpg
 @export var itemName: String
@@ -28,6 +30,10 @@ func _on_area_body_entered(_body):
 			player.collect_upgrade(upgrade, amount)
 			Globals.lastPickup = upgrade.name
 			upgrade_collected.emit()
+		if weapon != null:
+			player.collect_weapon(weapon, amount)
+			Globals.lastPickup = weapon.name
+			weapon_collected.emit()
 		if instantItem:
 			player.collect_instantItem(itemName)
 			Globals.lastPickup = itemName
