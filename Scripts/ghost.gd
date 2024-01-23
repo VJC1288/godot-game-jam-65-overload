@@ -41,6 +41,7 @@ func _ready():
 	hurt_box.set_damage(ghost_damage)
 	startingRectX = sprite_2d.region_rect.position.x
 	startingRectY = sprite_2d.region_rect.position.y
+	hurt_box.hitbysword.connect(take_damage)
 	on_spawn()
 
 func _physics_process(_delta):
@@ -126,8 +127,8 @@ func kill_ghost():
 			death_effect()
 		Globals.currentTargetedGhost = null
 		Globals.currentPlayer.clear_beams()
-		hurt_box.monitoring = false
-		hurt_box.monitorable = false
+		hurt_box.set_deferred("monitoring", false)
+		hurt_box.set_deferred("monitorable", false)
 		float_particle.visible = false
 		shadow.visible = false
 		sprite_2d.visible = false

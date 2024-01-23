@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://docnyp7cxuxsc"]
+[gd_scene load_steps=12 format=3 uid="uid://docnyp7cxuxsc"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_s1jp4"]
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="2_5j454"]
 [ext_resource type="FontFile" uid="uid://ulu7kgqxb12r" path="res://Assets/Fonts/LoSumires-2X8l.ttf" id="2_tmh54"]
+[ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/pickup_tileset.png" id="4_n52a2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdvef"]
 shadow_color = Color(0, 0, 0, 0.501961)
@@ -17,6 +18,13 @@ region = Rect2(456, 40, 16, 16)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jy8ka"]
 font = ExtResource("2_tmh54")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_co7ax"]
+bg_color = Color(0.498039, 0.498039, 0.498039, 0.392157)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eex5e"]
+atlas = ExtResource("4_n52a2")
+region = Rect2(64, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ad2w"]
 atlas = ExtResource("2_5j454")
@@ -134,6 +142,29 @@ size_flags_horizontal = 0
 size_flags_vertical = 1
 label_settings = SubResource("LabelSettings_jy8ka")
 vertical_alignment = 2
+
+[node name="SwingTimerLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+visible = false
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("2_tmh54")
+text = "5
+"
+
+[node name="BusterSwordPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_co7ax")
+
+[node name="BusterSword" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2/BusterSwordPanel"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_eex5e")
 
 [node name="ScreenTransition" type="ColorRect" parent="."]
 visible = false

@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-
+@onready var hud = $"."
 @onready var health_bar = %HealthBar
 @onready var coin_count = %CoinCount
 @onready var screen_transition = $ScreenTransition
@@ -10,8 +10,17 @@ extends CanvasLayer
 @onready var jane_ = %"Jane?"
 @onready var jane__ = %"JANE!?"
 @onready var jane_container = %JaneContainer
+@onready var swing_timer_label = %SwingTimerLabel
+@onready var buster_sword_panel = %BusterSwordPanel
 
 var health_color: Color = Color(0.38, 0.031, 0)
+
+func _ready():
+	Globals.hud = hud
+
+func _process(_delta):
+	if Globals.currentPlayer != null:
+		swing_timer_label.text = str(snapped(Globals.currentPlayer.swing_timer.time_left, 0.1))
 
 func update_health(new_value):
 	
@@ -37,7 +46,7 @@ func display_last_pickup():
 	if Globals.lastPickup == "Geist Goulash":
 		pickup_message.text = str("Ate: " + Globals.lastPickup)
 	else:
-		pickup_message.text = str("Aquired: " + Globals.lastPickup)
+		pickup_message.text = str("Acquired: " + Globals.lastPickup)
 
 
 func fade_to_black():
@@ -69,7 +78,3 @@ func fade_to_white():
 	tween.tween_property(screen_transition_2, "color", Color(0, 0, 0, 1), 5)
 	
 	await tween.finished
-	
-	
-	
-
