@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InvUpg" load_steps=4 format=3 uid="uid://15unv3xpqcao"]
+
+[ext_resource type="Script" path="res://Scripts/Inventory/Upgrades/inventory_upgrade.gd" id="1_8go7y"]
+[ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/pickup_tileset.png" id="2_fsuoa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0nj6"]
+atlas = ExtResource("2_fsuoa")
+region = Rect2(0, 64, 32, 32)
+
+[resource]
+script = ExtResource("1_8go7y")
+name = "Coin Attractor"
+texture = SubResource("AtlasTexture_v0nj6")
+item_details = "Slowly pulls coins to you!"
