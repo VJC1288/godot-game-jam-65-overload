@@ -16,7 +16,8 @@ const COIN = preload("res://Scenes/coin.tscn")
 func spawn_coins(location: Vector2, amount:int):
 	var coinToSpawn: Coin = COIN.instantiate()
 	coinToSpawn.global_position = location
-	add_child(coinToSpawn)
+	#add_child(coinToSpawn)
+	call_deferred("add_child", coinToSpawn)
 	
 	var coin_text: Texture2D
 	match amount:
@@ -31,8 +32,9 @@ func spawn_coins(location: Vector2, amount:int):
 		5:
 			coin_text = coin5
 		
-	coinToSpawn.set_texture(coin_text)
+	coinToSpawn.call_deferred("set_texture", coin_text)
 	coinToSpawn.coin_value = amount
+
 	coinToSpawn.connect("coin_collected", coin_collected)
 	
 func coin_collected(amount):

@@ -24,6 +24,7 @@ func _ready():
 	spawn_player(centerOfScreen)
 	resetItemInventory()
 	resetUpgradeInventory()
+	resetWeaponInventory()
 	
 	enemy_spawner.connect("enemy_killed", enemy_killed)
 	enemy_spawner.connect("spawner_boss_died", game_win)
@@ -44,7 +45,8 @@ func _ready():
 	
 	################ Temp Testing Items to Spawn ####################
 	#coin_spawner.spawn_coins(centerOfScreen + Vector2(50, 50), randi_range(1,5))
-	#item_spawner.spawn_item(centerOfScreen + Vector2(-50, -50), "key")
+	#item_spawner.spawn_item(centerOfScreen + Vector2(-100, 50), "key")
+	item_spawner.spawn_item(centerOfScreen + Vector2(-100, 50), "Ghost Buster(Sword)")
 	#item_spawner.spawn_item(centerOfScreen + Vector2(-30, -30), "Photo")
 	#item_spawner.spawn_item(centerOfScreen + Vector2(50, -50), "Beam Battery")
 	#item_spawner.spawn_item(centerOfScreen + Vector2(70, -50), "Beam Battery")
@@ -111,6 +113,10 @@ func resetItemInventory():
 func resetUpgradeInventory():
 	for slot in range(0,6):
 		Globals.currentPlayer.upg_inv.slots[slot].item = null
+		
+func resetWeaponInventory():
+	for slot in range(1,6):
+		Globals.currentPlayer.weapon_inv.slots[slot].item = null
 
 func game_over():
 	var game_over_screen = GAMEOVER.instantiate()
@@ -121,6 +127,7 @@ func game_over():
 
 func game_win():
 	hud.fade_to_white()
+	Globals.currentPlayer.health_component.invincible = true
 	Globals.currentPlayer.pause()
 	Globals.currentPlayer.game_end = true
 	for enemy in enemy_spawner.get_enemies():

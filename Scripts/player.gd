@@ -6,9 +6,9 @@ signal player_health_changed(new_health)
 signal player_max_health_changed(new_max_health)
 signal player_death
 
-enum PlayerMoveStates{IDLE, WALKING, DODGE_ROLLING, STUNNED, PAUSED}
-enum PlayerAttackStates{FIRING, NOT_FIRING}
+enum PlayerMoveStates{IDLE, WALKING, STUNNED, PAUSED}
 
+@onready var player = $"."
 @onready var sprite_2d = $Sprite2D
 @onready var dps_timer = $DPSTimer
 @onready var animation_player = $AnimationPlayer
@@ -22,7 +22,11 @@ enum PlayerAttackStates{FIRING, NOT_FIRING}
 @onready var foot_step_sound = $Sounds/FootStepSound
 @onready var beam_shock_fail_sound = $Sounds/BeamShockFailSound
 @onready var coins_n_keys_sound = $Sounds/CoinsNKeysSound
-@onready var player_hurt = $Sounds/PlayerHurt
+@onready var swing_timer = %SwingTimer
+@onready var sword_swing = %SwordSwing
+@onready var sword_marker = $SwordMarker
+@onready var sword_attack = %SwordAttack
+@onready var sword_sound = $Sounds/SwordSound
 
 
 @onready var health_component:HealthComponent = $HealthComponent
@@ -44,7 +48,6 @@ var damagePower = 5.0
 var speedIncrease = 1
 var damagingGhost = null
 var currentMoveState: PlayerMoveStates
-var currentAttackState: PlayerAttackStates
 var tractorBeam: Line2D
 
 var paused: bool = false
@@ -76,6 +79,7 @@ func _physics_process(_delta):
 			select_target()
 			check_damaging_ghost()
 			move_tractor_beam()
+			swing_sword()
 			
 			move_and_slide()
 			
@@ -91,11 +95,13 @@ func _physics_process(_delta):
 				if direction.x > 0:
 					sprite_2d.flip_h = true
 					weapon_1.scale.x = -1
+					sword_marker.scale.x = -1
 					weapon_muzzle.position.x = 16
 					fail_sprite.scale.x = -1
 				elif direction.x < 0:
 					sprite_2d.flip_h = false
 					weapon_1.scale.x = 1
+					sword_marker.scale.x = 1
 					weapon_muzzle.position.x = -16
 					fail_sprite.scale.x = 1
 				velocity.x = direction.x * SPEED * speedIncrease
@@ -109,11 +115,10 @@ func _physics_process(_delta):
 			select_target()
 			check_damaging_ghost()
 			move_tractor_beam()
+			swing_sword()
+			
 			
 			move_and_slide()
-			
-		PlayerMoveStates.DODGE_ROLLING:
-			pass
 
 		PlayerMoveStates.PAUSED:
 			animation_player.play("idle")
@@ -185,6 +190,13 @@ func move_tractor_beam():
 		tractorBeam.points[points_size - 1] = end_point 
 
 
+func collect_weapon(weapon: InvWpn, amount):
+	weapon_inv.insert(weapon, amount)
+	if weapon.name == "Ghost Buster(Sword)":
+		Globals.hasGhostBusterSword = true
+		Globals.hud.swing_timer_label.visible = true
+		Globals.hud.buster_sword_panel.visible = true
+
 func collect_item(item: InvItem, amount):
 	item_inv.insert(item, amount)
 	if item != null:
@@ -223,8 +235,6 @@ func collect_upgrade(upgrade, amount):
 func _on_health_component_health_changed(new_health):
 	emit_signal("player_health_changed", new_health)
 	
-	
-	
 func _on_health_component_max_health_changed(new_max_health):
 	player_max_health_changed.emit(new_max_health)
 	
@@ -241,3 +251,8 @@ func clear_beams():
 	if beam_shock_sound.playing:
 		beam_shock_sound.stop()
 
+func swing_sword():
+	if Globals.hasGhostBusterSword and Input.is_action_just_pressed("swingsword") and swing_timer.time_left == 0:
+			sword_swing.play("swing")
+			swing_timer.start(5)
+			sword_sound.play()
