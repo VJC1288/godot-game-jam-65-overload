@@ -45,7 +45,7 @@ func _ready():
 	
 	################ Temp Testing Items to Spawn ####################
 	#coin_spawner.spawn_coins(centerOfScreen + Vector2(50, 50), randi_range(1,5))
-	#item_spawner.spawn_item(centerOfScreen + Vector2(-100, 50), "key")
+	#item_spawner.spawn_item(centerOfScreen + Vector2(-100, 50), "Key")
 	#item_spawner.spawn_item(centerOfScreen + Vector2(-100, 50), "Ghost Buster(Sword)")
 	#item_spawner.spawn_item(centerOfScreen + Vector2(-30, -30), "Photo")
 	#item_spawner.spawn_item(centerOfScreen + Vector2(50, -50), "Beam Battery")

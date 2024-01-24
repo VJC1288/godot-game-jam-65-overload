@@ -44,7 +44,7 @@ func build_shop():
 	for item in inventory:
 		var cost = 0
 		match item:
-			"key":
+			"Key":
 				item_to_add = KEY.instantiate()
 				cost = 10
 			"Spectre Coat":

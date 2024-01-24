@@ -19,12 +19,12 @@ var hud = null
 func initialize(passed_hud):
 	hud = passed_hud
 
-func spawn_item(location: Vector2, item_name: String = "key"):
+func spawn_item(location: Vector2, item_name: String = "Key"):
 
 	var spawnedItem
 	
 	match item_name:
-		"key":
+		"Key":
 			spawnedItem = KEY.instantiate()
 		"Arc Extender":
 			spawnedItem = ARC_EXTENDER.instantiate()
@@ -54,7 +54,7 @@ func spawn_item(location: Vector2, item_name: String = "key"):
 	call_deferred("add_child", spawnedItem)
 	#add_child(spawnedItem)
 		
-	#spawnedKey.item_collected.connect(key_collected)
+	#spawnedkey.item_collected.connect(key_collected)
 
 
 func item_collected(item_type: String):

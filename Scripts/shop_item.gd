@@ -16,10 +16,13 @@ func set_cost(passed_cost):
 
 func _on_select_area_mouse_entered():
 	box_select.visible = true
+	Globals.lastPickup = item_name_for_sale
+	Globals.hud.display_shop_info()
 
 
 func _on_select_area_mouse_exited():
 	box_select.visible = false
+	Globals.hud.hide_shop_info()
 
 
 func _on_select_area_input_event(_viewport, event, _shape_idx):

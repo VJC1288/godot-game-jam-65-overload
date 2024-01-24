@@ -35,7 +35,21 @@ func update_max_health(new_value):
 
 func update_coin_count():
 	coin_count.text = str(Globals.currentCoinCount)
+
+func display_shop_info():
+	pickup_message.label_settings.font_color = Color(1,1,1,1)
+	pickup_message.label_settings.shadow_color = Color(0,0,0,.65)
+	#var pickup_tween = create_tween()
+	#var pickup_tween_shadow = create_tween()
+	#pickup_tween.tween_property(pickup_message.label_settings, "font_color", Color(1, 1, 1, 0), 1).set_ease(Tween.EASE_OUT).set_delay(3.0)
+	#pickup_tween_shadow.tween_property(pickup_message.label_settings, "shadow_color", Color(0, 0, 0, 0), .65).set_ease(Tween.EASE_OUT).set_delay(3.0)
+	pickup_message.text = str(Globals.lastPickup)
 	
+func hide_shop_info():
+	pickup_message.label_settings.font_color = Color(1,1,1,0)
+	pickup_message.label_settings.shadow_color = Color(0,0,0,0)
+
+
 func display_last_pickup():
 	pickup_message.label_settings.font_color = Color(1, 1, 1, 1)
 	pickup_message.label_settings.shadow_color = Color(0, 0, 0, .65)
