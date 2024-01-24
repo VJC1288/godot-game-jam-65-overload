@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bxha03nksdagd"]
+[gd_scene load_steps=23 format=3 uid="uid://bxha03nksdagd"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_48hap"]
 [ext_resource type="Resource" uid="uid://0bkd3m0eno00" path="res://Assets/Inventory/player_weapons.tres" id="2_v42ke"]
@@ -9,13 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://dnyhpla2r32vn" path="res://Assets/bungusspritesheet.png" id="5_lnxah"]
 [ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/pickup_tileset.png" id="6_g1cmc"]
 [ext_resource type="Texture2D" uid="uid://dkvxhjafrxs7i" path="res://Assets/ghostly-tileset.png" id="7_6tg62"]
-[ext_resource type="Script" path="res://Scripts/swordattack.gd" id="7_gbkus"]
 [ext_resource type="AudioStream" uid="uid://dtyghsigoq78u" path="res://Assets/Sounds/Accent,Sound Design,Electric,Arc,Buzz,Resonant,Fizzle,Surges,LongClipped.wav" id="9_75wds"]
 [ext_resource type="AudioStream" uid="uid://dbjdw0c7b6nqc" path="res://Assets/Sounds/458353__dwoboyle__footsteps-tile-run-14(pitchdown).wav" id="10_qlgiy"]
 [ext_resource type="AudioStream" uid="uid://bbjq8ihkoavba" path="res://Assets/Sounds/ELECTRIC Shock Zap Short 03.wav" id="11_6fj74"]
 [ext_resource type="AudioStream" uid="uid://cv5h3en3nr0bj" path="res://Assets/Sounds/coinsNkeys.wav" id="13_rsell"]
 [ext_resource type="AudioStream" uid="uid://jh0srmjtuoeg" path="res://Assets/Sounds/hurt.ogg" id="14_bqxtk"]
-[ext_resource type="AudioStream" uid="uid://c7o2p1x712vkm" path="res://Assets/Sounds/YS95QGJ-sword-in.mp3" id="16_12va2"]
 
 [sub_resource type="Gradient" id="Gradient_sjtlc"]
 offsets = PackedFloat32Array(0.0909091, 1)
@@ -26,119 +24,6 @@ gradient = SubResource("Gradient_sjtlc")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.174312, 0.431193)
-
-[sub_resource type="Animation" id="Animation_bs5pn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-7, -50)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape2D:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("%SwordAttack/..:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_rkd45"]
-resource_name = "swing"
-length = 0.3
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.07, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-7, -50), Vector2(-33, -36), Vector2(-40, -6), Vector2(-33, 19)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, -1.5708, -2.26893]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("..:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xc8qc"]
-_data = {
-"RESET": SubResource("Animation_bs5pn"),
-"swing": SubResource("Animation_rkd45")
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c64vh"]
-size = Vector2(8, 39)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xqdcp"]
 size = Vector2(14, 20)
@@ -240,6 +125,7 @@ _data = {
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 36
 script = ExtResource("1_48hap")
+team = null
 weapon_inv = ExtResource("2_v42ke")
 item_inv = ExtResource("3_acr8i")
 upg_inv = ExtResource("4_xqpgn")
@@ -261,41 +147,6 @@ texture = ExtResource("6_g1cmc")
 offset = Vector2(-7, 2)
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
-
-[node name="SwordMarker" type="Marker2D" parent="."]
-
-[node name="BusterSword" type="Sprite2D" parent="SwordMarker"]
-unique_name_in_owner = true
-visible = false
-position = Vector2(-7, -50)
-texture = ExtResource("6_g1cmc")
-flip_h = true
-region_enabled = true
-region_rect = Rect2(32, 64, 32, 64)
-
-[node name="SwordSwing" type="AnimationPlayer" parent="SwordMarker/BusterSword"]
-unique_name_in_owner = true
-root_node = NodePath("../SwordAttack")
-libraries = {
-"": SubResource("AnimationLibrary_xc8qc")
-}
-
-[node name="SwordAttack" type="Area2D" parent="SwordMarker/BusterSword"]
-unique_name_in_owner = true
-collision_layer = 16
-collision_mask = 10
-script = ExtResource("7_gbkus")
-team = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordMarker/BusterSword/SwordAttack"]
-position = Vector2(0, 6.5)
-shape = SubResource("RectangleShape2D_c64vh")
-disabled = true
-
-[node name="SwingTimer" type="Timer" parent="SwordMarker/BusterSword"]
-unique_name_in_owner = true
-wait_time = 5.0
-one_shot = true
 
 [node name="FailSprite" type="Sprite2D" parent="."]
 visible = false
@@ -367,11 +218,9 @@ volume_db = -8.0
 pitch_scale = 0.7
 bus = &"SFX"
 
-[node name="SwordSound" type="AudioStreamPlayer2D" parent="Sounds"]
-stream = ExtResource("16_12va2")
-volume_db = -10.0
-pitch_scale = 0.9
-bus = &"SFX"
+[node name="SwingTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="max_health_changed" from="HealthComponent" to="." method="_on_health_component_max_health_changed"]

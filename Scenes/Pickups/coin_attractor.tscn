@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://gkxeltld3s8y"]
+
+[ext_resource type="PackedScene" uid="uid://b454kg3worpwc" path="res://Scenes/Pickups/basePickup.tscn" id="1_u2it2"]
+[ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/pickup_tileset.png" id="2_00nqw"]
+[ext_resource type="Resource" uid="uid://15unv3xpqcao" path="res://Assets/Inventory/coin_attractor.tres" id="2_vcrg4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mj5vu"]
+size = Vector2(12, 10)
+
+[node name="CoinAttractor" instance=ExtResource("1_u2it2")]
+upgrade = ExtResource("2_vcrg4")
+itemName = "Coin Attractor"
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_00nqw")
+region_enabled = true
+region_rect = Rect2(0, 64, 32, 32)
+
+[node name="CollisionShape2D" parent="Area" index="0"]
+shape = SubResource("RectangleShape2D_mj5vu")

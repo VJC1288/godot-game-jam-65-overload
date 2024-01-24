@@ -23,9 +23,9 @@ func checkForKey():
 		if playerItems.slots[slot].item == KEY_RESOURCE:
 			hasKey = true
 			correctSlot = slot
-			#print("Slot ",slot, ": has a key.")
+			#print("Slot ",slot, ": has a Key.")
 		#else:
-			#print("Slot ",slot, ": has no key.")
+			#print("Slot ",slot, ": has no Key.")
 
 func _on_unlock_area_body_entered(_body):
 	checkForKey()
@@ -36,4 +36,4 @@ func _on_unlock_area_body_entered(_body):
 		await unlock_sound.finished
 		call_deferred("queue_free")
 	else:
-		print("Player has no key!")
+		print("Player has no Key!")
