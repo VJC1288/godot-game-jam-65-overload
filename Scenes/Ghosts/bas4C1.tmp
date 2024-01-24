@@ -53,7 +53,13 @@ border_color = Color(0.8, 0.8, 0.8, 0)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_ly0sh")
+immobile = null
+SPEED = null
+team = null
 ghost_damage = -20
+energy_to_kill = null
+regen_rate = null
+ghost_type = null
 
 [node name="FloatParticle" parent="." instance=ExtResource("2_lragd")]
 amount = 20

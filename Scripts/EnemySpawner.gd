@@ -17,7 +17,7 @@ const BOSS_GHOST = preload("res://Scenes/Ghosts/boss_ghost.tscn")
 @onready var spawn_timer = $SpawnTimer
 @onready var enemies = $Enemies
 
-@export var active: bool = false
+#@export var active: bool = false
 
 var spawnsLeft:int = 0
 var spawnType:int = 1
@@ -25,7 +25,7 @@ var bossIsAlive:bool = false
 
 func _physics_process(_delta):
 
-	if active and (spawnsLeft > 0 or bossIsAlive):
+	if spawnsLeft > 0 or bossIsAlive:
 		if spawn_timer.is_stopped() and Globals.currentPlayer != null:
 			spawn_timer.start()
 			spawn_ghost()

@@ -20,8 +20,8 @@ func kill_ghost():
 			death_effect()
 		Globals.currentTargetedGhost = null
 		Globals.currentPlayer.clear_beams()
-		hurt_box.monitoring = false
-		hurt_box.monitorable = false
+		hurt_box.set_deferred("monitoring", false)
+		hurt_box.set_deferred("monitorable", false)
 		float_particle.visible = false
 		shadow.visible = false
 		sprite_2d.visible = false

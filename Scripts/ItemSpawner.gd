@@ -10,7 +10,9 @@ const BEAM_BATTERY_ = preload("res://Scenes/Pickups/beamBattery+.tscn")
 const WRAITH_BOOTS = preload("res://Scenes/Pickups/wraith_boots.tscn")
 const SPECTRE_COAT = preload("res://Scenes/Pickups/spectre_coat.tscn")
 const GEIST_GOULASH = preload("res://Scenes/Pickups/geist_goulash.tscn")
+const COIN_ATTRACTOR = preload("res://Scenes/Pickups/coin_attractor.tscn")
 const PHOTO = preload("res://Scenes/Pickups/photo.tscn")
+const GHOST_BUSTER_SWORD = preload("res://Scenes/Pickups/ghost_buster_sword.tscn")
 
 var hud = null
 
@@ -34,15 +36,23 @@ func spawn_item(location: Vector2, item_name: String = "key"):
 			spawnedItem = SPECTRE_COAT.instantiate()
 		"Geist Goulash":
 			spawnedItem = GEIST_GOULASH.instantiate()
+		"Coin Attractor":
+			spawnedItem = COIN_ATTRACTOR.instantiate()
 		"Photo":
 			spawnedItem = PHOTO.instantiate()
+		"Ghost Buster(Sword)":
+			spawnedItem = GHOST_BUSTER_SWORD.instantiate()
 	spawnedItem.global_position = location
 	
 	if spawnedItem.instantItem or item_name == "Photo":
 		spawnedItem.item_collected.connect(hud.display_last_pickup)
 	
 	spawnedItem.upgrade_collected.connect(hud.display_last_pickup)
-	add_child(spawnedItem)
+	
+	spawnedItem.weapon_collected.connect(hud.display_last_pickup)
+	
+	call_deferred("add_child", spawnedItem)
+	#add_child(spawnedItem)
 		
 	#spawnedKey.item_collected.connect(key_collected)
 

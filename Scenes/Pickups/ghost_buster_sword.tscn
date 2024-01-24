@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://iipj5b88rm0m"]
+
+[ext_resource type="PackedScene" uid="uid://b454kg3worpwc" path="res://Scenes/Pickups/basePickup.tscn" id="1_3ettv"]
+[ext_resource type="Resource" uid="uid://cyo4gw8c2px1v" path="res://Assets/Inventory/ghost_buster_sword.tres" id="2_163kh"]
+[ext_resource type="Texture2D" uid="uid://b1j50nmg58g4r" path="res://Assets/pickup_tileset.png" id="2_wmbxv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0pjn"]
+size = Vector2(9.5, 45)
+
+[node name="GhostBusterSword" instance=ExtResource("1_3ettv")]
+weapon = ExtResource("2_163kh")
+itemName = "Ghost Buster(Sword)"
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_wmbxv")
+region_enabled = true
+region_rect = Rect2(32, 64, 32, 64)
+
+[node name="CollisionShape2D" parent="Area" index="0"]
+position = Vector2(0.25, 9.5)
+shape = SubResource("RectangleShape2D_v0pjn")

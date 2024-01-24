@@ -1,5 +1,8 @@
 extends Area2D
 
+signal hitbysword(damage)
+
+@onready var ghost = $".."
 
 var team: Globals.Teams
 
@@ -14,3 +17,5 @@ func set_damage(passed_damage:int):
 func _on_area_entered(area):
 	if area.team != team and area.has_method("take_damage"):
 		area.take_damage(damage)
+	elif area == Globals.currentPlayer.sword_attack:
+		hitbysword.emit(1000)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://2v0t57a8uii1"]
+[gd_scene load_steps=4 format=3 uid="uid://2v0t57a8uii1"]
 
 [ext_resource type="PackedScene" uid="uid://d17dxk0qhpbm" path="res://Scenes/Levels/baseLevel.tscn" id="1_andun"]
 [ext_resource type="PackedScene" uid="uid://c8eqityirmdou" path="res://Scenes/Particles/risingparticles25by25.tscn" id="2_7vdx8"]
+[ext_resource type="PackedScene" uid="uid://cvy3qojq55bby" path="res://Scenes/lock.tscn" id="3_4v3vc"]
 
 [node name="Level(-1,6)" instance=ExtResource("1_andun")]
 southExit = true
@@ -16,3 +17,8 @@ layer_2/tile_data = PackedInt32Array(262144, 65536, 3, 65536, 65536, 3, 8, 39321
 
 [node name="RisingParticles" parent="." index="10" instance=ExtResource("2_7vdx8")]
 position = Vector2(224, 64)
+
+[node name="Lock" parent="." index="11" instance=ExtResource("3_4v3vc")]
+position = Vector2(160, 180)
+rotation = 3.14159
+room_coords = Vector2i(-1, 6)
